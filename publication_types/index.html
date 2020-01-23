@@ -21,14 +21,14 @@
   
   
 
-  <meta name="author" content="Nelson Bighetti">
+  <meta name="author" content="Animesh Singh">
 
   
   
   
     
   
-  <meta name="description" content="Professor of Artificial Intelligence">
+  <meta name="description" content="Incoming Intern@JPMorgan Chase &amp; Co.">
 
   
   <link rel="alternate" hreflang="en-us" href="/publication_types/">
@@ -206,6 +206,42 @@
 
 
 
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-156551368-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag() {
+      dataLayer.push(arguments);
+  }
+
+  function trackOutboundLink(url) {
+    gtag('event', 'click', {
+         'event_category': 'outbound',
+         'event_label': url,
+         'transport_type': 'beacon',
+         'event_callback': function () {
+           document.location = url;
+         }
+    });
+    console.debug("Outbound link clicked: " + url);
+  }
+
+  function onClickCallback(event) {
+    if ((event.target.tagName !== 'A') || (event.target.host === window.location.host)) {
+      return;
+    }
+    trackOutboundLink(event.target);  
+  }
+
+  gtag('js', new Date());
+  gtag('config', 'UA-156551368-1', {});
+
+  
+  document.addEventListener('click', onClickCallback, false);
+</script>
+
+
   
 
 
@@ -214,8 +250,8 @@
   
 
   <link rel="manifest" href="/index.webmanifest">
-  <link rel="icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_32x32_fill_lanczos_center_2.png">
-  <link rel="apple-touch-icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_2.png">
+  <link rel="icon" type="image/png" href="/images/icon_hu2c1e3b61985ec8c0517c42aab74b0eb2_94570_32x32_fill_lanczos_center_2.png">
+  <link rel="apple-touch-icon" type="image/png" href="/images/icon_hu2c1e3b61985ec8c0517c42aab74b0eb2_94570_192x192_fill_lanczos_center_2.png">
 
   <link rel="canonical" href="/publication_types/">
 
@@ -230,11 +266,14 @@
   
   <meta property="twitter:card" content="summary">
   
+  <meta property="twitter:site" content="@animeshsingh38">
+  <meta property="twitter:creator" content="@animeshsingh38">
+  
   <meta property="og:site_name" content="Animesh Singh Chouhan">
   <meta property="og:url" content="/publication_types/">
   <meta property="og:title" content="Publication_types | Animesh Singh Chouhan">
-  <meta property="og:description" content="Professor of Artificial Intelligence"><meta property="og:image" content="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png">
-  <meta property="twitter:image" content="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png"><meta property="og:locale" content="en-us">
+  <meta property="og:description" content="Incoming Intern@JPMorgan Chase &amp; Co."><meta property="og:image" content="/images/icon_hu2c1e3b61985ec8c0517c42aab74b0eb2_94570_512x512_fill_lanczos_center_2.png">
+  <meta property="twitter:image" content="/images/icon_hu2c1e3b61985ec8c0517c42aab74b0eb2_94570_512x512_fill_lanczos_center_2.png"><meta property="og:locale" content="en-us">
   
     
   
