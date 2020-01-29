@@ -101,7 +101,7 @@ python3 scraper.py ./your_text_file.txt
       <link>/project/youtube-playman/</link>
       <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
       <guid>/project/youtube-playman/</guid>
-      <description>&lt;p&gt;A simple yet powerful script to download and manage local copies of youtube music playlists&lt;/p&gt;
+      <description>&lt;p&gt;A simple yet powerful script to download and manage local copies of youtube music playlists. It wraps over the youtube-dl downloader and maintains an archive of downloaded songs. It also updates them automatically if a cronjob is configured.&lt;/p&gt;
 &lt;h2 id=&#34;setup&#34;&gt;Setup&lt;/h2&gt;
 &lt;h3 id=&#34;linux&#34;&gt;Linux:&lt;/h3&gt;
 &lt;p&gt;Cloning the repository:&lt;/p&gt;
