@@ -39,9 +39,9 @@ copyright (c) 2020 &lt;a href=&#34;https://github.com/animesh-chouhan&#34;&gt;An
     
     <item>
       <title>Youtube Comment Scraper</title>
-      <link>/project/youtube-comment-scraper/</link>
+      <link>/project/youtube_comment_scraper/</link>
       <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
-      <guid>/project/youtube-comment-scraper/</guid>
+      <guid>/project/youtube_comment_scraper/</guid>
       <description>&lt;p&gt;Scrapes all the comments from all videos present in a YouTube channel. Can also be used to get the video list from a given YouTube channel.&lt;/p&gt;
 &lt;h2 id=&#34;setup&#34;&gt;Setup&lt;/h2&gt;
 &lt;p&gt;Linux:&lt;/p&gt;
@@ -98,9 +98,9 @@ python3 scraper.py ./your_text_file.txt
     
     <item>
       <title>Youtube Playman</title>
-      <link>/project/youtube-playman/</link>
+      <link>/project/youtube_playman/</link>
       <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
-      <guid>/project/youtube-playman/</guid>
+      <guid>/project/youtube_playman/</guid>
       <description>&lt;p&gt;A simple yet powerful script to download and manage local copies of youtube music playlists. It wraps over the youtube-dl downloader and maintains an archive of downloaded songs. It also updates them automatically if a cronjob is configured. &lt;a href=&#34;https://animesh-chouhan.github.io/youtube-playman/&#34;&gt;More Info&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&#34;setup&#34;&gt;Setup&lt;/h2&gt;
 &lt;h3 id=&#34;linux&#34;&gt;Linux:&lt;/h3&gt;
