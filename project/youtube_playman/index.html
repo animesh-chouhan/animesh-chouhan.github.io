@@ -781,7 +781,11 @@ $download
 $crontab -e
 
 #this will open a editor and add this entry to the file
+#don't forget the newline after the last entry
+
+PATH=&quot;/usr/local/bin:/usr/bin:/bin:/home/&lt;YOUR-USERNAME&gt;/.local/bin&quot;
 @daily printf &quot;update-all&quot; | download
+
 </code></pre>
 <p>For more details refer to <a href="https://help.ubuntu.com/community/CronHowto">ubuntu cron wiki</a>.</p>
 <h2 id="usage-example">Usage example</h2>

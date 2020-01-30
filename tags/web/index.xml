@@ -129,7 +129,11 @@ $download
 $crontab -e
 
 #this will open a editor and add this entry to the file
+#don&#39;t forget the newline after the last entry
+
+PATH=&amp;quot;/usr/local/bin:/usr/bin:/bin:/home/&amp;lt;YOUR-USERNAME&amp;gt;/.local/bin&amp;quot;
 @daily printf &amp;quot;update-all&amp;quot; | download
+
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;For more details refer to &lt;a href=&#34;https://help.ubuntu.com/community/CronHowto&#34;&gt;ubuntu cron wiki&lt;/a&gt;.&lt;/p&gt;
 &lt;h2 id=&#34;usage-example&#34;&gt;Usage example&lt;/h2&gt;
