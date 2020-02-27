@@ -12,21 +12,5 @@
       <link>/tags/</link>
     </image>
     
-    <item>
-      <title>Web</title>
-      <link>/tags/web/</link>
-      <pubDate>Mon, 20 Jan 2020 00:00:00 +0000</pubDate>
-      <guid>/tags/web/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Youtube</title>
-      <link>/tags/youtube/</link>
-      <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
-      <guid>/tags/youtube/</guid>
-      <description></description>
-    </item>
-    
   </channel>
 </rss>

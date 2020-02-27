@@ -6,15 +6,11 @@
       <atom:link href="/authors/index.xml" rel="self" type="application/rss+xml" />
     <description>Authors</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language>
-    <item>
-      <title></title>
-      <link>/authors/admin/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>/authors/admin/</guid>
-      <description>&lt;!-- &lt;p align=&#34;justify&#34;&gt; --&gt;
-&lt;p&gt;Hello! My name is Animesh Singh Chouhan. I am a pre-final year undergraduate student at Indian Institute of Technology Kharagpur with an interest in backend development, cloud computing, embedded systems and robotics. Seeking an opportunity to apply my experience in a field of interest through research.&lt;/p&gt;
-&lt;!-- &lt;/p&gt; --&gt;</description>
-    </item>
+    <image>
+      <url>/images/icon_hu2c1e3b61985ec8c0517c42aab74b0eb2_94570_512x512_fill_lanczos_center_2.png</url>
+      <title>Authors</title>
+      <link>/authors/</link>
+    </image>
     
   </channel>
 </rss>
