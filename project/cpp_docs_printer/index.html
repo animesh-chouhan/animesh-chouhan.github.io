@@ -28,10 +28,10 @@
   
     
   
-  <meta name="description" content="Web compatible simulations and vizualizations.">
+  <meta name="description" content="Generates PDF documents from the C&#43;&#43; documentation">
 
   
-  <link rel="alternate" hreflang="en-us" href="/project/mathism/">
+  <link rel="alternate" hreflang="en-us" href="/project/cpp_docs_printer/">
 
   
 
@@ -251,7 +251,7 @@
   <link rel="icon" type="image/png" href="/images/icon_hu2c1e3b61985ec8c0517c42aab74b0eb2_94570_32x32_fill_lanczos_center_2.png">
   <link rel="apple-touch-icon" type="image/png" href="/images/icon_hu2c1e3b61985ec8c0517c42aab74b0eb2_94570_192x192_fill_lanczos_center_2.png">
 
-  <link rel="canonical" href="/project/mathism/">
+  <link rel="canonical" href="/project/cpp_docs_printer/">
 
   
   
@@ -267,15 +267,15 @@
   <meta property="twitter:creator" content="@animeshsingh38">
   
   <meta property="og:site_name" content="Animesh Singh">
-  <meta property="og:url" content="/project/mathism/">
-  <meta property="og:title" content="Mathism | Animesh Singh">
-  <meta property="og:description" content="Web compatible simulations and vizualizations."><meta property="og:image" content="/project/mathism/featured.png">
-  <meta property="twitter:image" content="/project/mathism/featured.png"><meta property="og:locale" content="en-us">
+  <meta property="og:url" content="/project/cpp_docs_printer/">
+  <meta property="og:title" content="C&#43;&#43; Docs Printer | Animesh Singh">
+  <meta property="og:description" content="Generates PDF documents from the C&#43;&#43; documentation"><meta property="og:image" content="/project/cpp_docs_printer/featured.png">
+  <meta property="twitter:image" content="/project/cpp_docs_printer/featured.png"><meta property="og:locale" content="en-us">
   
     
-      <meta property="article:published_time" content="2020-01-20T00:00:00&#43;00:00">
+      <meta property="article:published_time" content="2016-04-27T00:00:00&#43;00:00">
     
-    <meta property="article:modified_time" content="2020-01-20T00:00:00&#43;00:00">
+    <meta property="article:modified_time" content="2016-04-27T00:00:00&#43;00:00">
   
 
   
@@ -299,16 +299,16 @@
   "@type": "Article",
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "/project/mathism/"
+    "@id": "/project/cpp_docs_printer/"
   },
-  "headline": "Mathism",
+  "headline": "C++ Docs Printer",
   
   "image": [
-    "/project/mathism/featured.png"
+    "/project/cpp_docs_printer/featured.png"
   ],
   
-  "datePublished": "2020-01-20T00:00:00Z",
-  "dateModified": "2020-01-20T00:00:00Z",
+  "datePublished": "2016-04-27T00:00:00Z",
+  "dateModified": "2016-04-27T00:00:00Z",
   
   "author": {
     "@type": "Person",
@@ -323,7 +323,7 @@
       "url": "img//"
     }
   },
-  "description": "Web compatible simulations and vizualizations."
+  "description": "Generates PDF documents from the C++ documentation"
 }
 </script>
 
@@ -341,7 +341,7 @@
 
 
 
-  <title>Mathism | Animesh Singh</title>
+  <title>C&#43;&#43; Docs Printer | Animesh Singh</title>
 
 </head>
 
@@ -641,7 +641,7 @@
 
 
 <div class="article-container pt-3">
-  <h1>Mathism</h1>
+  <h1>C&#43;&#43; Docs Printer</h1>
 
   
 
@@ -659,7 +659,7 @@
     
       
     
-    Jan 20, 2020
+    Apr 27, 2016
   </span>
   
 
@@ -743,10 +743,10 @@
 </div>
 
 
-<div class="article-header article-container featured-image-wrapper mt-4 mb-4" style="max-width: 720px; max-height: 687px;">
+<div class="article-header article-container featured-image-wrapper mt-4 mb-4" style="max-width: 720px; max-height: 405px;">
   <div style="position: relative">
-    <img src="/project/mathism/featured_hu3e001aced30947a853bded60211924d6_170529_720x0_resize_lanczos_2.png" alt="" class="featured-image">
-    <span class="article-header-caption">Particles</span>
+    <img src="/project/cpp_docs_printer/featured_hub1c3a80a6849c7ab7a66a98e8a3c71fa_72708_720x0_resize_lanczos_2.png" alt="" class="featured-image">
+    
   </div>
 </div>
 
@@ -755,20 +755,53 @@
   <div class="article-container">
 
     <div class="article-style">
-      <p>List of web compatible simulations and vizualizations:</p>
-<ol>
-<li><a href="https://animesh-chouhan.github.io/mathism/projects/cycloid/">Cycloid</a></li>
-<li><a href="https://animesh-chouhan.github.io/mathism/projects/particles-1/">Particles-1</a></li>
-<li><a href="https://animesh-chouhan.github.io/mathism/projects/particles-2/">Particles-2</a></li>
-</ol>
+      <p>A python script to scrape C++ documentation website and generate printable PDF documents. <a href="https://animesh-chouhan.github.io/cpp-docs-printer/">More Info</a></p>
+<h2 id="setup">Setup</h2>
+<h3 id="linux">Linux:</h3>
+<p>Cloning the repository:</p>
+<pre><code class="language-sh">#clone the repo
+$git clone https://github.com/animesh-chouhan/cpp-docs-printer.git
+$cd cpp-docs-printer
+</code></pre>
+<p>Installing the dependencies:</p>
+<pre><code class="language-sh">#requests
+$sudo pip3 install requests 
+
+#weasy-print
+$sudo apt-get install build-essential python3-dev python3-pip python3-setuptools python3-wheel python3-cffi libcairo2 libpango-1.0-0 libpangocairo-1.0-0 libgdk-pixbuf2.0-0 libffi-dev shared-mime-info
+$sudo pip3 install WeasyPrint
+
+</code></pre>
+<p>Running the python script:</p>
+<pre><code class="language-sh">$python3 cplusplus.py http://www.cplusplus.com/reference/cstdio/
+
+</code></pre>
+<h2 id="usage-example">Usage example</h2>
+<p>Sample C++ documentation <a href="http://www.cplusplus.com/reference/cstdio/">http://www.cplusplus.com/reference/cstdio/</a>:</p>
+<p align="center">
+  <img src="cplusplus-min.png" width="80%" align="center"/>
+</p>
+<p>Sample pdf generated <a href="https://github.com/animesh-chouhan/cpp-docs-printer/blob/master/pdf/reference-cstdio.pdf">pdf</a>:</p>
+<p align="center">
+  <img src="output-min.png"  width="80%" align="center"/>
+</p>
+<p>The generated .html and .pdf files are located in the html and pdf folders respectively.</p>
+<p><em>For more examples and usage, please refer to the <a href="https://github.com/animesh-chouhan/youtube-playman/wiki">Wiki</a>.</em></p>
+<h2 id="built-with">Built with</h2>
+<ul>
+<li><a href="https://requests.readthedocs.io/en/master/">requests</a> - Requests is an elegant and simple HTTP library for Python, built for human beings.</li>
+<li><a href="https://www.crummy.com/software/BeautifulSoup/">beautifulsoup</a> - Beautiful Soup is a library that makes it easy to scrape information from web pages.</li>
+<li><a href="https://weasyprint.org/">weasyprint</a> - WeasyPrint is a smart solution helping web developers to create PDF documents.</li>
+</ul>
 <h2 id="contributing">Contributing</h2>
 <ol>
-<li>Fork the repo (<a href="https://github.com/animesh-chouhan/mathism/">https://github.com/animesh-chouhan/mathism/</a>)</li>
+<li>Fork the repo (<a href="https://github.com/animesh-chouhan/cpp-docs-printer/">https://github.com/animesh-chouhan/cpp-docs-printer/</a>)</li>
 <li>Create your feature branch (<code>git checkout -b feature/fooBar</code>)</li>
 <li>Commit your changes (<code>git commit -am 'Add some fooBar'</code>)</li>
 <li>Push to the branch (<code>git push origin feature/fooBar</code>)</li>
 <li>Create a new Pull Request</li>
 </ol>
+<!-- Markdown link & img dfn's -->
 <h2 id="license">License</h2>
 <p>MIT License
 copyright (c) 2020 <a href="https://github.com/animesh-chouhan">Animesh Singh Chouhan</a>. Please have a look at the <a href="LICENSE">license</a> for more details.</p>
@@ -785,6 +818,8 @@ copyright (c) 2020 <a href="https://github.com/animesh-chouhan">Animesh Singh Ch
   
   <a class="badge badge-light" href="/tags/web/">Web</a>
   
+  <a class="badge badge-light" href="/tags/c&#43;&#43;/">C&#43;&#43;</a>
+  
 </div>
 
 
@@ -800,7 +835,7 @@ copyright (c) 2020 <a href="https://github.com/animesh-chouhan">Animesh Singh Ch
       
       
       <li>
-        <a href="https://twitter.com/intent/tweet?url=/project/mathism/&amp;text=Mathism" target="_blank" rel="noopener" class="share-btn-twitter">
+        <a href="https://twitter.com/intent/tweet?url=/project/cpp_docs_printer/&amp;text=C&#43;&#43;%20Docs%20Printer" target="_blank" rel="noopener" class="share-btn-twitter">
           <i class="fab fa-twitter"></i>
         </a>
       </li>
@@ -813,7 +848,7 @@ copyright (c) 2020 <a href="https://github.com/animesh-chouhan">Animesh Singh Ch
       
       
       <li>
-        <a href="https://www.facebook.com/sharer.php?u=/project/mathism/&amp;t=Mathism" target="_blank" rel="noopener" class="share-btn-facebook">
+        <a href="https://www.facebook.com/sharer.php?u=/project/cpp_docs_printer/&amp;t=C&#43;&#43;%20Docs%20Printer" target="_blank" rel="noopener" class="share-btn-facebook">
           <i class="fab fa-facebook"></i>
         </a>
       </li>
@@ -826,7 +861,7 @@ copyright (c) 2020 <a href="https://github.com/animesh-chouhan">Animesh Singh Ch
       
       
       <li>
-        <a href="mailto:?subject=Mathism&amp;body=/project/mathism/" target="_blank" rel="noopener" class="share-btn-email">
+        <a href="mailto:?subject=C&#43;&#43;%20Docs%20Printer&amp;body=/project/cpp_docs_printer/" target="_blank" rel="noopener" class="share-btn-email">
           <i class="fas fa-envelope"></i>
         </a>
       </li>
@@ -839,7 +874,7 @@ copyright (c) 2020 <a href="https://github.com/animesh-chouhan">Animesh Singh Ch
       
       
       <li>
-        <a href="https://www.linkedin.com/shareArticle?url=/project/mathism/&amp;title=Mathism" target="_blank" rel="noopener" class="share-btn-linkedin">
+        <a href="https://www.linkedin.com/shareArticle?url=/project/cpp_docs_printer/&amp;title=C&#43;&#43;%20Docs%20Printer" target="_blank" rel="noopener" class="share-btn-linkedin">
           <i class="fab fa-linkedin-in"></i>
         </a>
       </li>
@@ -852,7 +887,7 @@ copyright (c) 2020 <a href="https://github.com/animesh-chouhan">Animesh Singh Ch
       
       
       <li>
-        <a href="https://web.whatsapp.com/send?text=Mathism%20/project/mathism/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+        <a href="https://web.whatsapp.com/send?text=C&#43;&#43;%20Docs%20Printer%20/project/cpp_docs_printer/" target="_blank" rel="noopener" class="share-btn-whatsapp">
           <i class="fab fa-whatsapp"></i>
         </a>
       </li>
@@ -865,7 +900,7 @@ copyright (c) 2020 <a href="https://github.com/animesh-chouhan">Animesh Singh Ch
       
       
       <li>
-        <a href="https://service.weibo.com/share/share.php?url=/project/mathism/&amp;title=Mathism" target="_blank" rel="noopener" class="share-btn-weibo">
+        <a href="https://service.weibo.com/share/share.php?url=/project/cpp_docs_printer/&amp;title=C&#43;&#43;%20Docs%20Printer" target="_blank" rel="noopener" class="share-btn-weibo">
           <i class="fab fa-weibo"></i>
         </a>
       </li>
@@ -1010,8 +1045,6 @@ copyright (c) 2020 <a href="https://github.com/animesh-chouhan">Animesh Singh Ch
   <div class="article-widget content-widget-hr">
     <h3>Related</h3>
     <ul>
-      
-      <li><a href="/project/cpp_docs_printer/">C&#43;&#43; Docs Printer</a></li>
       
       <li><a href="/project/youtube_comment_scraper/">Youtube Comment Scraper</a></li>
       
