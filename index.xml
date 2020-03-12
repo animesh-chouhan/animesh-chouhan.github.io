@@ -51,7 +51,9 @@ $git clone https://github.com/animesh-chouhan/cpp-docs-printer.git
 $cd cpp-docs-printer
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Installing the dependencies:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;#requests
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;#install python3-pip
+$sudo apt-get install python3-pip
+#requests
 $sudo pip3 install requests 
 
 #weasy-print
