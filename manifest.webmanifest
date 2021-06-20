@@ -1,0 +1,18 @@
+{
+  "name": "Animesh Singh",
+  "short_name": "Animesh Singh",
+  "lang": "en-us",
+  "theme_color": "#3FCAFF",
+  "background_color": "#3FCAFF",
+  "icons": [{
+    "src": "/images/icon_hu2c1e3b61985ec8c0517c42aab74b0eb2_94570_192x192_fill_lanczos_center_2.png",
+    "sizes": "192x192",
+    "type": "image/png"
+    }, {
+    "src": "/images/icon_hu2c1e3b61985ec8c0517c42aab74b0eb2_94570_512x512_fill_lanczos_center_2.png",
+    "sizes": "512x512",
+    "type": "image/png"
+     }],
+  "display": "standalone",
+  "start_url": "/?utm_source=web_app_manifest"
+}
