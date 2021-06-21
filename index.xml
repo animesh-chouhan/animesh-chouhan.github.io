@@ -167,28 +167,36 @@ python3 scraper.py ./your_text_file.txt
       <guid>/project/youtube_playman/</guid>
       <description>&lt;p&gt;A simple yet powerful script to download and manage local copies of youtube music playlists. It wraps over the youtube-dl downloader and maintains an archive of downloaded songs. It also updates them automatically if a cronjob is configured. &lt;a href=&#34;https://animesh-chouhan.github.io/youtube-playman/&#34;&gt;More Info&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&#34;setup&#34;&gt;Setup&lt;/h2&gt;
-&lt;h3 id=&#34;linux&#34;&gt;Linux:&lt;/h3&gt;
-&lt;p&gt;Cloning the repository:&lt;/p&gt;
+&lt;h3 id=&#34;cloning-the-repository&#34;&gt;Cloning the repository:&lt;/h3&gt;
 &lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;#clone the repo
 $git clone https://github.com/animesh-chouhan/yt-comment-scraper.git
 $cd youtube-playman
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Running the script:&lt;/p&gt;
+&lt;h3 id=&#34;running-the-script&#34;&gt;Running the script:&lt;/h3&gt;
 &lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;#run the script directly
-$chmod +x ./download.sh
-$./download.sh
+$chmod +x ./youtube-playman.sh
+$./youtube-playman.sh
 
 OR
 
 #create a hard link to the local binary folder
 #this will add the downloader to the path variable 
-$ln ./download.sh ~/.local/bin/download
+$ln ./youtube-playman.sh ~/.local/bin/youtube-playman
 
 #directly running the script
-$download
+$youtube-playman
 
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Add Jobs To cron:&lt;/p&gt;
+&lt;h3 id=&#34;installation&#34;&gt;Installation:&lt;/h3&gt;
+&lt;p&gt;To install it right away for all UNIX users (Linux, macOS, etc.), type:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo curl -L https://github.com/animesh-chouhan/youtube-playman/releases/latest/download/youtube-playman -o /usr/local/bin/youtube-playman
+sudo chmod a+rx /usr/local/bin/youtube-playman
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;If you do not have curl, you can alternatively use a recent wget:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo wget https://github.com/animesh-chouhan/youtube-playman/releases/latest/download/youtube-playman -O /usr/local/bin/youtube-playman
+sudo chmod a+rx /usr/local/bin/youtube-playman
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;add-jobs-to-cron&#34;&gt;Add Jobs To cron:&lt;/h3&gt;
 &lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;#creating a cron job that will update the playlists automatically
 $crontab -e
 
@@ -196,7 +204,7 @@ $crontab -e
 #don&#39;t forget the newline after the last entry
 
 PATH=&amp;quot;/usr/local/bin:/usr/bin:/bin:/home/&amp;lt;YOUR-USERNAME&amp;gt;/.local/bin&amp;quot;
-@daily printf &amp;quot;update-all&amp;quot; | download
+@daily printf &amp;quot;update-all&amp;quot; | youtube-playman
 
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;For more details refer to &lt;a href=&#34;https://help.ubuntu.com/community/CronHowto&#34;&gt;ubuntu cron wiki&lt;/a&gt;.&lt;/p&gt;

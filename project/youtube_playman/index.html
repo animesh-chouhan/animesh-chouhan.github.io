@@ -588,28 +588,36 @@
     <div class="article-style">
       <p>A simple yet powerful script to download and manage local copies of youtube music playlists. It wraps over the youtube-dl downloader and maintains an archive of downloaded songs. It also updates them automatically if a cronjob is configured. <a href="https://animesh-chouhan.github.io/youtube-playman/">More Info</a></p>
 <h2 id="setup">Setup</h2>
-<h3 id="linux">Linux:</h3>
-<p>Cloning the repository:</p>
+<h3 id="cloning-the-repository">Cloning the repository:</h3>
 <pre><code class="language-sh">#clone the repo
 $git clone https://github.com/animesh-chouhan/yt-comment-scraper.git
 $cd youtube-playman
 </code></pre>
-<p>Running the script:</p>
+<h3 id="running-the-script">Running the script:</h3>
 <pre><code class="language-sh">#run the script directly
-$chmod +x ./download.sh
-$./download.sh
+$chmod +x ./youtube-playman.sh
+$./youtube-playman.sh
 
 OR
 
 #create a hard link to the local binary folder
 #this will add the downloader to the path variable 
-$ln ./download.sh ~/.local/bin/download
+$ln ./youtube-playman.sh ~/.local/bin/youtube-playman
 
 #directly running the script
-$download
+$youtube-playman
 
 </code></pre>
-<p>Add Jobs To cron:</p>
+<h3 id="installation">Installation:</h3>
+<p>To install it right away for all UNIX users (Linux, macOS, etc.), type:</p>
+<pre><code>sudo curl -L https://github.com/animesh-chouhan/youtube-playman/releases/latest/download/youtube-playman -o /usr/local/bin/youtube-playman
+sudo chmod a+rx /usr/local/bin/youtube-playman
+</code></pre>
+<p>If you do not have curl, you can alternatively use a recent wget:</p>
+<pre><code>sudo wget https://github.com/animesh-chouhan/youtube-playman/releases/latest/download/youtube-playman -O /usr/local/bin/youtube-playman
+sudo chmod a+rx /usr/local/bin/youtube-playman
+</code></pre>
+<h3 id="add-jobs-to-cron">Add Jobs To cron:</h3>
 <pre><code class="language-sh">#creating a cron job that will update the playlists automatically
 $crontab -e
 
@@ -617,7 +625,7 @@ $crontab -e
 #don't forget the newline after the last entry
 
 PATH=&quot;/usr/local/bin:/usr/bin:/bin:/home/&lt;YOUR-USERNAME&gt;/.local/bin&quot;
-@daily printf &quot;update-all&quot; | download
+@daily printf &quot;update-all&quot; | youtube-playman
 
 </code></pre>
 <p>For more details refer to <a href="https://help.ubuntu.com/community/CronHowto">ubuntu cron wiki</a>.</p>
