@@ -397,6 +397,11 @@
     
 
     
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    
 
     
     <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
@@ -410,6 +415,173 @@
 
       
       <ul class="navbar-nav d-md-inline-flex">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about"><span>Home</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#projects"><span>Projects</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#posts"><span>Posts</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#featured"><span>Publications</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#contact"><span>Contact</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/files/cv.pdf"><span>CV</span></a>
+        </li>
+
+        
         
 
       
@@ -590,42 +762,47 @@
 <h2 id="setup">Setup</h2>
 <h3 id="cloning-the-repository">Cloning the repository:</h3>
 <pre><code class="language-sh">#clone the repo
-$git clone https://github.com/animesh-chouhan/yt-comment-scraper.git
-$cd youtube-playman
+git clone https://github.com/animesh-chouhan/yt-comment-scraper.git
+cd youtube-playman
 </code></pre>
 <h3 id="running-the-script">Running the script:</h3>
 <pre><code class="language-sh">#run the script directly
-$chmod +x ./youtube-playman.sh
-$./youtube-playman.sh
+chmod +x ./youtube-playman.sh
+./youtube-playman.sh
 
 OR
 
 #create a hard link to the local binary folder
 #this will add the downloader to the path variable 
-$ln ./youtube-playman.sh ~/.local/bin/youtube-playman
+ln ./youtube-playman.sh ~/.local/bin/youtube-playman
 
 #directly running the script
-$youtube-playman
+youtube-playman
 
 </code></pre>
 <h3 id="installation">Installation:</h3>
 <p>To install it right away for all UNIX users (Linux, macOS, etc.), type:</p>
-<pre><code>sudo curl -L https://github.com/animesh-chouhan/youtube-playman/releases/latest/download/youtube-playman -o /usr/local/bin/youtube-playman
-sudo chmod a+rx /usr/local/bin/youtube-playman
+<pre><code class="language-sh">curl -L https://github.com/animesh-chouhan/youtube-playman/releases/latest/download/youtube-playman -o ~/.local/bin/youtube-playman
+chmod a+rx ~/.local/bin/youtube-playman
 </code></pre>
 <p>If you do not have curl, you can alternatively use a recent wget:</p>
-<pre><code>sudo wget https://github.com/animesh-chouhan/youtube-playman/releases/latest/download/youtube-playman -O /usr/local/bin/youtube-playman
-sudo chmod a+rx /usr/local/bin/youtube-playman
+<pre><code class="language-sh">wget https://github.com/animesh-chouhan/youtube-playman/releases/latest/download/youtube-playman -O ~/.local/bin/youtube-playman
+chmod a+rx ~/.local/bin/youtube-playman
 </code></pre>
 <h3 id="add-jobs-to-cron">Add Jobs To cron:</h3>
 <pre><code class="language-sh">#creating a cron job that will update the playlists automatically
-$crontab -e
-
-#this will open a editor and add this entry to the file
+crontab -e
+</code></pre>
+<pre><code class="language-sh">#this will open a editor and add this entry to the file
 #don't forget the newline after the last entry
 
-PATH=&quot;/usr/local/bin:/usr/bin:/bin:/home/&lt;YOUR-USERNAME&gt;/.local/bin&quot;
+PATH=&quot;/usr/local/bin:/usr/bin:/bin:/home/&lt;your-username&gt;/.local/bin&quot;
 @daily printf &quot;update-all&quot; | youtube-playman
+
+#OR
+
+PATH=&quot;/usr/local/bin:/usr/bin:/bin:/home/&lt;your-username&gt;/.local/bin&quot;
+@daily printf &quot;update-all&quot; | download &gt; $HOME/Music/cron.log 2&gt;&amp;1;echo `date` &gt;&gt; $HOME/Music/cron.log
 
 </code></pre>
 <p>For more details refer to <a href="https://help.ubuntu.com/community/CronHowto">ubuntu cron wiki</a>.</p>
@@ -1045,7 +1222,7 @@ copyright (c) 2020 <a href="https://github.com/animesh-chouhan">Animesh Singh Ch
     
     
     
-    <script src="/js/academic.min.409b0d00283f74c9777416d6d91420f4.js"></script>
+    <script src="/js/academic.min.a0d331bcd05dbe8b31e244f796710f08.js"></script>
 
     
 
