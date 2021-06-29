@@ -5,12 +5,71 @@
     <link>/tags/web/</link>
       <atom:link href="/tags/web/index.xml" rel="self" type="application/rss+xml" />
     <description>Web</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2021</copyright><lastBuildDate>Mon, 20 Jan 2020 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2021</copyright><lastBuildDate>Tue, 29 Jun 2021 00:00:00 +0000</lastBuildDate>
     <image>
       <url>/images/icon_hu2c1e3b61985ec8c0517c42aab74b0eb2_94570_512x512_fill_lanczos_center_2.png</url>
       <title>Web</title>
       <link>/tags/web/</link>
     </image>
+    
+    <item>
+      <title>VCF Creator</title>
+      <link>/project/vcf_creator/</link>
+      <pubDate>Tue, 29 Jun 2021 00:00:00 +0000</pubDate>
+      <guid>/project/vcf_creator/</guid>
+      <description>&lt;p&gt;Generate vCard file from CSV&lt;/p&gt;
+&lt;h2 id=&#34;setup&#34;&gt;Setup&lt;/h2&gt;
+&lt;h3 id=&#34;cloning-the-repository&#34;&gt;Cloning the repository:&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# Clone the repo
+git clone https://github.com/animesh-chouhan/vcf-creator.git
+cd vcf-creator
+
+# Run the sample csv file
+python3 -m vcf_creator sample.csv
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;installation&#34;&gt;Installation:&lt;/h3&gt;
+&lt;p&gt;To install it right away, type:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;pip3 install vcf_creator
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;help&#34;&gt;Help:&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;python3 -m vcf_creator --help
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;running-the-script&#34;&gt;Running the script:&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;python3 -m vcf_creator &amp;lt;csv-file-name&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;csv-file-instructions&#34;&gt;CSV File Instructions&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;The contact CSV file can have the following headers all in smallcase:
+&lt;ul&gt;
+&lt;li&gt;name&lt;/li&gt;
+&lt;li&gt;phone&lt;/li&gt;
+&lt;li&gt;organisation&lt;/li&gt;
+&lt;li&gt;email&lt;/li&gt;
+&lt;li&gt;address&lt;/li&gt;
+&lt;li&gt;birthday&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;The headers can be in any order&lt;/li&gt;
+&lt;li&gt;Make sure that no fields are empty&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;usage-example&#34;&gt;Usage example&lt;/h2&gt;
+&lt;p&gt;Click on the play button to see an example download.
+&lt;a href=&#34;https://asciinema.org/a/422828&#34;&gt;&lt;img src=&#34;https://asciinema.org/a/422828.svg&#34; alt=&#34;asciicast&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;For more examples and usage, please refer to the &lt;a href=&#34;https://github.com/animesh-chouhan/vcf-creator/wiki&#34;&gt;Wiki&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id=&#34;contributing&#34;&gt;Contributing&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Fork the repo (&lt;a href=&#34;https://github.com/animesh-chouhan/vcf-creator/&#34;&gt;https://github.com/animesh-chouhan/vcf-creator/&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Create your feature branch (&lt;code&gt;git checkout -b feature/fooBar&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;Commit your changes (&lt;code&gt;git commit -am &#39;Add some fooBar&#39;&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;Push to the branch (&lt;code&gt;git push origin feature/fooBar&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;Create a new Pull Request&lt;/li&gt;
+&lt;/ol&gt;
+&lt;!-- Markdown link &amp; img dfn&#39;s --&gt;
+&lt;h2 id=&#34;license&#34;&gt;License&lt;/h2&gt;
+&lt;p&gt;MIT License
+copyright (c) 2021 &lt;a href=&#34;https://github.com/animesh-chouhan&#34;&gt;Animesh Singh Chouhan&lt;/a&gt;. Please have a look at the &lt;a href=&#34;LICENSE&#34;&gt;license&lt;/a&gt; for more details.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Mathism</title>

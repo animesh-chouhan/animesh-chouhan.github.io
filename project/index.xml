@@ -5,12 +5,71 @@
     <link>/project/</link>
       <atom:link href="/project/index.xml" rel="self" type="application/rss+xml" />
     <description>Projects</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2021</copyright><lastBuildDate>Mon, 20 Jan 2020 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2021</copyright><lastBuildDate>Tue, 29 Jun 2021 00:00:00 +0000</lastBuildDate>
     <image>
       <url>/images/icon_hu2c1e3b61985ec8c0517c42aab74b0eb2_94570_512x512_fill_lanczos_center_2.png</url>
       <title>Projects</title>
       <link>/project/</link>
     </image>
+    
+    <item>
+      <title>VCF Creator</title>
+      <link>/project/vcf_creator/</link>
+      <pubDate>Tue, 29 Jun 2021 00:00:00 +0000</pubDate>
+      <guid>/project/vcf_creator/</guid>
+      <description>&lt;p&gt;Generate vCard file from CSV&lt;/p&gt;
+&lt;h2 id=&#34;setup&#34;&gt;Setup&lt;/h2&gt;
+&lt;h3 id=&#34;cloning-the-repository&#34;&gt;Cloning the repository:&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# Clone the repo
+git clone https://github.com/animesh-chouhan/vcf-creator.git
+cd vcf-creator
+
+# Run the sample csv file
+python3 -m vcf_creator sample.csv
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;installation&#34;&gt;Installation:&lt;/h3&gt;
+&lt;p&gt;To install it right away, type:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;pip3 install vcf_creator
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;help&#34;&gt;Help:&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;python3 -m vcf_creator --help
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;running-the-script&#34;&gt;Running the script:&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;python3 -m vcf_creator &amp;lt;csv-file-name&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;csv-file-instructions&#34;&gt;CSV File Instructions&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;The contact CSV file can have the following headers all in smallcase:
+&lt;ul&gt;
+&lt;li&gt;name&lt;/li&gt;
+&lt;li&gt;phone&lt;/li&gt;
+&lt;li&gt;organisation&lt;/li&gt;
+&lt;li&gt;email&lt;/li&gt;
+&lt;li&gt;address&lt;/li&gt;
+&lt;li&gt;birthday&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;The headers can be in any order&lt;/li&gt;
+&lt;li&gt;Make sure that no fields are empty&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;usage-example&#34;&gt;Usage example&lt;/h2&gt;
+&lt;p&gt;Click on the play button to see an example download.
+&lt;a href=&#34;https://asciinema.org/a/422828&#34;&gt;&lt;img src=&#34;https://asciinema.org/a/422828.svg&#34; alt=&#34;asciicast&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;For more examples and usage, please refer to the &lt;a href=&#34;https://github.com/animesh-chouhan/vcf-creator/wiki&#34;&gt;Wiki&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id=&#34;contributing&#34;&gt;Contributing&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Fork the repo (&lt;a href=&#34;https://github.com/animesh-chouhan/vcf-creator/&#34;&gt;https://github.com/animesh-chouhan/vcf-creator/&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Create your feature branch (&lt;code&gt;git checkout -b feature/fooBar&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;Commit your changes (&lt;code&gt;git commit -am &#39;Add some fooBar&#39;&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;Push to the branch (&lt;code&gt;git push origin feature/fooBar&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;Create a new Pull Request&lt;/li&gt;
+&lt;/ol&gt;
+&lt;!-- Markdown link &amp; img dfn&#39;s --&gt;
+&lt;h2 id=&#34;license&#34;&gt;License&lt;/h2&gt;
+&lt;p&gt;MIT License
+copyright (c) 2021 &lt;a href=&#34;https://github.com/animesh-chouhan&#34;&gt;Animesh Singh Chouhan&lt;/a&gt;. Please have a look at the &lt;a href=&#34;LICENSE&#34;&gt;license&lt;/a&gt; for more details.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Mathism</title>
@@ -235,19 +294,6 @@ PATH=&amp;quot;/usr/local/bin:/usr/bin:/bin:/home/&amp;lt;your-username&amp;gt;/
 &lt;h2 id=&#34;license&#34;&gt;License&lt;/h2&gt;
 &lt;p&gt;MIT License
 copyright (c) 2020 &lt;a href=&#34;https://github.com/animesh-chouhan&#34;&gt;Animesh Singh Chouhan&lt;/a&gt;. Please have a look at the &lt;a href=&#34;LICENSE&#34;&gt;license&lt;/a&gt; for more details.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Coming Soon</title>
-      <link>/project/project2/</link>
-      <pubDate>Tue, 27 Apr 2010 00:00:00 +0000</pubDate>
-      <guid>/project/project2/</guid>
-      <description>&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis posuere tellus ac convallis placerat. Proin tincidunt magna sed ex sollicitudin condimentum. Sed ac faucibus dolor, scelerisque sollicitudin nisi. Cras purus urna, suscipit quis sapien eu, pulvinar tempor diam. Quisque risus orci, mollis id ante sit amet, gravida egestas nisl. Sed ac tempus magna. Proin in dui enim. Donec condimentum, sem id dapibus fringilla, tellus enim condimentum arcu, nec volutpat est felis vel metus. Vestibulum sit amet erat at nulla eleifend gravida.&lt;/p&gt;
-&lt;p&gt;Nullam vel molestie justo. Curabitur vitae efficitur leo. In hac habitasse platea dictumst. Sed pulvinar mauris dui, eget varius purus congue ac. Nulla euismod, lorem vel elementum dapibus, nunc justo porta mi, sed tempus est est vel tellus. Nam et enim eleifend, laoreet sem sit amet, elementum sem. Morbi ut leo congue, maximus velit ut, finibus arcu. In et libero cursus, rutrum risus non, molestie leo. Nullam congue quam et volutpat malesuada. Sed risus tortor, pulvinar et dictum nec, sodales non mi. Phasellus lacinia commodo laoreet. Nam mollis, erat in feugiat consectetur, purus eros egestas tellus, in auctor urna odio at nibh. Mauris imperdiet nisi ac magna convallis, at rhoncus ligula cursus.&lt;/p&gt;
-&lt;p&gt;Cras aliquam rhoncus ipsum, in hendrerit nunc mattis vitae. Duis vitae efficitur metus, ac tempus leo. Cras nec fringilla lacus. Quisque sit amet risus at ipsum pharetra commodo. Sed aliquam mauris at consequat eleifend. Praesent porta, augue sed viverra bibendum, neque ante euismod ante, in vehicula justo lorem ac eros. Suspendisse augue libero, venenatis eget tincidunt ut, malesuada at lorem. Donec vitae bibendum arcu. Aenean maximus nulla non pretium iaculis. Quisque imperdiet, nulla in pulvinar aliquet, velit quam ultrices quam, sit amet fringilla leo sem vel nunc. Mauris in lacinia lacus.&lt;/p&gt;
-&lt;p&gt;Suspendisse a tincidunt lacus. Curabitur at urna sagittis, dictum ante sit amet, euismod magna. Sed rutrum massa id tortor commodo, vitae elementum turpis tempus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean purus turpis, venenatis a ullamcorper nec, tincidunt et massa. Integer posuere quam rutrum arcu vehicula imperdiet. Mauris ullamcorper quam vitae purus congue, quis euismod magna eleifend. Vestibulum semper vel augue eget tincidunt. Fusce eget justo sodales, dapibus odio eu, ultrices lorem. Duis condimentum lorem id eros commodo, in facilisis mauris scelerisque. Morbi sed auctor leo. Nullam volutpat a lacus quis pharetra. Nulla congue rutrum magna a ornare.&lt;/p&gt;
-&lt;p&gt;Aliquam in turpis accumsan, malesuada nibh ut, hendrerit justo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Quisque sed erat nec justo posuere suscipit. Donec ut efficitur arcu, in malesuada neque. Nunc dignissim nisl massa, id vulputate nunc pretium nec. Quisque eget urna in risus suscipit ultricies. Pellentesque odio odio, tincidunt in eleifend sed, posuere a diam. Nam gravida nisl convallis semper elementum. Morbi vitae felis faucibus, vulputate orci placerat, aliquet nisi. Aliquam erat volutpat. Maecenas sagittis pulvinar purus, sed porta quam laoreet at.&lt;/p&gt;
 </description>
     </item>
     
