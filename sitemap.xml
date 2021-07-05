@@ -4,17 +4,37 @@
   
   <url>
     <loc>/</loc>
-    <lastmod>2021-06-29T00:00:00+00:00</lastmod>
+    <lastmod>2021-07-05T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>/project/</loc>
-    <lastmod>2021-06-29T00:00:00+00:00</lastmod>
+    <lastmod>2021-07-05T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>/tags/</loc>
-    <lastmod>2021-06-29T00:00:00+00:00</lastmod>
+    <lastmod>2021-07-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/vcard/</loc>
+    <lastmod>2021-07-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/vcf/</loc>
+    <lastmod>2021-07-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/project/vcf_web_interface/</loc>
+    <lastmod>2021-07-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/web/</loc>
+    <lastmod>2021-07-05T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -23,13 +43,13 @@
   </url>
   
   <url>
-    <loc>/tags/web/</loc>
-    <lastmod>2021-06-29T00:00:00+00:00</lastmod>
+    <loc>/tags/youtube/</loc>
+    <lastmod>2020-04-27T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/tags/youtube/</loc>
-    <lastmod>2021-06-29T00:00:00+00:00</lastmod>
+    <loc>/project/youtube_playman/</loc>
+    <lastmod>2020-04-27T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -53,18 +73,18 @@
   </url>
   
   <url>
-    <loc>/project/youtube_playman/</loc>
-    <lastmod>2016-04-27T00:00:00+00:00</lastmod>
+    <loc>/project/project1/</loc>
+    <lastmod>2005-07-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/project/project2/</loc>
+    <lastmod>2005-07-05T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>/project/project3/</loc>
-    <lastmod>2010-04-27T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/deep-learning/</loc>
-    <lastmod>2010-04-27T00:00:00+00:00</lastmod>
+    <lastmod>2005-07-05T00:00:00+00:00</lastmod>
   </url>
   
   <url>
