@@ -72,6 +72,11 @@ copyright (c) 2021 &lt;a href=&#34;https://github.com/animesh-chouhan&#34;&gt;An
       <description>&lt;blockquote&gt;
 &lt;p&gt;Generate vCard file from CSV&lt;/p&gt;
 &lt;/blockquote&gt;
+&lt;h2 id=&#34;usage-example&#34;&gt;Usage example&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/animesh-chouhan/vcf-creator/main/assets/preview.gif&#34; alt=&#34;preview&#34;&gt;&lt;/p&gt;
+&lt;!-- Click on the play button to see an example download.
+[![asciicast](https://asciinema.org/a/422828.svg)](https://asciinema.org/a/422828) --&gt;
+&lt;p&gt;&lt;em&gt;For more examples and usage, please refer to the &lt;a href=&#34;https://github.com/animesh-chouhan/vcf-creator/wiki&#34;&gt;Wiki&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
 &lt;h2 id=&#34;setup&#34;&gt;Setup&lt;/h2&gt;
 &lt;h3 id=&#34;cloning-the-repository&#34;&gt;Cloning the repository:&lt;/h3&gt;
 &lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# Clone the repo
@@ -126,11 +131,6 @@ vcard_generator(arguments)
 &lt;li&gt;The headers can be in any order&lt;/li&gt;
 &lt;li&gt;Make sure that no fields are empty&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h2 id=&#34;usage-example&#34;&gt;Usage example&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/animesh-chouhan/vcf-creator/main/assets/preview.gif&#34; alt=&#34;preview&#34;&gt;&lt;/p&gt;
-&lt;!-- Click on the play button to see an example download.
-[![asciicast](https://asciinema.org/a/422828.svg)](https://asciinema.org/a/422828) --&gt;
-&lt;p&gt;&lt;em&gt;For more examples and usage, please refer to the &lt;a href=&#34;https://github.com/animesh-chouhan/vcf-creator/wiki&#34;&gt;Wiki&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
 &lt;h2 id=&#34;contributing&#34;&gt;Contributing&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;Fork the repo (&lt;a href=&#34;https://github.com/animesh-chouhan/vcf-creator/&#34;&gt;https://github.com/animesh-chouhan/vcf-creator/&lt;/a&gt;)&lt;/li&gt;
