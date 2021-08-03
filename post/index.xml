@@ -61,6 +61,7 @@ git push
     Warning: If you want to give these dotfiles a try, you should first fork this repository, review the code, and remove things you don’t want or need. Don’t blindly use my settings unless you know what that entails. Use at your own risk!
   &lt;/div&gt;
 &lt;/div&gt;
+&lt;p&gt;Link to the repository: &lt;a href=&#34;https://github.com/animesh-chouhan/dotfiles&#34;&gt;dotfiles&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Here are the steps:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;Clone and cd in my dotfiles repo in your home directory.&lt;/li&gt;
