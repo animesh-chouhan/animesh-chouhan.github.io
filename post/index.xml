@@ -5,12 +5,87 @@
     <link>/post/</link>
       <atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     <description>Posts</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2021</copyright><lastBuildDate>Fri, 12 Jul 2019 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2021</copyright><lastBuildDate>Tue, 03 Aug 2021 00:00:00 +0000</lastBuildDate>
     <image>
       <url>/images/icon_hu2c1e3b61985ec8c0517c42aab74b0eb2_94570_512x512_fill_lanczos_center_2.png</url>
       <title>Posts</title>
       <link>/post/</link>
     </image>
+    
+    <item>
+      <title>Manage your dotfiles on Github</title>
+      <link>/post/dotfiles-github/</link>
+      <pubDate>Tue, 03 Aug 2021 00:00:00 +0000</pubDate>
+      <guid>/post/dotfiles-github/</guid>
+      <description>&lt;h2 id=&#34;why-would-i-want-my-dotfiles-on-github&#34;&gt;Why would I want my dotfiles on GitHub?&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Backup, restore, and sync the prefs and settings for your toolbox. Your dotfiles might be the most important files on your machine.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Learn from the community. Discover new tools for your toolbox and new tricks for the ones you already use.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Share what you’ve learned with the rest of us.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;which-dotfiles-should-i-really-manage-on-github&#34;&gt;Which dotfiles should I really manage on Github?&lt;/h2&gt;
+&lt;p&gt;You can put .profile, .bashrc, .nvimrc, .vimrc and others on Github.&lt;/p&gt;
+&lt;h2 id=&#34;how-do-you-manage-your-dotfiles&#34;&gt;How do you manage your dotfiles?&lt;/h2&gt;
+&lt;p&gt;Here are the steps:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Make a repository named dotfiles on your Github.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Clone it in your home directory.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;git clone https://github.com/&amp;lt;user-name&amp;gt;/dotfiles.git
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;Create hard links of the dotfiles you want to manage. Eg:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;ln ~/.bashrc ~/dotfiles/.bashrc
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;Commit and push to your repo.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;git add .
+git commit -m &amp;quot;add dotfiles&amp;quot;
+git push
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;use-my-dotfiles&#34;&gt;Use my dotfiles&lt;/h2&gt;
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    Warning: If you want to give these dotfiles a try, you should first fork this repository, review the code, and remove things you don’t want or need. Don’t blindly use my settings unless you know what that entails. Use at your own risk!
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Here are the steps:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Clone and cd in my dotfiles repo in your home directory.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;cd ~
+git clone https://github.com/animesh-chouhan/dotfiles.git
+cd dotfiles
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;Run install.sh&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;chmod a+x install.sh
+./install.sh
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This will create hard links of my dotfiles to your home directory.&lt;/p&gt;
+&lt;h2 id=&#34;sources&#34;&gt;Sources:&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://dotfiles.github.io/tutorials/&#34;&gt;dotfiles&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://blog.smalleycreative.com/tutorials/using-git-and-github-to-manage-your-dotfiles/&#34;&gt;smalleycreative&amp;rsquo;s blog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://medium.com/@satorusasozaki/manage-your-dotfiles-on-github-8f8a2a57c85&#34;&gt;satorusasozaki&amp;rsquo;s blog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/mathiasbynens/dotfiles&#34;&gt;mathiasbynens dotfiles&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;did-you-find-this-page-helpful-consider-sharing-it-&#34;&gt;Did you find this page helpful? Consider sharing it 🙌&lt;/h3&gt;
+</description>
+    </item>
     
     <item>
       <title>Writing technical content in Academic</title>
