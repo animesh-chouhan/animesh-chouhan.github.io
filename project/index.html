@@ -207,38 +207,16 @@
 
 
 
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-217863381-1"></script>
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Z1X08K03YG"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
-
-  function gtag() {
-      dataLayer.push(arguments);
-  }
-
-  function trackOutboundLink(url) {
-    gtag('event', 'click', {
-         'event_category': 'outbound',
-         'event_label': url,
-         'transport_type': 'beacon',
-         'event_callback': function () {
-           document.location = url;
-         }
-    });
-    console.debug("Outbound link clicked: " + url);
-  }
-
-  function onClickCallback(event) {
-    if ((event.target.tagName !== 'A') || (event.target.host === window.location.host)) {
-      return;
-    }
-    trackOutboundLink(event.target);  
-  }
-
+  function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'UA-217863381-1', {});
 
-  
-  document.addEventListener('click', onClickCallback, false);
+  gtag('config', "G-Z1X08K03YG");
 </script>
 
 
@@ -275,7 +253,7 @@
   <meta property="og:description" content="Software Analyst@JPMorgan Chase &amp; Co."><meta property="og:image" content="/images/icon_hue28b6745ed47e5cdb47196ed623a3091_56557_512x512_fill_lanczos_center_2.png">
   <meta property="twitter:image" content="/images/icon_hue28b6745ed47e5cdb47196ed623a3091_56557_512x512_fill_lanczos_center_2.png"><meta property="og:locale" content="en-us">
   
-    <meta property="og:updated_time" content="2021-07-05T00:00:00&#43;00:00">
+    <meta property="og:updated_time" content="2023-10-28T00:00:00&#43;00:00">
   
 
   
@@ -420,6 +398,35 @@
         
 
         <li class="nav-item">
+          <a class="nav-link " href="/#experience"><span>Experience</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
           <a class="nav-link " href="/#projects"><span>Projects</span></a>
         </li>
 
@@ -450,35 +457,6 @@
 
         <li class="nav-item">
           <a class="nav-link " href="/#posts"><span>Posts</span></a>
-        </li>
-
-        
-        
-
-        
-
-        
-        
-        
-          
-        
-
-        
-        
-        
-        
-        
-        
-          
-          
-          
-            
-          
-          
-        
-
-        <li class="nav-item">
-          <a class="nav-link " href="/#featured"><span>Publications</span></a>
         </li>
 
         
@@ -598,6 +576,15 @@
   
   
   <div>
+    <h2><a href="/project/wordle-solver/">Wordle Solver</a></h2>
+    <div class="article-style">
+      
+      Program to solve the wordle puzzle
+      
+    </div>
+  </div>
+  
+  <div>
     <h2><a href="/project/vcf_web_interface/">VCF Web Interface</a></h2>
     <div class="article-style">
       
@@ -647,15 +634,6 @@
     <div class="article-style">
       
       Scrapes the comments from videos present in a YouTube channel.
-      
-    </div>
-  </div>
-  
-  <div>
-    <h2><a href="/project/project1/">Coming Soon</a></h2>
-    <div class="article-style">
-      
-      An example of using the in-built project page.
       
     </div>
   </div>
@@ -795,7 +773,7 @@
   
 
   <p class="powered-by">
-    © 2022 &middot; 
+    © 2023 &middot; 
 
     Powered by the
     <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
