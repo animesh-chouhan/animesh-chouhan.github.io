@@ -5,7 +5,7 @@
     <link>/tags/vcard/</link>
       <atom:link href="/tags/vcard/index.xml" rel="self" type="application/rss+xml" />
     <description>vCard</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2023</copyright><lastBuildDate>Mon, 05 Jul 2021 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2023 &amp;middot; Animesh Singh Chouhan</copyright><lastBuildDate>Mon, 05 Jul 2021 00:00:00 +0000</lastBuildDate>
     <image>
       <url>/images/icon_hue28b6745ed47e5cdb47196ed623a3091_56557_512x512_fill_lanczos_center_2.png</url>
       <title>vCard</title>
@@ -20,15 +20,15 @@
       <description>&lt;blockquote&gt;
 &lt;p&gt;Web interface for VCF Creator&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;Live Website: &lt;a href=&#34;https://vcf-creator.herokuapp.com&#34;&gt;https://vcf-creator.herokuapp.com&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Live Website: &lt;a href=&#34;https://vcf.animeshchouhan.com&#34;&gt;https://vcf.animeshchouhan.com&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Github: &lt;a href=&#34;https://github.com/animesh-chouhan/vcf-creator-web-interface&#34;&gt;https://github.com/animesh-chouhan/vcf-creator-web-interface&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&#34;setup&#34;&gt;Setup&lt;/h2&gt;
-&lt;h3 id=&#34;cloning-the-repository&#34;&gt;Cloning the repository:&lt;/h3&gt;
+&lt;h3 id=&#34;cloning-the-repository&#34;&gt;Cloning the repository&lt;/h3&gt;
 &lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# Clone the repo
 git clone https://github.com/animesh-chouhan/vcf-creator-web-interface.git
 cd vcf-creator-web-interface
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h3 id=&#34;installing-dependencies&#34;&gt;Installing dependencies:&lt;/h3&gt;
+&lt;h3 id=&#34;installing-dependencies&#34;&gt;Installing dependencies&lt;/h3&gt;
 &lt;p&gt;Using pip and requirements.txt:&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;pip install -r requirements.txt
 &lt;/code&gt;&lt;/pre&gt;
@@ -36,15 +36,14 @@ cd vcf-creator-web-interface
 &lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;pipenv shell
 pipenv install
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h3 id=&#34;running-the-script&#34;&gt;Running the script:&lt;/h3&gt;
+&lt;h3 id=&#34;running-the-script&#34;&gt;Running the script&lt;/h3&gt;
 &lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# Make view.sh executable
 chmod a+x view.sh
 ./view.sh
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h3 id=&#34;docker&#34;&gt;Docker:&lt;/h3&gt;
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;docker run --rm -it  -p 8080:8080/tcp animeshsingh38/vcf-creator-web-interface
+&lt;h3 id=&#34;docker&#34;&gt;Docker&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;docker run --rm -it -p 8080:8080/tcp animeshchouhan/vcf-creator-web-interface
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;em&gt;For more examples and usage, please refer to the &lt;a href=&#34;https://github.com/animesh-chouhan/vcf-creator-web-interface/wiki&#34;&gt;Wiki&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
 &lt;h2 id=&#34;built-with&#34;&gt;Built With&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://github.com/animesh-chouhan/vcf-creator&#34;&gt;vcf-creator&lt;/a&gt; - Command-line program to generate vCard file from CSV&lt;/li&gt;
@@ -72,13 +71,14 @@ copyright (c) 2021 &lt;a href=&#34;https://github.com/animesh-chouhan&#34;&gt;An
       <description>&lt;blockquote&gt;
 &lt;p&gt;Generate vCard file from CSV&lt;/p&gt;
 &lt;/blockquote&gt;
+&lt;p&gt;Live Website: &lt;a href=&#34;https://vcf.animeshchouhan.com&#34;&gt;https://vcf.animeshchouhan.com&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Github: &lt;a href=&#34;https://github.com/animesh-chouhan/vcf-creator&#34;&gt;https://github.com/animesh-chouhan/vcf-creator&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&#34;usage-example&#34;&gt;Usage example&lt;/h2&gt;
 &lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/animesh-chouhan/vcf-creator/main/assets/preview.gif&#34; alt=&#34;preview&#34;&gt;&lt;/p&gt;
 &lt;!-- Click on the play button to see an example download.
 [![asciicast](https://asciinema.org/a/422828.svg)](https://asciinema.org/a/422828) --&gt;
-&lt;p&gt;&lt;em&gt;For more examples and usage, please refer to the &lt;a href=&#34;https://github.com/animesh-chouhan/vcf-creator/wiki&#34;&gt;Wiki&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
 &lt;h2 id=&#34;setup&#34;&gt;Setup&lt;/h2&gt;
-&lt;h3 id=&#34;cloning-the-repository&#34;&gt;Cloning the repository:&lt;/h3&gt;
+&lt;h3 id=&#34;cloning-the-repository&#34;&gt;Cloning the repository&lt;/h3&gt;
 &lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# Clone the repo
 git clone https://github.com/animesh-chouhan/vcf-creator.git
 cd vcf-creator
@@ -93,23 +93,23 @@ cd vcf_creator/tests
 # Run the test
 python3 test_vcf.py
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h3 id=&#34;installation&#34;&gt;Installation:&lt;/h3&gt;
+&lt;h3 id=&#34;installation&#34;&gt;Installation&lt;/h3&gt;
 &lt;p&gt;To install it right away, type:&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;pip3 install vcf_creator
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h3 id=&#34;help&#34;&gt;Help:&lt;/h3&gt;
+&lt;h3 id=&#34;help&#34;&gt;Help&lt;/h3&gt;
 &lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;python3 -m vcf_creator --help
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;OR&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;vcf_creator --help
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h3 id=&#34;running-the-script&#34;&gt;Running the script:&lt;/h3&gt;
+&lt;h3 id=&#34;running-the-script&#34;&gt;Running the script&lt;/h3&gt;
 &lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;python3 -m vcf_creator &amp;lt;csv-file-name&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;OR&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;vcf_creator &amp;lt;csv-file-name&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h3 id=&#34;import-the-module-in-your-project&#34;&gt;Import the module in your project:&lt;/h3&gt;
+&lt;h3 id=&#34;import-the-module-in-your-project&#34;&gt;Import the module in your project&lt;/h3&gt;
 &lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;from vcf_creator import vcard_formatter, vcard_generator
 
 vcard_formatter(arguments)
