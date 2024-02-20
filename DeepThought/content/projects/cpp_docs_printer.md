@@ -14,7 +14,7 @@ tags = ["cpp", "web", "scraping"]
 <!-- more -->
 
 <p align="center">
-   <img src="/images/projects/cpp-docs-printer.png" alt="cpp-docs-printer" style="max-width:80%"/>
+   <img src="/images/projects/cpp-docs-printer.png" alt="cpp-docs-printer" style="max-width:70%"/>
 </p>
 
 A python script to scrape C++ documentation website and generate printable PDF documents. [More Info](https://animesh-chouhan.github.io/cpp-docs-printer/)
@@ -61,13 +61,13 @@ $python3 cplusplus.py http://www.cplusplus.com/reference/cstdio/
 Sample C++ documentation <http://www.cplusplus.com/reference/cstdio/>:
 
 <p align="center">
-  <img src="cplusplus.png" width="80%" align="center"/>
+  <img src="/images/projects/cplusplus.png" width="80%" align="center"/>
 </p>
 
 Sample pdf generated [pdf](https://github.com/animesh-chouhan/cpp-docs-printer/blob/master/pdf/reference-cstdio.pdf):
 
 <p align="center">
-  <img src="cpp-output.png"  width="80%" align="center"/>
+  <img src="/images/projects/cpp-output.png"  width="80%" align="center"/>
 </p>
 
 The generated .html and .pdf files are located in the html and pdf folders respectively.
