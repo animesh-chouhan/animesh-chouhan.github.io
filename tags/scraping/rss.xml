@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+      <title>Animesh Chouhan - scraping</title>
+      <link>https://animeshchouhan.com</link>
+      <description></description>
+      <generator>Zola</generator>
+      <language>en</language>
+      <atom:link href="https://animeshchouhan.com/tags/scraping/rss.xml" rel="self" type="application/rss+xml"/>
+      <lastBuildDate>Thu, 27 Jun 2019 00:00:00 +0000</lastBuildDate>
+      <item>
+          <title>Youtube Comment Scraper</title>
+          <pubDate>Thu, 27 Jun 2019 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://animeshchouhan.com/projects/youtube-comment-scraper/</link>
+          <guid>https://animeshchouhan.com/projects/youtube-comment-scraper/</guid>
+          <description xml:base="https://animeshchouhan.com/projects/youtube-comment-scraper/">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;&lt;p align=&quot;center&quot;&gt;
+   &lt;img src=&quot;&#x2F;images&#x2F;projects&#x2F;youtube-comment-scraper.png&quot; alt=&quot;youtube-comment-scraper&quot; style=&quot;max-width:80%&quot;&#x2F;&gt;
+&lt;&#x2F;p&gt;
+&lt;p&gt;Scrapes all the comments from all videos present in a YouTube channel. Can also be used to get the video list from a given YouTube channel.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;setup&quot;&gt;Setup&lt;&#x2F;h2&gt;
+&lt;p&gt;Linux:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;sh&quot; style=&quot;background-color:#2b303b;color:#6c7079;&quot; class=&quot;language-sh &quot;&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span style=&quot;font-style:italic;color:#5f697a;&quot;&gt;#clone the repo
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;git&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt; clone https:&#x2F;&#x2F;github.com&#x2F;animesh-chouhan&#x2F;yt-comment-scraper.git
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#5ebfcc;&quot;&gt;cd&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt; yt-comment-scraper
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#5f697a;&quot;&gt;#install python3
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt; apt-get install python3
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#5f697a;&quot;&gt;#install node and npm
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt; apt-get install nodejs
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt; apt-get install npm
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#5f697a;&quot;&gt;#install dependencies
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;npm&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt; install express&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt; --save
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;npm&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt; install puppeteer&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt; --save
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#5f697a;&quot;&gt;#run the api on localhost
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;node&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt; scraper_api.js
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#5f697a;&quot;&gt;#testing the python scraper
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;python3&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt; scraper.py .&#x2F;to_scrape_sample.txt
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#5f697a;&quot;&gt;#create a new text file with links to be scraped separated by newlines
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;python3&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt; scraper.py .&#x2F;your_text_file.txt
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;usage-example&quot;&gt;Usage example&lt;&#x2F;h2&gt;
+&lt;p&gt;Sample resonse of api hosted on localhost:&lt;&#x2F;p&gt;
+&lt;p align=&quot;center&quot;&gt;
+  &lt;img src=&quot;&#x2F;images&#x2F;projects&#x2F;sample-response.png&quot; width=&quot;700&quot; align=&quot;center&quot;&#x2F;&gt;
+&lt;&#x2F;p&gt;
+&lt;p&gt;Sample comments scraped:&lt;&#x2F;p&gt;
+&lt;p align=&quot;center&quot;&gt;
+  &lt;img src=&quot;&#x2F;images&#x2F;projects&#x2F;sample-csv.png&quot;  width=&quot;700&quot; align=&quot;center&quot;&#x2F;&gt;
+&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;em&gt;For more examples and usage, please refer to the &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;animesh-chouhan&#x2F;yt-comment-scraper&#x2F;&#x2F;wiki&quot;&gt;Wiki&lt;&#x2F;a&gt;.&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;built-with&quot;&gt;Built With&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;developers.google.com&#x2F;web&#x2F;tools&#x2F;puppeteer&#x2F;&quot;&gt;Puppeteer&lt;&#x2F;a&gt; - Headless browser to overcome pagination&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;philbot9&#x2F;youtube-comment-scraper&quot;&gt;ytcomments&lt;&#x2F;a&gt; - Comment API&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;contributing&quot;&gt;Contributing&lt;&#x2F;h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Fork the repo (&lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;animesh-chouhan&#x2F;yt-comment-scraper&#x2F;&quot;&gt;https:&#x2F;&#x2F;github.com&#x2F;animesh-chouhan&#x2F;yt-comment-scraper&#x2F;&lt;&#x2F;a&gt;)&lt;&#x2F;li&gt;
+&lt;li&gt;Create your feature branch (&lt;code&gt;git checkout -b feature&#x2F;fooBar&lt;&#x2F;code&gt;)&lt;&#x2F;li&gt;
+&lt;li&gt;Commit your changes (&lt;code&gt;git commit -am &#x27;Add some fooBar&#x27;&lt;&#x2F;code&gt;)&lt;&#x2F;li&gt;
+&lt;li&gt;Push to the branch (&lt;code&gt;git push origin feature&#x2F;fooBar&lt;&#x2F;code&gt;)&lt;&#x2F;li&gt;
+&lt;li&gt;Create a new Pull Request&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;!-- Markdown link &amp; img dfn&#x27;s --&gt;
+</description>
+      </item>
+      <item>
+          <title>C++ Docs Printer</title>
+          <pubDate>Sat, 27 Apr 2019 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://animeshchouhan.com/projects/cpp-docs-printer/</link>
+          <guid>https://animeshchouhan.com/projects/cpp-docs-printer/</guid>
+          <description xml:base="https://animeshchouhan.com/projects/cpp-docs-printer/">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;&lt;p align=&quot;center&quot;&gt;
+   &lt;img src=&quot;&#x2F;images&#x2F;projects&#x2F;cpp-docs-printer.png&quot; alt=&quot;cpp-docs-printer&quot; style=&quot;max-width:80%&quot;&#x2F;&gt;
+&lt;&#x2F;p&gt;
+&lt;p&gt;A python script to scrape C++ documentation website and generate printable PDF documents. &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;animesh-chouhan.github.io&#x2F;cpp-docs-printer&#x2F;&quot;&gt;More Info&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;setup&quot;&gt;Setup&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;linux&quot;&gt;Linux&lt;&#x2F;h3&gt;
+&lt;p&gt;Cloning the repository:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;sh&quot; style=&quot;background-color:#2b303b;color:#6c7079;&quot; class=&quot;language-sh &quot;&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span style=&quot;font-style:italic;color:#5f697a;&quot;&gt;#clone the repo
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;$git&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt; clone https:&#x2F;&#x2F;github.com&#x2F;animesh-chouhan&#x2F;cpp-docs-printer.git
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;$cd&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt; cpp-docs-printer
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Installing the dependencies:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;sh&quot; style=&quot;background-color:#2b303b;color:#6c7079;&quot; class=&quot;language-sh &quot;&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span style=&quot;font-style:italic;color:#5f697a;&quot;&gt;#install python3-pip
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;$sudo&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt; apt-get install python3-pip
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#5f697a;&quot;&gt;#requests
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;$sudo&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt; pip3 install requests
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#5f697a;&quot;&gt;#beautifulsoup4
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;$sudo&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt; pip3 install beautifulsoup4
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#5f697a;&quot;&gt;#weasy-print
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;$sudo&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt; apt-get install build-essential python3-dev python3-pip python3-setuptools python3-wheel python3-cffi libcairo2 libpango-1.0-0 libpangocairo-1.0-0 libgdk-pixbuf2.0-0 libffi-dev shared-mime-info
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;$sudo&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt; pip3 install WeasyPrint
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Running the python script:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;sh&quot; style=&quot;background-color:#2b303b;color:#6c7079;&quot; class=&quot;language-sh &quot;&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;$python3&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt; cplusplus.py http:&#x2F;&#x2F;www.cplusplus.com&#x2F;reference&#x2F;cstdio&#x2F;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;usage-example&quot;&gt;Usage example&lt;&#x2F;h2&gt;
+&lt;p&gt;Sample C++ documentation &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;http:&#x2F;&#x2F;www.cplusplus.com&#x2F;reference&#x2F;cstdio&#x2F;&quot;&gt;http:&#x2F;&#x2F;www.cplusplus.com&#x2F;reference&#x2F;cstdio&#x2F;&lt;&#x2F;a&gt;:&lt;&#x2F;p&gt;
+&lt;p align=&quot;center&quot;&gt;
+  &lt;img src=&quot;cplusplus-min.png&quot; width=&quot;80%&quot; align=&quot;center&quot;&#x2F;&gt;
+&lt;&#x2F;p&gt;
+&lt;p&gt;Sample pdf generated &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;animesh-chouhan&#x2F;cpp-docs-printer&#x2F;blob&#x2F;master&#x2F;pdf&#x2F;reference-cstdio.pdf&quot;&gt;pdf&lt;&#x2F;a&gt;:&lt;&#x2F;p&gt;
+&lt;p align=&quot;center&quot;&gt;
+  &lt;img src=&quot;output-min.png&quot;  width=&quot;80%&quot; align=&quot;center&quot;&#x2F;&gt;
+&lt;&#x2F;p&gt;
+&lt;p&gt;The generated .html and .pdf files are located in the html and pdf folders respectively.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;em&gt;For more examples and usage, please refer to the &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;animesh-chouhan&#x2F;youtube-playman&#x2F;wiki&quot;&gt;Wiki&lt;&#x2F;a&gt;.&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;built-with&quot;&gt;Built with&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;requests.readthedocs.io&#x2F;en&#x2F;master&#x2F;&quot;&gt;requests&lt;&#x2F;a&gt; - Requests is an elegant and simple HTTP library for Python, built for human beings.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.crummy.com&#x2F;software&#x2F;BeautifulSoup&#x2F;&quot;&gt;beautifulsoup&lt;&#x2F;a&gt; - Beautiful Soup is a library that makes it easy to scrape information from web pages.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;weasyprint.org&#x2F;&quot;&gt;weasyprint&lt;&#x2F;a&gt; - WeasyPrint is a smart solution helping web developers to create PDF documents.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;contributing&quot;&gt;Contributing&lt;&#x2F;h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Fork the repo (&lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;animesh-chouhan&#x2F;cpp-docs-printer&#x2F;&quot;&gt;https:&#x2F;&#x2F;github.com&#x2F;animesh-chouhan&#x2F;cpp-docs-printer&#x2F;&lt;&#x2F;a&gt;)&lt;&#x2F;li&gt;
+&lt;li&gt;Create your feature branch (&lt;code&gt;git checkout -b feature&#x2F;fooBar&lt;&#x2F;code&gt;)&lt;&#x2F;li&gt;
+&lt;li&gt;Commit your changes (&lt;code&gt;git commit -am &#x27;Add some fooBar&#x27;&lt;&#x2F;code&gt;)&lt;&#x2F;li&gt;
+&lt;li&gt;Push to the branch (&lt;code&gt;git push origin feature&#x2F;fooBar&lt;&#x2F;code&gt;)&lt;&#x2F;li&gt;
+&lt;li&gt;Create a new Pull Request&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;!-- Markdown link &amp; img dfn&#x27;s --&gt;
+&lt;h2 id=&quot;license&quot;&gt;License&lt;&#x2F;h2&gt;
+&lt;p&gt;MIT License
+copyright (c) 2020 &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;animesh-chouhan&quot;&gt;Animesh Singh Chouhan&lt;&#x2F;a&gt;. Please have a look at the &lt;a href=&quot;https:&#x2F;&#x2F;animeshchouhan.com&#x2F;projects&#x2F;cpp-docs-printer&#x2F;LICENSE&quot;&gt;license&lt;&#x2F;a&gt; for more details.&lt;&#x2F;p&gt;
+</description>
+      </item>
+    </channel>
+</rss>

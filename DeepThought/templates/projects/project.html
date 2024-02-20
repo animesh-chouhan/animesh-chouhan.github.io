@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% block title %}
+  {{ config.title }} | {{ section.title }}
+{% endblock title %}
+{% block header %}
+  <header class="hero">
+    <div class="hero-body pb-0">
+      <div class="container">
+        <div class="has-text-centered">
+          <h1 class="title is-1">{{ section.title }}</h1>
+          <p class="subtitle" style="margin-bottom: 0.5rem;">{{ section.description }}</p>
+        </div>
+      </header>
+    {% endblock %}
+    {% block content %}
+      <section class="section">
+        <div class="container">
+          <div class="columns is-centered">
+            <div class="column is-centered is-9">
+              {% if paginator %}
+                {% set pages = paginator.pages %}
+              {% else %}
+                {% set pages = section.pages %}
+              {% endif %}
+              {% for page in pages %}
+                {% if loop.index0 is even %}
+                  <div class="columns is-centered">
+                  {% endif %}
+                  <div class="column is-half ">
+                    <div class="has-text-centered">
+                      <article class="box">
+                        
+                        <div class="content">
+                          <a href='{{ page.path }}'>
+                            <div class="title is-size-4">{{ page.title }}</div>
+                          </a>
+                          <div class="content mt-2">
+                            {{ page.description }}
+                          </div>
+                          <div class="content mt-2 mb-2" style="max-height: 160px;max-width: 90%;margin: auto;">
+                            {{ page.summary | safe }}
+                          </div>
+                          <div class="content mt-2 mb-2" style="max-width: 90%;margin: auto;">
+                            <img src="{{ page.extra.featured }}" loading="lazy" style="max-width:80%;max-height: 160px;"/>
+                          </div>
+                          
+                          <a class="has-text-danger-dark has-text-weight-semibold" href='{{ page.path }}'>
+                            Read More
+                            <span class="icon is-small">
+                              <i class="fas fa-arrow-right fa-xs"></i>
+                            </span>
+                          </a>
+                          <div class="columns mt-1">
+                            <div class="column">
+                              {% if page.taxonomies.tags %}
+                              {{ macros::render_tags(tags=page.taxonomies.tags) }}
+                              {% endif %}
+                            </div>
+                          </div>
+                        </div>
+                      </article>
+                    </div>
+                  </div>
+                  {% if loop.index0 is odd %}
+                  </div>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </section>
+    {% endblock %}

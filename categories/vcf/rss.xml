@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+      <title>Animesh Chouhan - VCF</title>
+      <link>https://animeshchouhan.com</link>
+      <description></description>
+      <generator>Zola</generator>
+      <language>en</language>
+      <atom:link href="https://animeshchouhan.com/categories/vcf/rss.xml" rel="self" type="application/rss+xml"/>
+      <lastBuildDate>Mon, 05 Jul 2021 00:00:00 +0000</lastBuildDate>
+      <item>
+          <title>VCF Web Interface</title>
+          <pubDate>Mon, 05 Jul 2021 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://animeshchouhan.com/projects/vcf-web-interface/</link>
+          <guid>https://animeshchouhan.com/projects/vcf-web-interface/</guid>
+          <description xml:base="https://animeshchouhan.com/projects/vcf-web-interface/">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;&lt;p align=&quot;center&quot;&gt;
+   &lt;img src=&quot;&#x2F;images&#x2F;projects&#x2F;vcf-web-interface.png&quot; alt=&quot;vcf-web-interface&quot; style=&quot;max-width:80%&quot;&#x2F;&gt;
+&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Web interface for VCF Creator&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;Live Website: https:&#x2F;&#x2F;vcf.animeshchouhan.com&lt;&#x2F;p&gt;
+&lt;p&gt;Github: https:&#x2F;&#x2F;github.com&#x2F;animesh-chouhan&#x2F;vcf-creator-web-interface&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;setup&quot;&gt;Setup&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;cloning-the-repository&quot;&gt;Cloning the repository&lt;&#x2F;h3&gt;
+&lt;pre data-lang=&quot;sh&quot; style=&quot;background-color:#2b303b;color:#6c7079;&quot; class=&quot;language-sh &quot;&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span style=&quot;font-style:italic;color:#5f697a;&quot;&gt;# Clone the repo
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;git&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt; clone https:&#x2F;&#x2F;github.com&#x2F;animesh-chouhan&#x2F;vcf-creator-web-interface.git
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#5ebfcc;&quot;&gt;cd&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt; vcf-creator-web-interface
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;installing-dependencies&quot;&gt;Installing dependencies&lt;&#x2F;h3&gt;
+&lt;p&gt;Using pip and requirements.txt:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;sh&quot; style=&quot;background-color:#2b303b;color:#6c7079;&quot; class=&quot;language-sh &quot;&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;pip&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt; install&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt; -r&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt; requirements.txt
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Using Pipenv:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;sh&quot; style=&quot;background-color:#2b303b;color:#6c7079;&quot; class=&quot;language-sh &quot;&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;pipenv&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt; shell
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;pipenv&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt; install
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;running-the-script&quot;&gt;Running the script&lt;&#x2F;h3&gt;
+&lt;pre data-lang=&quot;sh&quot; style=&quot;background-color:#2b303b;color:#6c7079;&quot; class=&quot;language-sh &quot;&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span style=&quot;font-style:italic;color:#5f697a;&quot;&gt;# Make view.sh executable
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;chmod&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt; a+x view.sh
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;.&#x2F;view.sh
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;docker&quot;&gt;Docker&lt;&#x2F;h3&gt;
+&lt;pre data-lang=&quot;sh&quot; style=&quot;background-color:#2b303b;color:#6c7079;&quot; class=&quot;language-sh &quot;&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;docker&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt; run&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt; --rm -it -p&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt; 8080:8080&#x2F;tcp animeshchouhan&#x2F;vcf-creator-web-interface
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;built-with&quot;&gt;Built With&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;animesh-chouhan&#x2F;vcf-creator&quot;&gt;vcf-creator&lt;&#x2F;a&gt; - Command-line program to generate vCard file from CSV&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;contributing&quot;&gt;Contributing&lt;&#x2F;h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Fork the repo (&lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;animesh-chouhan&#x2F;vcf-creator-web-interface&#x2F;&quot;&gt;https:&#x2F;&#x2F;github.com&#x2F;animesh-chouhan&#x2F;vcf-creator-web-interface&#x2F;&lt;&#x2F;a&gt;)&lt;&#x2F;li&gt;
+&lt;li&gt;Create your feature branch (&lt;code&gt;git checkout -b feature&#x2F;fooBar&lt;&#x2F;code&gt;)&lt;&#x2F;li&gt;
+&lt;li&gt;Commit your changes (&lt;code&gt;git commit -am &#x27;Add some fooBar&#x27;&lt;&#x2F;code&gt;)&lt;&#x2F;li&gt;
+&lt;li&gt;Push to the branch (&lt;code&gt;git push origin feature&#x2F;fooBar&lt;&#x2F;code&gt;)&lt;&#x2F;li&gt;
+&lt;li&gt;Create a new Pull Request&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;!-- Markdown link &amp; img dfn&#x27;s --&gt;
+&lt;h2 id=&quot;license&quot;&gt;License&lt;&#x2F;h2&gt;
+&lt;p&gt;MIT License
+copyright (c) 2021 &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;animesh-chouhan&quot;&gt;Animesh Singh Chouhan&lt;&#x2F;a&gt;. Please have a look at the &lt;a href=&quot;https:&#x2F;&#x2F;animeshchouhan.com&#x2F;projects&#x2F;vcf-web-interface&#x2F;LICENSE&quot;&gt;license&lt;&#x2F;a&gt; for more details.&lt;&#x2F;p&gt;
+</description>
+      </item>
+      <item>
+          <title>VCF Creator</title>
+          <pubDate>Mon, 20 Jan 2020 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://animeshchouhan.com/projects/vcf-creator/</link>
+          <guid>https://animeshchouhan.com/projects/vcf-creator/</guid>
+          <description xml:base="https://animeshchouhan.com/projects/vcf-creator/">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;&lt;p align=&quot;center&quot;&gt;
+   &lt;img src=&quot;&#x2F;images&#x2F;projects&#x2F;vcf-creator.png&quot; alt=&quot;vcf-creator&quot; style=&quot;max-width:80%;&quot;&#x2F;&gt;
+&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Generate vCard file from CSV&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;Live Website: https:&#x2F;&#x2F;vcf.animeshchouhan.com&lt;&#x2F;p&gt;
+&lt;p&gt;Github: https:&#x2F;&#x2F;github.com&#x2F;animesh-chouhan&#x2F;vcf-creator&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;usage-example&quot;&gt;Usage example&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;animesh-chouhan&#x2F;vcf-creator&#x2F;main&#x2F;assets&#x2F;preview.gif&quot; alt=&quot;preview&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;!-- Click on the play button to see an example download.
+[![asciicast](https:&#x2F;&#x2F;asciinema.org&#x2F;a&#x2F;422828.svg)](https:&#x2F;&#x2F;asciinema.org&#x2F;a&#x2F;422828) --&gt;
+&lt;h2 id=&quot;setup&quot;&gt;Setup&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;cloning-the-repository&quot;&gt;Cloning the repository&lt;&#x2F;h3&gt;
+&lt;pre data-lang=&quot;sh&quot; style=&quot;background-color:#2b303b;color:#6c7079;&quot; class=&quot;language-sh &quot;&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span style=&quot;font-style:italic;color:#5f697a;&quot;&gt;# Clone the repo
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;git&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt; clone https:&#x2F;&#x2F;github.com&#x2F;animesh-chouhan&#x2F;vcf-creator.git
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#5ebfcc;&quot;&gt;cd&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt; vcf-creator
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#5f697a;&quot;&gt;# Run the sample csv file
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;python3 -m&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt; vcf_creator sample.csv
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;running-tests&quot;&gt;Running tests&lt;&#x2F;h3&gt;
+&lt;pre data-lang=&quot;sh&quot; style=&quot;background-color:#2b303b;color:#6c7079;&quot; class=&quot;language-sh &quot;&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span style=&quot;font-style:italic;color:#5f697a;&quot;&gt;# If in vc-creator folder
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#5ebfcc;&quot;&gt;cd&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt; vcf_creator&#x2F;tests
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#5f697a;&quot;&gt;# Run the test
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;python3&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt; test_vcf.py
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;installation&quot;&gt;Installation&lt;&#x2F;h3&gt;
+&lt;p&gt;To install it right away, type:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;sh&quot; style=&quot;background-color:#2b303b;color:#6c7079;&quot; class=&quot;language-sh &quot;&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;pip3&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt; install vcf_creator
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;help&quot;&gt;Help&lt;&#x2F;h3&gt;
+&lt;pre data-lang=&quot;sh&quot; style=&quot;background-color:#2b303b;color:#6c7079;&quot; class=&quot;language-sh &quot;&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;python3 -m&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt; vcf_creator&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt; --help
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;OR&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;sh&quot; style=&quot;background-color:#2b303b;color:#6c7079;&quot; class=&quot;language-sh &quot;&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;vcf_creator --help
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;running-the-script&quot;&gt;Running the script&lt;&#x2F;h3&gt;
+&lt;pre data-lang=&quot;sh&quot; style=&quot;background-color:#2b303b;color:#6c7079;&quot; class=&quot;language-sh &quot;&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;python3 -m&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt; vcf_creator &lt;&#x2F;span&gt;&lt;span style=&quot;color:#adb7c9;&quot;&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;csv-file-name&lt;&#x2F;span&gt;&lt;span style=&quot;color:#adb7c9;&quot;&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;OR&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;sh&quot; style=&quot;background-color:#2b303b;color:#6c7079;&quot; class=&quot;language-sh &quot;&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;vcf_creator &lt;&#x2F;span&gt;&lt;span style=&quot;color:#adb7c9;&quot;&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;csv-file-name&lt;&#x2F;span&gt;&lt;span style=&quot;color:#adb7c9;&quot;&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;import-the-module-in-your-project&quot;&gt;Import the module in your project&lt;&#x2F;h3&gt;
+&lt;pre data-lang=&quot;python&quot; style=&quot;background-color:#2b303b;color:#6c7079;&quot; class=&quot;language-python &quot;&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span style=&quot;color:#cd74e8;&quot;&gt;from &lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;vcf_creator &lt;&#x2F;span&gt;&lt;span style=&quot;color:#cd74e8;&quot;&gt;import &lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;vcard_formatter, vcard_generator
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;vcard_formatter&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;(arguments)
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;vcard_generator&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;(arguments)
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;csv-file-instructions&quot;&gt;CSV File Instructions&lt;&#x2F;h2&gt;
+&lt;ol&gt;
+&lt;li&gt;The contact CSV file can have the following headers all in smallcase:
+&lt;ul&gt;
+&lt;li&gt;name&lt;&#x2F;li&gt;
+&lt;li&gt;phone&lt;&#x2F;li&gt;
+&lt;li&gt;organisation&lt;&#x2F;li&gt;
+&lt;li&gt;email&lt;&#x2F;li&gt;
+&lt;li&gt;address&lt;&#x2F;li&gt;
+&lt;li&gt;birthday (mm&#x2F;dd&#x2F;yyyy)&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;The headers can be in any order&lt;&#x2F;li&gt;
+&lt;li&gt;Make sure that no fields are empty&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;h2 id=&quot;contributing&quot;&gt;Contributing&lt;&#x2F;h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Fork the repo (&lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;animesh-chouhan&#x2F;vcf-creator&#x2F;&quot;&gt;https:&#x2F;&#x2F;github.com&#x2F;animesh-chouhan&#x2F;vcf-creator&#x2F;&lt;&#x2F;a&gt;)&lt;&#x2F;li&gt;
+&lt;li&gt;Create your feature branch (&lt;code&gt;git checkout -b feature&#x2F;fooBar&lt;&#x2F;code&gt;)&lt;&#x2F;li&gt;
+&lt;li&gt;Commit your changes (&lt;code&gt;git commit -am &#x27;Add some fooBar&#x27;&lt;&#x2F;code&gt;)&lt;&#x2F;li&gt;
+&lt;li&gt;Push to the branch (&lt;code&gt;git push origin feature&#x2F;fooBar&lt;&#x2F;code&gt;)&lt;&#x2F;li&gt;
+&lt;li&gt;Create a new Pull Request&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;!-- Markdown link &amp; img dfn&#x27;s --&gt;
+&lt;h2 id=&quot;license&quot;&gt;License&lt;&#x2F;h2&gt;
+&lt;p&gt;MIT License&lt;&#x2F;p&gt;
+</description>
+      </item>
+    </channel>
+</rss>

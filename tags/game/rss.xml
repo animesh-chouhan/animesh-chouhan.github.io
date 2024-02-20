@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+      <title>Animesh Chouhan - game</title>
+      <link>https://animeshchouhan.com</link>
+      <description></description>
+      <generator>Zola</generator>
+      <language>en</language>
+      <atom:link href="https://animeshchouhan.com/tags/game/rss.xml" rel="self" type="application/rss+xml"/>
+      <lastBuildDate>Sat, 28 Oct 2023 00:00:00 +0000</lastBuildDate>
+      <item>
+          <title>Wordle Solver</title>
+          <pubDate>Sat, 28 Oct 2023 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://animeshchouhan.com/projects/wordle/</link>
+          <guid>https://animeshchouhan.com/projects/wordle/</guid>
+          <description xml:base="https://animeshchouhan.com/projects/wordle/">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;&lt;p align=&quot;center&quot;&gt;
+   &lt;img src=&quot;&#x2F;images&#x2F;projects&#x2F;wordle.jpg&quot; alt=&quot;dotfiles&quot; style=&quot;max-width:80%&quot;&#x2F;&gt;
+&lt;&#x2F;p&gt;
+&lt;p&gt;Github: &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;animesh-chouhan&#x2F;wordle-solver&quot;&gt;wordle-solver&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;about&quot;&gt;About&lt;&#x2F;h2&gt;
+&lt;p&gt;&amp;quot;Wordle&amp;quot; &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Wordle&quot;&gt;Wikipedia&lt;&#x2F;a&gt;, The Free Encyclopedia:&lt;&#x2F;p&gt;
+&lt;p&gt;Wordle is a web-based word game created and developed by Welsh software engineer Josh Wardle. Players have six attempts to guess a five-letter word, with feedback given for each guess in the form of colored tiles indicating when letters match or occupy the correct position.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;running&quot;&gt;Running&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;cloning-the-repository&quot;&gt;Cloning the repository&lt;&#x2F;h3&gt;
+&lt;pre data-lang=&quot;sh&quot; style=&quot;background-color:#2b303b;color:#6c7079;&quot; class=&quot;language-sh &quot;&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;git&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt; clone https:&#x2F;&#x2F;github.com&#x2F;animesh-chouhan&#x2F;wordle-solver.git
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#5ebfcc;&quot;&gt;cd&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt; wordle-solver
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;install-requirements&quot;&gt;Install requirements&lt;&#x2F;h3&gt;
+&lt;pre data-lang=&quot;sh&quot; style=&quot;background-color:#2b303b;color:#6c7079;&quot; class=&quot;language-sh &quot;&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;pip&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt; install&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt; -r&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt; requirements.txt
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;run&quot;&gt;Run&lt;&#x2F;h3&gt;
+&lt;pre data-lang=&quot;python&quot; style=&quot;background-color:#2b303b;color:#6c7079;&quot; class=&quot;language-python &quot;&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;python3 main.py &lt;&#x2F;span&gt;&lt;span style=&quot;color:#db9d63;&quot;&gt;2&lt;&#x2F;span&gt;&lt;span style=&quot;color:#adb7c9;&quot;&gt;&amp;gt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;log.txt
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;example&quot;&gt;Example&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;animesh-chouhan&#x2F;wordle-solver&#x2F;main&#x2F;assets&#x2F;preview.gif&quot; alt=&quot;preview&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;output&quot;&gt;Output&lt;&#x2F;h2&gt;
+&lt;p&gt;Word is: phony&lt;br &#x2F;&gt;
+Guessed in 4 tries&lt;br &#x2F;&gt;
+Wordle 862 4&#x2F;6&lt;&#x2F;p&gt;
+&lt;p&gt;⬜🟨⬜⬜🟩&lt;br &#x2F;&gt;
+⬜🟨🟩⬜🟩&lt;br &#x2F;&gt;
+🟩⬜🟩🟩🟩&lt;br &#x2F;&gt;
+🟩🟩🟩🟩🟩&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;built-with&quot;&gt;Built With&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;pyppeteer&#x2F;pyppeteer&quot;&gt;pyppeteer&lt;&#x2F;a&gt; - Python port of puppeteer JavaScript (headless) chrome&#x2F;chromium browser automation library&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</description>
+      </item>
+    </channel>
+</rss>

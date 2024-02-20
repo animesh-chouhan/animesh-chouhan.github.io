@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<section class="section">
+  <div class="container">
+    <div class="has-text-centered">
+      <br><br><br>
+      <h1 class="title is-2">HTTP 404</h1>
+      <br>
+      <p class="subtitle is-4">
+        I can't find what you are looking for. You might be looking for <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">this</a>.
+      </p>
+      <!-- {% if config.extra.author.avatar %}
+      <figure class="image is-flex is-justify-content-center is-align-items-center">
+        <img class="is-rounded" src="{{ config.extra.author.avatar }}" style="max-width: 192px" />
+      </figure>
+      {% endif %} -->
+      <!-- {{ macros:: social_links( social_config=config.extra.social) }} -->
+      <p class="my-6">
+        <a href='/'>
+          <span class="icon">
+            <i class="fas fa-home"></i>
+          </span>
+          <span>Home</span>
+        </a>
+      </p>
+    </div>
+  </div>
+</section>
+{% endblock %}

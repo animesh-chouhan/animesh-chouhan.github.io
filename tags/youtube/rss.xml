@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+      <title>Animesh Chouhan - youtube</title>
+      <link>https://animeshchouhan.com</link>
+      <description></description>
+      <generator>Zola</generator>
+      <language>en</language>
+      <atom:link href="https://animeshchouhan.com/tags/youtube/rss.xml" rel="self" type="application/rss+xml"/>
+      <lastBuildDate>Mon, 27 Apr 2020 00:00:00 +0000</lastBuildDate>
+      <item>
+          <title>Youtube Playman</title>
+          <pubDate>Mon, 27 Apr 2020 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://animeshchouhan.com/projects/youtube-playman/</link>
+          <guid>https://animeshchouhan.com/projects/youtube-playman/</guid>
+          <description xml:base="https://animeshchouhan.com/projects/youtube-playman/">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;&lt;p align=&quot;center&quot;&gt;
+   &lt;img src=&quot;&#x2F;images&#x2F;projects&#x2F;youtube-playman.png&quot; alt=&quot;youtube-playman&quot; style=&quot;max-width:80%&quot;&#x2F;&gt;
+&lt;&#x2F;p&gt;
+&lt;p&gt;A simple yet powerful script to download and manage local copies of youtube music playlists. It wraps over the youtube-dl downloader and maintains an archive of downloaded songs. It also updates them automatically if a cronjob is configured. &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;animesh-chouhan.github.io&#x2F;youtube-playman&#x2F;&quot;&gt;More Info&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;setup&quot;&gt;Setup&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;cloning-the-repository&quot;&gt;Cloning the repository:&lt;&#x2F;h3&gt;
+&lt;pre data-lang=&quot;sh&quot; style=&quot;background-color:#2b303b;color:#6c7079;&quot; class=&quot;language-sh &quot;&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span style=&quot;font-style:italic;color:#5f697a;&quot;&gt;#clone the repo
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;git&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt; clone https:&#x2F;&#x2F;github.com&#x2F;animesh-chouhan&#x2F;yt-comment-scraper.git
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#5ebfcc;&quot;&gt;cd&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt; youtube-playman
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;running-the-script&quot;&gt;Running the script:&lt;&#x2F;h3&gt;
+&lt;pre data-lang=&quot;sh&quot; style=&quot;background-color:#2b303b;color:#6c7079;&quot; class=&quot;language-sh &quot;&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span style=&quot;font-style:italic;color:#5f697a;&quot;&gt;#run the script directly
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;chmod&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt; +x .&#x2F;youtube-playman.sh
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;.&#x2F;youtube-playman.sh
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;OR
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#5f697a;&quot;&gt;#create a hard link to the local binary folder
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#5f697a;&quot;&gt;#this will add the downloader to the path variable
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;ln&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt; .&#x2F;youtube-playman.sh &lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;~&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;&#x2F;.local&#x2F;bin&#x2F;youtube-playman
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#5f697a;&quot;&gt;#directly running the script
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;youtube-playman
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;installation&quot;&gt;Installation:&lt;&#x2F;h3&gt;
+&lt;p&gt;To install it right away for all UNIX users (Linux, macOS, etc.), type:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;sh&quot; style=&quot;background-color:#2b303b;color:#6c7079;&quot; class=&quot;language-sh &quot;&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;curl -L&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt; https:&#x2F;&#x2F;github.com&#x2F;animesh-chouhan&#x2F;youtube-playman&#x2F;releases&#x2F;latest&#x2F;download&#x2F;youtube-playman&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt; -o ~&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;&#x2F;.local&#x2F;bin&#x2F;youtube-playman
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;chmod&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt; a+rx &lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;~&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;&#x2F;.local&#x2F;bin&#x2F;youtube-playman
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;If you do not have curl, you can alternatively use a recent wget:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;sh&quot; style=&quot;background-color:#2b303b;color:#6c7079;&quot; class=&quot;language-sh &quot;&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;wget&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt; https:&#x2F;&#x2F;github.com&#x2F;animesh-chouhan&#x2F;youtube-playman&#x2F;releases&#x2F;latest&#x2F;download&#x2F;youtube-playman&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt; -O ~&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;&#x2F;.local&#x2F;bin&#x2F;youtube-playman
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;chmod&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt; a+rx &lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;~&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;&#x2F;.local&#x2F;bin&#x2F;youtube-playman
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;add-jobs-to-cron&quot;&gt;Add Jobs To cron:&lt;&#x2F;h3&gt;
+&lt;pre data-lang=&quot;sh&quot; style=&quot;background-color:#2b303b;color:#6c7079;&quot; class=&quot;language-sh &quot;&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span style=&quot;font-style:italic;color:#5f697a;&quot;&gt;#creating a cron job that will update the playlists automatically
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;crontab -e
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;pre data-lang=&quot;sh&quot; style=&quot;background-color:#2b303b;color:#6c7079;&quot; class=&quot;language-sh &quot;&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span style=&quot;font-style:italic;color:#5f697a;&quot;&gt;#this will open a editor and add this entry to the file
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#5f697a;&quot;&gt;#don&amp;#39;t forget the newline after the last entry
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;PATH&lt;&#x2F;span&gt;&lt;span style=&quot;color:#adb7c9;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#9acc76;&quot;&gt;&amp;quot;&#x2F;usr&#x2F;local&#x2F;bin:&#x2F;usr&#x2F;bin:&#x2F;bin:&#x2F;home&#x2F;&amp;lt;your-username&amp;gt;&#x2F;.local&#x2F;bin&amp;quot;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;@daily&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt; printf &lt;&#x2F;span&gt;&lt;span style=&quot;color:#9acc76;&quot;&gt;&amp;quot;update-all&amp;quot; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#adb7c9;&quot;&gt;| &lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;youtube-playman
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#5f697a;&quot;&gt;#OR
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;PATH&lt;&#x2F;span&gt;&lt;span style=&quot;color:#adb7c9;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#9acc76;&quot;&gt;&amp;quot;&#x2F;usr&#x2F;local&#x2F;bin:&#x2F;usr&#x2F;bin:&#x2F;bin:&#x2F;home&#x2F;&amp;lt;your-username&amp;gt;&#x2F;.local&#x2F;bin&amp;quot;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;@daily&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt; printf &lt;&#x2F;span&gt;&lt;span style=&quot;color:#9acc76;&quot;&gt;&amp;quot;update-all&amp;quot; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#adb7c9;&quot;&gt;| &lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;download &lt;&#x2F;span&gt;&lt;span style=&quot;color:#adb7c9;&quot;&gt;&amp;gt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;HOME&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;&#x2F;Music&#x2F;cron.log &lt;&#x2F;span&gt;&lt;span style=&quot;color:#db9d63;&quot;&gt;2&lt;&#x2F;span&gt;&lt;span style=&quot;color:#adb7c9;&quot;&gt;&amp;gt;&amp;amp;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#db9d63;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span style=&quot;color:#adb7c9;&quot;&gt;;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#5ebfcc;&quot;&gt;echo &lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;`&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;date&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;` &lt;&#x2F;span&gt;&lt;span style=&quot;color:#adb7c9;&quot;&gt;&amp;gt;&amp;gt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;HOME&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;&#x2F;Music&#x2F;cron.log
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;For more details refer to &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;help.ubuntu.com&#x2F;community&#x2F;CronHowto&quot;&gt;ubuntu cron wiki&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;usage-example&quot;&gt;Usage example&lt;&#x2F;h2&gt;
+&lt;p&gt;Click on the play button to see an example download.
+&lt;a href=&quot;https:&#x2F;&#x2F;asciinema.org&#x2F;a&#x2F;bQgrwQfcFLtcuJpKMGEuq0Til?speed=2&amp;preload=1&amp;autoplay=1&quot;&gt;
+&lt;img src=&quot;https:&#x2F;&#x2F;asciinema.org&#x2F;a&#x2F;bQgrwQfcFLtcuJpKMGEuq0Til.png&quot; max-width=&quot;1000px&quot;&#x2F;&gt;
+&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;em&gt;For more examples and usage, please refer to the &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;animesh-chouhan&#x2F;youtube-playman&#x2F;wiki&quot;&gt;Wiki&lt;&#x2F;a&gt;.&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;built-with&quot;&gt;Built With&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;ytdl-org&#x2F;youtube-dl&quot;&gt;youtube-dl&lt;&#x2F;a&gt; - Command-line program to download videos from YouTube&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;contributing&quot;&gt;Contributing&lt;&#x2F;h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Fork the repo (&lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;animesh-chouhan&#x2F;youtube-playman&#x2F;&quot;&gt;https:&#x2F;&#x2F;github.com&#x2F;animesh-chouhan&#x2F;youtube-playman&#x2F;&lt;&#x2F;a&gt;)&lt;&#x2F;li&gt;
+&lt;li&gt;Create your feature branch (&lt;code&gt;git checkout -b feature&#x2F;fooBar&lt;&#x2F;code&gt;)&lt;&#x2F;li&gt;
+&lt;li&gt;Commit your changes (&lt;code&gt;git commit -am &#x27;Add some fooBar&#x27;&lt;&#x2F;code&gt;)&lt;&#x2F;li&gt;
+&lt;li&gt;Push to the branch (&lt;code&gt;git push origin feature&#x2F;fooBar&lt;&#x2F;code&gt;)&lt;&#x2F;li&gt;
+&lt;li&gt;Create a new Pull Request&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;!-- Markdown link &amp; img dfn&#x27;s --&gt;
+&lt;h2 id=&quot;license&quot;&gt;License&lt;&#x2F;h2&gt;
+&lt;p&gt;MIT License
+copyright (c) 2020 &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;animesh-chouhan&quot;&gt;Animesh Singh Chouhan&lt;&#x2F;a&gt;. Please have a look at the &lt;a href=&quot;https:&#x2F;&#x2F;animeshchouhan.com&#x2F;projects&#x2F;youtube-playman&#x2F;LICENSE&quot;&gt;license&lt;&#x2F;a&gt; for more details.&lt;&#x2F;p&gt;
+</description>
+      </item>
+      <item>
+          <title>Youtube Comment Scraper</title>
+          <pubDate>Thu, 27 Jun 2019 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://animeshchouhan.com/projects/youtube-comment-scraper/</link>
+          <guid>https://animeshchouhan.com/projects/youtube-comment-scraper/</guid>
+          <description xml:base="https://animeshchouhan.com/projects/youtube-comment-scraper/">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;&lt;p align=&quot;center&quot;&gt;
+   &lt;img src=&quot;&#x2F;images&#x2F;projects&#x2F;youtube-comment-scraper.png&quot; alt=&quot;youtube-comment-scraper&quot; style=&quot;max-width:80%&quot;&#x2F;&gt;
+&lt;&#x2F;p&gt;
+&lt;p&gt;Scrapes all the comments from all videos present in a YouTube channel. Can also be used to get the video list from a given YouTube channel.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;setup&quot;&gt;Setup&lt;&#x2F;h2&gt;
+&lt;p&gt;Linux:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;sh&quot; style=&quot;background-color:#2b303b;color:#6c7079;&quot; class=&quot;language-sh &quot;&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span style=&quot;font-style:italic;color:#5f697a;&quot;&gt;#clone the repo
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;git&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt; clone https:&#x2F;&#x2F;github.com&#x2F;animesh-chouhan&#x2F;yt-comment-scraper.git
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#5ebfcc;&quot;&gt;cd&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt; yt-comment-scraper
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#5f697a;&quot;&gt;#install python3
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt; apt-get install python3
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#5f697a;&quot;&gt;#install node and npm
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt; apt-get install nodejs
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt; apt-get install npm
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#5f697a;&quot;&gt;#install dependencies
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;npm&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt; install express&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt; --save
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;npm&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt; install puppeteer&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt; --save
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#5f697a;&quot;&gt;#run the api on localhost
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;node&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt; scraper_api.js
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#5f697a;&quot;&gt;#testing the python scraper
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;python3&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt; scraper.py .&#x2F;to_scrape_sample.txt
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#5f697a;&quot;&gt;#create a new text file with links to be scraped separated by newlines
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;python3&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt; scraper.py .&#x2F;your_text_file.txt
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;usage-example&quot;&gt;Usage example&lt;&#x2F;h2&gt;
+&lt;p&gt;Sample resonse of api hosted on localhost:&lt;&#x2F;p&gt;
+&lt;p align=&quot;center&quot;&gt;
+  &lt;img src=&quot;&#x2F;images&#x2F;projects&#x2F;sample-response.png&quot; width=&quot;700&quot; align=&quot;center&quot;&#x2F;&gt;
+&lt;&#x2F;p&gt;
+&lt;p&gt;Sample comments scraped:&lt;&#x2F;p&gt;
+&lt;p align=&quot;center&quot;&gt;
+  &lt;img src=&quot;&#x2F;images&#x2F;projects&#x2F;sample-csv.png&quot;  width=&quot;700&quot; align=&quot;center&quot;&#x2F;&gt;
+&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;em&gt;For more examples and usage, please refer to the &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;animesh-chouhan&#x2F;yt-comment-scraper&#x2F;&#x2F;wiki&quot;&gt;Wiki&lt;&#x2F;a&gt;.&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;built-with&quot;&gt;Built With&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;developers.google.com&#x2F;web&#x2F;tools&#x2F;puppeteer&#x2F;&quot;&gt;Puppeteer&lt;&#x2F;a&gt; - Headless browser to overcome pagination&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;philbot9&#x2F;youtube-comment-scraper&quot;&gt;ytcomments&lt;&#x2F;a&gt; - Comment API&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;contributing&quot;&gt;Contributing&lt;&#x2F;h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Fork the repo (&lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;animesh-chouhan&#x2F;yt-comment-scraper&#x2F;&quot;&gt;https:&#x2F;&#x2F;github.com&#x2F;animesh-chouhan&#x2F;yt-comment-scraper&#x2F;&lt;&#x2F;a&gt;)&lt;&#x2F;li&gt;
+&lt;li&gt;Create your feature branch (&lt;code&gt;git checkout -b feature&#x2F;fooBar&lt;&#x2F;code&gt;)&lt;&#x2F;li&gt;
+&lt;li&gt;Commit your changes (&lt;code&gt;git commit -am &#x27;Add some fooBar&#x27;&lt;&#x2F;code&gt;)&lt;&#x2F;li&gt;
+&lt;li&gt;Push to the branch (&lt;code&gt;git push origin feature&#x2F;fooBar&lt;&#x2F;code&gt;)&lt;&#x2F;li&gt;
+&lt;li&gt;Create a new Pull Request&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;!-- Markdown link &amp; img dfn&#x27;s --&gt;
+</description>
+      </item>
+    </channel>
+</rss>
