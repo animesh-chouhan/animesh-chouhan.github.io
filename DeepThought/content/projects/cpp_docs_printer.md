@@ -61,13 +61,13 @@ $python3 cplusplus.py http://www.cplusplus.com/reference/cstdio/
 Sample C++ documentation <http://www.cplusplus.com/reference/cstdio/>:
 
 <p align="center">
-  <img src="cplusplus-min.png" width="80%" align="center"/>
+  <img src="cplusplus.png" width="80%" align="center"/>
 </p>
 
 Sample pdf generated [pdf](https://github.com/animesh-chouhan/cpp-docs-printer/blob/master/pdf/reference-cstdio.pdf):
 
 <p align="center">
-  <img src="output-min.png"  width="80%" align="center"/>
+  <img src="cpp-output.png"  width="80%" align="center"/>
 </p>
 
 The generated .html and .pdf files are located in the html and pdf folders respectively.

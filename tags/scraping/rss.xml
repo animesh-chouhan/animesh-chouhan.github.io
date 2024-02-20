@@ -109,11 +109,11 @@
 &lt;h2 id=&quot;usage-example&quot;&gt;Usage example&lt;&#x2F;h2&gt;
 &lt;p&gt;Sample C++ documentation &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;http:&#x2F;&#x2F;www.cplusplus.com&#x2F;reference&#x2F;cstdio&#x2F;&quot;&gt;http:&#x2F;&#x2F;www.cplusplus.com&#x2F;reference&#x2F;cstdio&#x2F;&lt;&#x2F;a&gt;:&lt;&#x2F;p&gt;
 &lt;p align=&quot;center&quot;&gt;
-  &lt;img src=&quot;cplusplus-min.png&quot; width=&quot;80%&quot; align=&quot;center&quot;&#x2F;&gt;
+  &lt;img src=&quot;cplusplus.png&quot; width=&quot;80%&quot; align=&quot;center&quot;&#x2F;&gt;
 &lt;&#x2F;p&gt;
 &lt;p&gt;Sample pdf generated &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;animesh-chouhan&#x2F;cpp-docs-printer&#x2F;blob&#x2F;master&#x2F;pdf&#x2F;reference-cstdio.pdf&quot;&gt;pdf&lt;&#x2F;a&gt;:&lt;&#x2F;p&gt;
 &lt;p align=&quot;center&quot;&gt;
-  &lt;img src=&quot;output-min.png&quot;  width=&quot;80%&quot; align=&quot;center&quot;&#x2F;&gt;
+  &lt;img src=&quot;cpp-output.png&quot;  width=&quot;80%&quot; align=&quot;center&quot;&#x2F;&gt;
 &lt;&#x2F;p&gt;
 &lt;p&gt;The generated .html and .pdf files are located in the html and pdf folders respectively.&lt;&#x2F;p&gt;
 &lt;p&gt;&lt;em&gt;For more examples and usage, please refer to the &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;animesh-chouhan&#x2F;youtube-playman&#x2F;wiki&quot;&gt;Wiki&lt;&#x2F;a&gt;.&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
