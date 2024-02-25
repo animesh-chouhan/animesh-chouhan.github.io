@@ -31,6 +31,12 @@
         <loc>https://animeshchouhan.com/categories/maths/page/1/</loc>
     </url>
     <url>
+        <loc>https://animeshchouhan.com/categories/python/</loc>
+    </url>
+    <url>
+        <loc>https://animeshchouhan.com/categories/python/page/1/</loc>
+    </url>
+    <url>
         <loc>https://animeshchouhan.com/categories/vcf/</loc>
     </url>
     <url>
@@ -53,7 +59,7 @@
     </url>
     <url>
         <loc>https://animeshchouhan.com/posts/circle-random/</loc>
-        <lastmod>2024-02-20</lastmod>
+        <lastmod>2024-02-24</lastmod>
     </url>
     <url>
         <loc>https://animeshchouhan.com/posts/dotfiles/</loc>
