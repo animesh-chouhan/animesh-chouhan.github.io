@@ -26,3 +26,4 @@ git commit -m "$msg"
 git push origin master
 
 printf "\033[0;32mDone\033[0m\n"
+printf "https://github.com/animesh-chouhan/animesh-chouhan.github.io/actions\n"
