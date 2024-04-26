@@ -1,0 +1,2 @@
+cd DeepThought/
+zola serve

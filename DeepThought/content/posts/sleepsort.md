@@ -40,6 +40,10 @@ It's not the fastest way to sort numbers, but it's interesting because it's so d
 
 Unlike regular sorting methods that compare and swap numbers, sleep sort does things differently. It relies on the scheduler, which handles tasks running at the same time. Sleep sort works by using this scheduler to time when each number should join the sorted list.
 
+<p align="center">
+   <img src="/images/posts/sleepsort/async-eventloop.jpg" alt="sleepsort" style="max-width:80%"/>
+</p>
+
 Every modern operating system includes a scheduler, a vital component responsible for managing the execution of various tasks or processes running concurrently. These tasks can range from handling user input to managing system resources efficiently.
 
 This reliance on the scheduler not only distinguishes sleep sort from conventional sorting methods but also underscores the algorithm's dependency on system-level mechanisms for its operation.
