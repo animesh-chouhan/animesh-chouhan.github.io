@@ -218,7 +218,7 @@ Animesh Chouhan | Sleepsort: Sorting while sleeping
           <div class="content mt-2">
             <!-- Add summary here -->
 <span id="continue-reading"></span><p align="center">
-   <img src="/images/posts/sleepsort/sleepsort.png" alt="sleepsort" style="max-width:80%"/>
+   <img src="/images/posts/sleepsort/sleepsort.png" alt="sleepsort" style="max-width:90%"/>
 </p>
 <h2 id="sorting-algorithms">Sorting Algorithms</h2>
 <p>Sorting algorithms are like the organizers of the computer world, quietly putting everything in order. They help arrange data neatly, whether it's a list of names or scores.</p>
@@ -227,13 +227,13 @@ Animesh Chouhan | Sleepsort: Sorting while sleeping
 <p>Sleep sort is a fun and quirky way to sort numbers. It was thought up by someone on 4Chan in 2011. Instead of the usual sorting methods, this one makes each number &quot;sleep&quot; for a bit before joining the sorted list. So, if a number is 3, it waits for 3 units of time before settling into its place.</p>
 <p>This photo of the original 4chan post was taken from this <a rel="noopener nofollow noreferrer" target="_blank" href="https://www.cs.princeton.edu/courses/archive/fall13/cos226/lectures/52Tries.pdf">Princeton Lecture</a>.</p>
 <p align="center">
-   <img src="/images/posts/sleepsort/sleepsort-4chan.jpg" alt="sleepsort" style="max-width:80%"/>
+   <img src="/images/posts/sleepsort/sleepsort-4chan.jpg" alt="sleepsort" style="max-width:90%"/>
 </p>
 <p>It's not the fastest way to sort numbers, but it's interesting because it's so different. Imagine organizing numbers like you're hitting the snooze button on an alarm clock!</p>
 <h2 id="dependency-on-scheduler">Dependency on Scheduler</h2>
 <p>Unlike regular sorting methods that compare and swap numbers, sleep sort does things differently. It relies on the scheduler, which handles tasks running at the same time. Sleep sort works by using this scheduler to time when each number should join the sorted list.</p>
 <p align="center">
-   <img src="/images/posts/sleepsort/async-eventloop.jpg" alt="sleepsort" style="max-width:80%"/>
+   <img src="/images/posts/sleepsort/async-eventloop.jpg" alt="sleepsort" style="max-width:90%"/>
 </p>
 <p>Every modern operating system includes a scheduler, a vital component responsible for managing the execution of various tasks or processes running concurrently. These tasks can range from handling user input to managing system resources efficiently.</p>
 <p>This reliance on the scheduler not only distinguishes sleep sort from conventional sorting methods but also underscores the algorithm's dependency on system-level mechanisms for its operation.</p>
@@ -272,7 +272,7 @@ Animesh Chouhan | Sleepsort: Sorting while sleeping
 <p>This implementation utilizes the asynchronous nature of <code>asyncio</code> to simulate the sleep sort algorithm, where each number &quot;sleeps&quot; for a duration proportional to its value before being added to the sorted list.</p>
 <p>Here's the output when we run this Python script:</p>
 <p align="center">
-   <img src="/images/posts/sleepsort/sleepsort.gif" alt="sleepsort-demo" style="max-width:90%"/>
+   <img src="/images/posts/sleepsort/sleepsort.gif" alt="sleepsort-demo" style="max-width:95%"/>
 </p>
 <h2 id="can-we-make-it-any-faster">Can we make it any faster?</h2>
 <p>The sole drawback of this algorithm lies in the time consumed during the sleep intervals, which is capped by the highest number within the unsorted input. How can we reduce this sleep delay?</p>

@@ -15,7 +15,7 @@ tags = ["python", "dsa"]
 <!-- more -->
 
 <p align="center">
-   <img src="/images/posts/sleepsort/sleepsort.png" alt="sleepsort" style="max-width:80%"/>
+   <img src="/images/posts/sleepsort/sleepsort.png" alt="sleepsort" style="max-width:90%"/>
 </p>
 
 ## Sorting Algorithms
@@ -31,7 +31,7 @@ Sleep sort is a fun and quirky way to sort numbers. It was thought up by someone
 This photo of the original 4chan post was taken from this [Princeton Lecture](https://www.cs.princeton.edu/courses/archive/fall13/cos226/lectures/52Tries.pdf).
 
 <p align="center">
-   <img src="/images/posts/sleepsort/sleepsort-4chan.jpg" alt="sleepsort" style="max-width:80%"/>
+   <img src="/images/posts/sleepsort/sleepsort-4chan.jpg" alt="sleepsort" style="max-width:90%"/>
 </p>
 
 It's not the fastest way to sort numbers, but it's interesting because it's so different. Imagine organizing numbers like you're hitting the snooze button on an alarm clock!
@@ -41,7 +41,7 @@ It's not the fastest way to sort numbers, but it's interesting because it's so d
 Unlike regular sorting methods that compare and swap numbers, sleep sort does things differently. It relies on the scheduler, which handles tasks running at the same time. Sleep sort works by using this scheduler to time when each number should join the sorted list.
 
 <p align="center">
-   <img src="/images/posts/sleepsort/async-eventloop.jpg" alt="sleepsort" style="max-width:80%"/>
+   <img src="/images/posts/sleepsort/async-eventloop.jpg" alt="sleepsort" style="max-width:90%"/>
 </p>
 
 Every modern operating system includes a scheduler, a vital component responsible for managing the execution of various tasks or processes running concurrently. These tasks can range from handling user input to managing system resources efficiently.
@@ -90,7 +90,7 @@ This implementation utilizes the asynchronous nature of `asyncio` to simulate th
 Here's the output when we run this Python script:
 
 <p align="center">
-   <img src="/images/posts/sleepsort/sleepsort.gif" alt="sleepsort-demo" style="max-width:90%"/>
+   <img src="/images/posts/sleepsort/sleepsort.gif" alt="sleepsort-demo" style="max-width:95%"/>
 </p>
 
 ## Can we make it any faster?
