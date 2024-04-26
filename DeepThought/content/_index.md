@@ -10,4 +10,4 @@ Aside from coding, I love building products such as audio systems and anything w
 
 #### Currently
 
-Currently I am a Associate Software Engineer at JPMorgan Chase & Co. I work on building cloud-based infrastructure solutions.
+Currently, I am an Associate Software Engineer at JPMorgan Chase & Co. I work on building cloud-based infrastructure solutions.

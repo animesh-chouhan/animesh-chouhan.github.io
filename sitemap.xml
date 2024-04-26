@@ -7,6 +7,12 @@
         <loc>https://animeshchouhan.com/categories/</loc>
     </url>
     <url>
+        <loc>https://animeshchouhan.com/categories/algorithms/</loc>
+    </url>
+    <url>
+        <loc>https://animeshchouhan.com/categories/algorithms/page/1/</loc>
+    </url>
+    <url>
         <loc>https://animeshchouhan.com/categories/c/</loc>
     </url>
     <url>
@@ -69,6 +75,10 @@
         <loc>https://animeshchouhan.com/posts/page/1/</loc>
     </url>
     <url>
+        <loc>https://animeshchouhan.com/posts/sleepsort/</loc>
+        <lastmod>2024-04-26</lastmod>
+    </url>
+    <url>
         <loc>https://animeshchouhan.com/projects/</loc>
     </url>
     <url>
@@ -125,6 +135,12 @@
     </url>
     <url>
         <loc>https://animeshchouhan.com/tags/dotfiles/page/1/</loc>
+    </url>
+    <url>
+        <loc>https://animeshchouhan.com/tags/dsa/</loc>
+    </url>
+    <url>
+        <loc>https://animeshchouhan.com/tags/dsa/page/1/</loc>
     </url>
     <url>
         <loc>https://animeshchouhan.com/tags/game/</loc>
