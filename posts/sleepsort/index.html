@@ -153,7 +153,7 @@ Animesh Chouhan | Sleepsort: Sorting while sleeping
   <span class="icon">
     <i class="fas fa-pencil-alt"></i>
   </span>
-  <span>1127 words</span>
+  <span>1185 words</span>
 </span>
 
             </div>
@@ -221,14 +221,19 @@ Animesh Chouhan | Sleepsort: Sorting while sleeping
    <img src="/images/posts/sleepsort/sleepsort.png" alt="sleepsort" style="max-width:80%"/>
 </p>
 <h2 id="sorting-algorithms">Sorting Algorithms</h2>
-<p>Sorting algorithms are like the organizers of the computer world, quietly putting everything in order. They help arrange data neatly, whether it's a list of names or scores. Some sorting methods are simple, like bubble sort, while others are faster, like quick sort. But there are also some really unique ones, like sleep sort, which is more like a fun experiment than a serious tool.</p>
-<p>Sleep sort is a fun and quirky way to sort numbers. It was thought up by someone on 4Chan in 2011. Instead of the usual sorting methods, this one makes each number &quot;sleep&quot; for a bit before joining the sorted list. So, if a number is 3, it waits for 3 units of time before settling into its place. This photo of the original 4chan post was taken from this <a rel="noopener nofollow noreferrer" target="_blank" href="https://www.cs.princeton.edu/courses/archive/fall13/cos226/lectures/52Tries.pdf">lecture</a>.</p>
+<p>Sorting algorithms are like the organizers of the computer world, quietly putting everything in order. They help arrange data neatly, whether it's a list of names or scores.</p>
+<p>Some sorting methods are simple, like bubble sort, while others are faster, like quick sort. But there are also some really unique ones, like sleep sort, which is more like a fun experiment than a serious tool.</p>
+<h2 id="sleep-sort">Sleep Sort</h2>
+<p>Sleep sort is a fun and quirky way to sort numbers. It was thought up by someone on 4Chan in 2011. Instead of the usual sorting methods, this one makes each number &quot;sleep&quot; for a bit before joining the sorted list. So, if a number is 3, it waits for 3 units of time before settling into its place.</p>
+<p>This photo of the original 4chan post was taken from this <a rel="noopener nofollow noreferrer" target="_blank" href="https://www.cs.princeton.edu/courses/archive/fall13/cos226/lectures/52Tries.pdf">Princeton Lecture</a>.</p>
 <p align="center">
    <img src="/images/posts/sleepsort/sleepsort-4chan.jpg" alt="sleepsort" style="max-width:80%"/>
 </p>
 <p>It's not the fastest way to sort numbers, but it's interesting because it's so different. Imagine organizing numbers like you're hitting the snooze button on an alarm clock!</p>
 <h2 id="dependency-on-scheduler">Dependency on Scheduler</h2>
 <p>Unlike regular sorting methods that compare and swap numbers, sleep sort does things differently. It relies on the scheduler, which handles tasks running at the same time. Sleep sort works by using this scheduler to time when each number should join the sorted list.</p>
+<p>Every modern operating system includes a scheduler, a vital component responsible for managing the execution of various tasks or processes running concurrently. These tasks can range from handling user input to managing system resources efficiently.</p>
+<p>This reliance on the scheduler not only distinguishes sleep sort from conventional sorting methods but also underscores the algorithm's dependency on system-level mechanisms for its operation.</p>
 <h2 id="python-implementation">Python Implementation</h2>
 <p>While we can use the conventional threads to implement this sorting technique, we will be using <code>asyncio</code> python library which is more suited towards blocking IO-bound operations. We would be creating a sleep task for each number in the list and wait till all tasks have finished.</p>
 <p>The async function <code>add_num</code> sleeps for the same duration as the number and then appends that to the sorted list.</p>
@@ -318,10 +323,10 @@ Animesh Chouhan | Sleepsort: Sorting while sleeping
 <h2 id="references">References</h2>
 <ol>
 <li><a rel="noopener nofollow noreferrer" target="_blank" href="https://news.ycombinator.com/item?id=2657277">Sleep Sort | Hacker News</a></li>
-<li><a rel="noopener nofollow noreferrer" target="_blank" href="https://docs.python.org/3/library/asyncio.html">asyncio — Asynchronous I/O — Python 3.12.3 documentation</a></li>
-<li><a rel="noopener nofollow noreferrer" target="_blank" href="https://discuss.python.org/t/what-are-the-advantages-of-asyncio-over-threads/2112">What are the advantages of asyncio over threads? - Ideas - Discussions on Python.org</a></li>
-<li><a rel="noopener nofollow noreferrer" target="_blank" href="https://gist.github.com/Thatkookooguy/3b7ce09a9f80a5e6541175104a5d49e9">Sleep Sort in JavaScript | http://t.co/nWJACyK</a></li>
+<li><a rel="noopener nofollow noreferrer" target="_blank" href="https://gist.github.com/Thatkookooguy/3b7ce09a9f80a5e6541175104a5d49e9">Sleep Sort in JavaScript</a></li>
 <li><a rel="noopener nofollow noreferrer" target="_blank" href="https://www.cs.princeton.edu/courses/archive/fall13/cos226/lectures/52Tries.pdf">Princeton lectures/52Tries.pdf</a></li>
+<li><a rel="noopener nofollow noreferrer" target="_blank" href="https://docs.python.org/3/library/asyncio.html">asyncio — Asynchronous I/O — Python 3.12.3 documentation</a></li>
+<li><a rel="noopener nofollow noreferrer" target="_blank" href="https://discuss.python.org/t/what-are-the-advantages-of-asyncio-over-threads/2112">What are the advantages of asyncio over threads? </a></li>
 </ol>
 <h2 id="stay-tuned">Stay Tuned</h2>
 <p>Hope you enjoyed reading this. Stay tuned for more cool stuff coming your way!</p>

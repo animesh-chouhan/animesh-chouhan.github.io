@@ -20,9 +20,15 @@ tags = ["python", "dsa"]
 
 ## Sorting Algorithms
 
-Sorting algorithms are like the organizers of the computer world, quietly putting everything in order. They help arrange data neatly, whether it's a list of names or scores. Some sorting methods are simple, like bubble sort, while others are faster, like quick sort. But there are also some really unique ones, like sleep sort, which is more like a fun experiment than a serious tool.
+Sorting algorithms are like the organizers of the computer world, quietly putting everything in order. They help arrange data neatly, whether it's a list of names or scores.
 
-Sleep sort is a fun and quirky way to sort numbers. It was thought up by someone on 4Chan in 2011. Instead of the usual sorting methods, this one makes each number "sleep" for a bit before joining the sorted list. So, if a number is 3, it waits for 3 units of time before settling into its place. This photo of the original 4chan post was taken from this [lecture](https://www.cs.princeton.edu/courses/archive/fall13/cos226/lectures/52Tries.pdf).
+Some sorting methods are simple, like bubble sort, while others are faster, like quick sort. But there are also some really unique ones, like sleep sort, which is more like a fun experiment than a serious tool.
+
+## Sleep Sort
+
+Sleep sort is a fun and quirky way to sort numbers. It was thought up by someone on 4Chan in 2011. Instead of the usual sorting methods, this one makes each number "sleep" for a bit before joining the sorted list. So, if a number is 3, it waits for 3 units of time before settling into its place.
+
+This photo of the original 4chan post was taken from this [Princeton Lecture](https://www.cs.princeton.edu/courses/archive/fall13/cos226/lectures/52Tries.pdf).
 
 <p align="center">
    <img src="/images/posts/sleepsort/sleepsort-4chan.jpg" alt="sleepsort" style="max-width:80%"/>
@@ -33,6 +39,10 @@ It's not the fastest way to sort numbers, but it's interesting because it's so d
 ## Dependency on Scheduler
 
 Unlike regular sorting methods that compare and swap numbers, sleep sort does things differently. It relies on the scheduler, which handles tasks running at the same time. Sleep sort works by using this scheduler to time when each number should join the sorted list.
+
+Every modern operating system includes a scheduler, a vital component responsible for managing the execution of various tasks or processes running concurrently. These tasks can range from handling user input to managing system resources efficiently.
+
+This reliance on the scheduler not only distinguishes sleep sort from conventional sorting methods but also underscores the algorithm's dependency on system-level mechanisms for its operation.
 
 ## Python Implementation
 
@@ -147,10 +157,10 @@ Even though sleep sort isn't great for big sets of numbers, it shows how creativ
 ## References
 
 1. [Sleep Sort | Hacker News](https://news.ycombinator.com/item?id=2657277)
-2. [asyncio — Asynchronous I/O — Python 3.12.3 documentation](https://docs.python.org/3/library/asyncio.html)
-3. [What are the advantages of asyncio over threads? - Ideas - Discussions on Python.org](https://discuss.python.org/t/what-are-the-advantages-of-asyncio-over-threads/2112)
-4. [Sleep Sort in JavaScript | http://t.co/nWJACyK](https://gist.github.com/Thatkookooguy/3b7ce09a9f80a5e6541175104a5d49e9)
-5. [Princeton lectures/52Tries.pdf](https://www.cs.princeton.edu/courses/archive/fall13/cos226/lectures/52Tries.pdf)
+2. [Sleep Sort in JavaScript](https://gist.github.com/Thatkookooguy/3b7ce09a9f80a5e6541175104a5d49e9)
+3. [Princeton lectures/52Tries.pdf](https://www.cs.princeton.edu/courses/archive/fall13/cos226/lectures/52Tries.pdf)
+4. [asyncio — Asynchronous I/O — Python 3.12.3 documentation](https://docs.python.org/3/library/asyncio.html)
+5. [What are the advantages of asyncio over threads? ](https://discuss.python.org/t/what-are-the-advantages-of-asyncio-over-threads/2112)
 
 ## Stay Tuned
 
