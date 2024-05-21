@@ -17,7 +17,7 @@
           <description xml:base="https://animeshchouhan.com/projects/cpp-docs-printer/">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;&lt;p align=&quot;center&quot;&gt;
    &lt;img src=&quot;&#x2F;images&#x2F;projects&#x2F;cpp-docs-printer.png&quot; alt=&quot;cpp-docs-printer&quot; style=&quot;max-width:70%&quot;&#x2F;&gt;
 &lt;&#x2F;p&gt;
-&lt;p&gt;A python script to scrape C++ documentation website and generate printable PDF documents. &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;animesh-chouhan.github.io&#x2F;cpp-docs-printer&#x2F;&quot;&gt;More Info&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;A Python script to scrape C++ documentation and generate printable PDF documents.&lt;&#x2F;p&gt;
 &lt;h2 id=&quot;setup&quot;&gt;Setup&lt;&#x2F;h2&gt;
 &lt;h3 id=&quot;linux&quot;&gt;Linux&lt;&#x2F;h3&gt;
 &lt;p&gt;Cloning the repository:&lt;&#x2F;p&gt;
@@ -40,7 +40,7 @@
 &lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;$sudo&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt; pip3 install WeasyPrint
 &lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;
 &lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
-&lt;p&gt;Running the python script:&lt;&#x2F;p&gt;
+&lt;p&gt;Running the Python script:&lt;&#x2F;p&gt;
 &lt;pre data-lang=&quot;sh&quot; style=&quot;background-color:#2b303b;color:#6c7079;&quot; class=&quot;language-sh &quot;&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;$python3&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt; cplusplus.py http:&#x2F;&#x2F;www.cplusplus.com&#x2F;reference&#x2F;cstdio&#x2F;
 &lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;
 &lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;

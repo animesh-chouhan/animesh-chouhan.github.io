@@ -20,8 +20,8 @@
 &lt;blockquote&gt;
 &lt;p&gt;Web interface for VCF Creator&lt;&#x2F;p&gt;
 &lt;&#x2F;blockquote&gt;
-&lt;p&gt;Live Website: https:&#x2F;&#x2F;vcf.animeshchouhan.com&lt;&#x2F;p&gt;
-&lt;p&gt;Github: https:&#x2F;&#x2F;github.com&#x2F;animesh-chouhan&#x2F;vcf-creator-web-interface&lt;&#x2F;p&gt;
+&lt;p&gt;Live Website: &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;vcf.animeshchouhan.com&quot;&gt;https:&#x2F;&#x2F;vcf.animeshchouhan.com&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Github: &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;animesh-chouhan&#x2F;vcf-creator-web-interface&quot;&gt;https:&#x2F;&#x2F;github.com&#x2F;animesh-chouhan&#x2F;vcf-creator-web-interface&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
 &lt;h2 id=&quot;setup&quot;&gt;Setup&lt;&#x2F;h2&gt;
 &lt;h3 id=&quot;cloning-the-repository&quot;&gt;Cloning the repository&lt;&#x2F;h3&gt;
 &lt;pre data-lang=&quot;sh&quot; style=&quot;background-color:#2b303b;color:#6c7079;&quot; class=&quot;language-sh &quot;&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span style=&quot;font-style:italic;color:#5f697a;&quot;&gt;# Clone the repo
@@ -74,8 +74,8 @@ copyright (c) 2021 &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&qu
 &lt;blockquote&gt;
 &lt;p&gt;Generate vCard file from CSV&lt;&#x2F;p&gt;
 &lt;&#x2F;blockquote&gt;
-&lt;p&gt;Live Website: https:&#x2F;&#x2F;vcf.animeshchouhan.com&lt;&#x2F;p&gt;
-&lt;p&gt;Github: https:&#x2F;&#x2F;github.com&#x2F;animesh-chouhan&#x2F;vcf-creator&lt;&#x2F;p&gt;
+&lt;p&gt;Live Website: &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;vcf.animeshchouhan.com&quot;&gt;https:&#x2F;&#x2F;vcf.animeshchouhan.com&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Github: &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;animesh-chouhan&#x2F;vcf-creator-web-interface&quot;&gt;https:&#x2F;&#x2F;github.com&#x2F;animesh-chouhan&#x2F;vcf-creator&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
 &lt;h2 id=&quot;usage-example&quot;&gt;Usage example&lt;&#x2F;h2&gt;
 &lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;animesh-chouhan&#x2F;vcf-creator&#x2F;main&#x2F;assets&#x2F;preview.gif&quot; alt=&quot;preview&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;!-- Click on the play button to see an example download.

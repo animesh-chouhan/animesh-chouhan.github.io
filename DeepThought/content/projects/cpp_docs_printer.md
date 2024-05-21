@@ -17,7 +17,7 @@ tags = ["cpp", "web", "scraping"]
    <img src="/images/projects/cpp-docs-printer.png" alt="cpp-docs-printer" style="max-width:70%"/>
 </p>
 
-A python script to scrape C++ documentation website and generate printable PDF documents. [More Info](https://animesh-chouhan.github.io/cpp-docs-printer/)
+A Python script to scrape C++ documentation and generate printable PDF documents.
 
 ## Setup
 
@@ -49,7 +49,7 @@ $sudo pip3 install WeasyPrint
 
 ```
 
-Running the python script:
+Running the Python script:
 
 ```sh
 $python3 cplusplus.py http://www.cplusplus.com/reference/cstdio/

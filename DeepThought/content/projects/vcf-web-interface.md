@@ -18,9 +18,9 @@ tags = ["web", "vcf"]
 
 > Web interface for VCF Creator
 
-Live Website: https://vcf.animeshchouhan.com
+Live Website: [https://vcf.animeshchouhan.com](https://vcf.animeshchouhan.com)
 
-Github: https://github.com/animesh-chouhan/vcf-creator-web-interface
+Github: [https://github.com/animesh-chouhan/vcf-creator-web-interface](https://github.com/animesh-chouhan/vcf-creator-web-interface)
 
 ## Setup
 

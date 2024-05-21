@@ -18,9 +18,9 @@ tags = ["web", "vcf"]
 
 > Generate vCard file from CSV
 
-Live Website: https://vcf.animeshchouhan.com
+Live Website: [https://vcf.animeshchouhan.com](https://vcf.animeshchouhan.com)
 
-Github: https://github.com/animesh-chouhan/vcf-creator
+Github: [https://github.com/animesh-chouhan/vcf-creator](https://github.com/animesh-chouhan/vcf-creator-web-interface)
 
 ## Usage example
 

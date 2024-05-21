@@ -20,8 +20,8 @@
 &lt;blockquote&gt;
 &lt;p&gt;Web interface for VCF Creator&lt;&#x2F;p&gt;
 &lt;&#x2F;blockquote&gt;
-&lt;p&gt;Live Website: https:&#x2F;&#x2F;vcf.animeshchouhan.com&lt;&#x2F;p&gt;
-&lt;p&gt;Github: https:&#x2F;&#x2F;github.com&#x2F;animesh-chouhan&#x2F;vcf-creator-web-interface&lt;&#x2F;p&gt;
+&lt;p&gt;Live Website: &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;vcf.animeshchouhan.com&quot;&gt;https:&#x2F;&#x2F;vcf.animeshchouhan.com&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Github: &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;animesh-chouhan&#x2F;vcf-creator-web-interface&quot;&gt;https:&#x2F;&#x2F;github.com&#x2F;animesh-chouhan&#x2F;vcf-creator-web-interface&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
 &lt;h2 id=&quot;setup&quot;&gt;Setup&lt;&#x2F;h2&gt;
 &lt;h3 id=&quot;cloning-the-repository&quot;&gt;Cloning the repository&lt;&#x2F;h3&gt;
 &lt;pre data-lang=&quot;sh&quot; style=&quot;background-color:#2b303b;color:#6c7079;&quot; class=&quot;language-sh &quot;&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span style=&quot;font-style:italic;color:#5f697a;&quot;&gt;# Clone the repo
@@ -71,7 +71,7 @@ copyright (c) 2021 &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&qu
           <description xml:base="https://animeshchouhan.com/projects/youtube-playman/">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;&lt;p align=&quot;center&quot;&gt;
    &lt;img src=&quot;&#x2F;images&#x2F;projects&#x2F;youtube-playman.png&quot; alt=&quot;youtube-playman&quot; style=&quot;max-width:80%&quot;&#x2F;&gt;
 &lt;&#x2F;p&gt;
-&lt;p&gt;A simple yet powerful script to download and manage local copies of youtube music playlists. It wraps over the youtube-dl downloader and maintains an archive of downloaded songs. It also updates them automatically if a cronjob is configured. &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;animesh-chouhan.github.io&#x2F;youtube-playman&#x2F;&quot;&gt;More Info&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;A simple yet powerful script to download and manage local copies of youtube music playlists. It wraps over the youtube-dl downloader and maintains an archive of downloaded songs. It also updates them automatically if a cronjob is configured.&lt;&#x2F;p&gt;
 &lt;h2 id=&quot;setup&quot;&gt;Setup&lt;&#x2F;h2&gt;
 &lt;h3 id=&quot;cloning-the-repository&quot;&gt;Cloning the repository:&lt;&#x2F;h3&gt;
 &lt;pre data-lang=&quot;sh&quot; style=&quot;background-color:#2b303b;color:#6c7079;&quot; class=&quot;language-sh &quot;&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span style=&quot;font-style:italic;color:#5f697a;&quot;&gt;#clone the repo
@@ -155,8 +155,8 @@ copyright (c) 2020 &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&qu
 &lt;blockquote&gt;
 &lt;p&gt;Generate vCard file from CSV&lt;&#x2F;p&gt;
 &lt;&#x2F;blockquote&gt;
-&lt;p&gt;Live Website: https:&#x2F;&#x2F;vcf.animeshchouhan.com&lt;&#x2F;p&gt;
-&lt;p&gt;Github: https:&#x2F;&#x2F;github.com&#x2F;animesh-chouhan&#x2F;vcf-creator&lt;&#x2F;p&gt;
+&lt;p&gt;Live Website: &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;vcf.animeshchouhan.com&quot;&gt;https:&#x2F;&#x2F;vcf.animeshchouhan.com&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Github: &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;animesh-chouhan&#x2F;vcf-creator-web-interface&quot;&gt;https:&#x2F;&#x2F;github.com&#x2F;animesh-chouhan&#x2F;vcf-creator&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
 &lt;h2 id=&quot;usage-example&quot;&gt;Usage example&lt;&#x2F;h2&gt;
 &lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;animesh-chouhan&#x2F;vcf-creator&#x2F;main&#x2F;assets&#x2F;preview.gif&quot; alt=&quot;preview&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;!-- Click on the play button to see an example download.
@@ -299,7 +299,7 @@ copyright (c) 2020 &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&qu
           <description xml:base="https://animeshchouhan.com/projects/cpp-docs-printer/">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;&lt;p align=&quot;center&quot;&gt;
    &lt;img src=&quot;&#x2F;images&#x2F;projects&#x2F;cpp-docs-printer.png&quot; alt=&quot;cpp-docs-printer&quot; style=&quot;max-width:70%&quot;&#x2F;&gt;
 &lt;&#x2F;p&gt;
-&lt;p&gt;A python script to scrape C++ documentation website and generate printable PDF documents. &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;animesh-chouhan.github.io&#x2F;cpp-docs-printer&#x2F;&quot;&gt;More Info&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;A Python script to scrape C++ documentation and generate printable PDF documents.&lt;&#x2F;p&gt;
 &lt;h2 id=&quot;setup&quot;&gt;Setup&lt;&#x2F;h2&gt;
 &lt;h3 id=&quot;linux&quot;&gt;Linux&lt;&#x2F;h3&gt;
 &lt;p&gt;Cloning the repository:&lt;&#x2F;p&gt;
@@ -322,7 +322,7 @@ copyright (c) 2020 &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&qu
 &lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;$sudo&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt; pip3 install WeasyPrint
 &lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;
 &lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
-&lt;p&gt;Running the python script:&lt;&#x2F;p&gt;
+&lt;p&gt;Running the Python script:&lt;&#x2F;p&gt;
 &lt;pre data-lang=&quot;sh&quot; style=&quot;background-color:#2b303b;color:#6c7079;&quot; class=&quot;language-sh &quot;&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;$python3&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt; cplusplus.py http:&#x2F;&#x2F;www.cplusplus.com&#x2F;reference&#x2F;cstdio&#x2F;
 &lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;
 &lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
