@@ -3,7 +3,7 @@
 //  Fix to prevent flashing
 if (localStorage.getItem("theme") === "dark") {
   document.body.setAttribute("theme", "dark");
-  document.querySelectorAll("img, picture, video, pre").forEach(img => img.setAttribute("theme", "dark"));
+  document.querySelectorAll("img, picture, video, pre, iframe").forEach(img => img.setAttribute("theme", "dark"));
   document.querySelectorAll(".vimeo, .youtube, .chart").forEach(video => video.setAttribute("theme", "dark"));
   document.getElementById("dark-mode").setAttribute("title", "Switch to light theme");
 }
@@ -182,7 +182,7 @@ function documentReadyCallback() {
 
   if (localStorage.getItem("theme") === "dark") {
     document.body.setAttribute("theme", "dark");
-    document.querySelectorAll("img, picture, video, pre").forEach(img => img.setAttribute("theme", "dark"));
+    document.querySelectorAll("img, picture, video, pre, theme").forEach(img => img.setAttribute("theme", "dark"));
     document.querySelectorAll(".vimeo, .youtube, .chart").forEach(video => video.setAttribute("theme", "dark"));
     document.getElementById("dark-mode").setAttribute("title", "Switch to light theme");
   }
@@ -229,14 +229,14 @@ function documentReadyCallback() {
     ) {
       localStorage.setItem("theme", "dark");
       document.body.setAttribute("theme", "dark");
-      document.querySelectorAll("img, picture, video, pre").forEach(img => img.setAttribute("theme", "dark"));
+      document.querySelectorAll("img, picture, video, pre, iframe").forEach(img => img.setAttribute("theme", "dark"));
       document.querySelectorAll(".vimeo, .youtube, .chart").forEach(video => video.setAttribute("theme", "dark"));
 
       document.getElementById("dark-mode").setAttribute("title", "Switch to light theme");
     } else {
       localStorage.setItem("theme", "light");
       document.body.removeAttribute("theme", "dark");
-      document.querySelectorAll("img, picture, video, pre").forEach(img => img.removeAttribute("theme", "dark"))
+      document.querySelectorAll("img, picture, video, pre, iframe").forEach(img => img.removeAttribute("theme", "dark"))
       document.querySelectorAll(".vimeo, .youtube, .chart").forEach(video => video.removeAttribute("theme", "dark"));
 
       document.getElementById("dark-mode").setAttribute("title", "Switch to dark theme");

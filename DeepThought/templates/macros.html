@@ -32,6 +32,13 @@
   </a>
   {% endif %}
 
+  {% if social_config.youtube %}
+  <a class="has-text-youtube" href="https://www.youtube.com/c/{{ social_config.youtube }}" target="_blank">
+    <span class="icon is-large" title="YouTube">
+      <i class="fa-brands fa-youtube"></i>
+    </span>
+  </a>
+  {% endif %}
 
   {% if social_config.twitch %}
   <a class="has-text-twitch" href="https://www.twitch.tv/{{ social_config.twitch }}" target="_blank">
@@ -67,12 +74,14 @@
 
   {# Certainly not the best implementation but Tera bombs if you try to access a nonexistent key #}
   {% if social_config.mastodon_username %}
-    {% set mastodon_username = social_config.mastodon_username %}
+  {% set mastodon_username = social_config.mastodon_username %}
   {% elif social_config.mastodon %}
-    {% set mastodon_username = social_config.mastodon %}
+  {% set mastodon_username = social_config.mastodon %}
   {% endif %}
   {% if mastodon_username %}
-  <a class="has-text-mastodon" href="https://{{ social_config.mastodon_server | default(value='mastodon.social') }}/@{{ mastodon_username }}" target="_blank" rel="me">
+  <a class="has-text-mastodon"
+    href="https://{{ social_config.mastodon_server | default(value='mastodon.social') }}/@{{ mastodon_username }}"
+    target="_blank" rel="me">
     <span class="icon is-large" title="Mastodon">
       <i class="fab fa-mastodon fa-lg"></i>
     </span>
@@ -112,7 +121,8 @@
   {% endif %}
 
   {% if social_config.stackoverflow %}
-  <a class="has-text-stackoverflow" href="https://stackoverflow.com/users/{{ social_config.stackoverflow }}" target="_blank">
+  <a class="has-text-stackoverflow" href="https://stackoverflow.com/users/{{ social_config.stackoverflow }}"
+    target="_blank">
     <span class="icon is-large" title="Stack Overflow">
       <i class="fab fa-stack-overflow fa-lg"></i>
     </span>
@@ -144,13 +154,14 @@
   {% endif %}
 
   {% if social_config.google_scholar %}
-  <a class="has-text-googlescholar" href="https://scholar.google.com/citations?user={{ social_config.google_scholar }}" target="_blank">
+  <a class="has-text-googlescholar" href="https://scholar.google.com/citations?user={{ social_config.google_scholar }}"
+    target="_blank">
     <span class="icon is-large" title="Google Scholar">
       <i class="ai ai-google-scholar ai-lg"></i>
     </span>
   </a>
   {% endif %}
-  
+
   {% if social_config.orcid %}
   <a class="has-text-orcid" href="https://orcid.org/{{ social_config.orcid }}" target="_blank">
     <span class="icon is-large" title="ORCiD">
@@ -179,14 +190,6 @@
   <a href="https://play.google.com/store/apps/developer?id={{ social_config.googleplay }}&hl=en" target="_blank">
     <span class="icon is-large" title="Google play">
       <i class="fab fa-google-play fa-lg"></i>
-    </span>
-  </a>
-  {% endif %}
-
-  {% if social_config.youtube %}
-  <a class="has-text-youtube" href="https://www.youtube.com/c/{{ social_config.youtube }}" target="_blank">
-    <span class="icon is-large" title="YouTube">
-      <i class="fa-brands fa-youtube"></i>
     </span>
   </a>
   {% endif %}
@@ -231,7 +234,8 @@
 <p>
   Categories:
   {% for category in categories %}
-  <a class="has-text-info-dark has-text-weight-semibold" href="{{ get_taxonomy_url(kind='categories', name=category) }}">
+  <a class="has-text-info-dark has-text-weight-semibold"
+    href="{{ get_taxonomy_url(kind='categories', name=category) }}">
     <span class="icon-text">
       <span class="icon">
         <i class="fas fa-cube"></i>
