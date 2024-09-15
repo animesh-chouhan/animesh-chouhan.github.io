@@ -153,7 +153,7 @@ Animesh Chouhan | Measuring Distances using Rope
   <span class="icon">
     <i class="fas fa-pencil-alt"></i>
   </span>
-  <span>4418 words</span>
+  <span>4427 words</span>
 </span>
 
             </div>
@@ -285,11 +285,10 @@ r = D - n \cdot L
 $$</p>
 </li>
 <li>
-<p>**Iterative Approximation Process:**8. <a rel="noopener nofollow noreferrer" target="_blank" href="https://en.wikipedia.org/wiki/M-ary_tree">m-ary tree - Wikipedia</a></p>
-</li>
-<li>
-<p><a rel="noopener nofollow noreferrer" target="_blank" href="https://en.wikipedia.org/wiki/B-tree">B-tree - Wikipedia</a>
-$$l_i = \frac{L}{2^i}$$</p>
+<p><strong>Iterative Approximation Process:</strong></p>
+<p>Now by dividing the rope, we can measure distances like \( \frac{L}{2} \), \( \frac{L}{4} \), \( \frac{L}{8} \) and so forth.</p>
+<p>Let us represent the smaller divisions by \(l_i\) where:</p>
+<p>$$l_i = \frac{L}{2^i}$$</p>
 <p>Now, as \(0 \le r &lt; L\) we can estimate \( r \) by using combinations of \(l_i\). Therefore,</p>
 <p>$$r_{approx} = \frac{L}{2} \pm \frac{L}{4} \pm \frac{L}{8} \pm \frac{L}{16} \cdots$$</p>
 <p><strong>How can we be sure that this approximation covers the whole range?</strong></p>
@@ -494,7 +493,7 @@ $$</p>
 </li>
 </ol>
 <h4 id="2-measure-repeated-distance-scale">2. <code>measure_repeated(distance, scale)</code></h4>
-<p>This function extends <code>measure</code> by handling cases where <code>distance</code> is greater than the <code>scale</code>. z-index: 10; It breaks the <code>distance</code> into multiples of <code>scale</code>, then applies the <code>measure</code> function on the remainder.</p>
+<p>This function extends <code>measure</code> by handling cases where <code>distance</code> is greater than the <code>scale</code>. It breaks the <code>distance</code> into multiples of <code>scale</code>, then applies the <code>measure</code> function on the remainder.</p>
 <h5 id="key-steps-1">Key Steps:</h5>
 <ol>
 <li>

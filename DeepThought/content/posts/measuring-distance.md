@@ -106,8 +106,12 @@ Let's represent the problem mathematically:
    r = D - n \cdot L
    $$
 
-2. **Iterative Approximation Process:**8. [m-ary tree - Wikipedia](https://en.wikipedia.org/wiki/M-ary_tree)
-3. [B-tree - Wikipedia](https://en.wikipedia.org/wiki/B-tree)
+2. **Iterative Approximation Process:**
+
+   Now by dividing the rope, we can measure distances like \\( \frac{L}{2} \\), \\( \frac{L}{4} \\), \\( \frac{L}{8} \\) and so forth.
+
+   Let us represent the smaller divisions by \\(l_i\\) where:
+
    $$l_i = \frac{L}{2^i}$$
 
    Now, as \\(0 \le r < L\\) we can estimate \\( r \\) by using combinations of \\(l_i\\). Therefore,
@@ -172,7 +176,7 @@ Let's represent the problem mathematically:
      r \approx \frac{L}{2} + \sum\_{i=1}^{\text{max iterations}} m_i \cdot l_i
      $$
 
-4. **Sum the Total Distance:**
+3. **Sum the Total Distance:**
 
    $$
    D \approx n \cdot L + \frac{L}{2} + \sum\_{i=1}^{\text{max iterations}} m_i \cdot l_i
@@ -310,7 +314,7 @@ This function estimates the `distance` compared to the `scale`, aiming to conver
 
 #### 2. `measure_repeated(distance, scale)`
 
-This function extends `measure` by handling cases where `distance` is greater than the `scale`. z-index: 10; It breaks the `distance` into multiples of `scale`, then applies the `measure` function on the remainder.
+This function extends `measure` by handling cases where `distance` is greater than the `scale`. It breaks the `distance` into multiples of `scale`, then applies the `measure` function on the remainder.
 
 ##### Key Steps:
 
