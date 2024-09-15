@@ -149,11 +149,11 @@ Animesh Chouhan | Measuring Distances using Rope
   <span class="icon">
     <i class="far fa-clock"></i>
   </span>
-  <span>20 min,</span>
+  <span>23 min,</span>
   <span class="icon">
     <i class="fas fa-pencil-alt"></i>
   </span>
-  <span>3824 words</span>
+  <span>4418 words</span>
 </span>
 
             </div>
@@ -249,6 +249,7 @@ MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\\(','\\\)']]}});
 mjx-container{
    overflow-x: auto;
    overflow-y: hidden;
+   padding-top: 0.2em;
    /* font-size: 110% !important; */
 }
 @media (max-width: 768px) {
@@ -284,10 +285,11 @@ r = D - n \cdot L
 $$</p>
 </li>
 <li>
-<p><strong>Iterative Approximation Process:</strong></p>
-<p>Now by dividing the rope, we can measure distances like \( \frac{L}{2} \), \( \frac{L}{4} \), \( \frac{L}{8} \) and so forth.</p>
-<p>Let us represent the smaller divisions by \(l_i\) where:</p>
-<p>$$l_i = \frac{L}{2^i}$$</p>
+<p>**Iterative Approximation Process:**8. <a rel="noopener nofollow noreferrer" target="_blank" href="https://en.wikipedia.org/wiki/M-ary_tree">m-ary tree - Wikipedia</a></p>
+</li>
+<li>
+<p><a rel="noopener nofollow noreferrer" target="_blank" href="https://en.wikipedia.org/wiki/B-tree">B-tree - Wikipedia</a>
+$$l_i = \frac{L}{2^i}$$</p>
 <p>Now, as \(0 \le r &lt; L\) we can estimate \( r \) by using combinations of \(l_i\). Therefore,</p>
 <p>$$r_{approx} = \frac{L}{2} \pm \frac{L}{4} \pm \frac{L}{8} \pm \frac{L}{16} \cdots$$</p>
 <p><strong>How can we be sure that this approximation covers the whole range?</strong></p>
@@ -492,7 +494,7 @@ $$</p>
 </li>
 </ol>
 <h4 id="2-measure-repeated-distance-scale">2. <code>measure_repeated(distance, scale)</code></h4>
-<p>This function extends <code>measure</code> by handling cases where <code>distance</code> is greater than the <code>scale</code>. It breaks the <code>distance</code> into multiples of <code>scale</code>, then applies the <code>measure</code> function on the remainder.</p>
+<p>This function extends <code>measure</code> by handling cases where <code>distance</code> is greater than the <code>scale</code>. z-index: 10; It breaks the <code>distance</code> into multiples of <code>scale</code>, then applies the <code>measure</code> function on the remainder.</p>
 <h5 id="key-steps-1">Key Steps:</h5>
 <ol>
 <li>
@@ -757,6 +759,79 @@ The rope length decreases more slowly. The series still converges, but more slow
 <p align="center">
    <img src="/images/posts/measuring-distance/adc.gif" alt="Successive Approximation ADC" style="max-width:70%"/>
 </p>
+<h2 id="bonus-analogy-with-binary-search-algorithm">Bonus: Analogy with Binary Search Algorithm</h2>
+<p><strong>Have you ever wondered why binary search is the most optimal technique for searching a sorted array?</strong></p>
+<p>In computer science, binary search, also known as half-interval search, is a search algorithm that finds the position of a target value within a sorted array. It works by dividing the search space in half with each step, reducing the time complexity to \( O(\log n) \), making it far faster than linear search methods.</p>
+<p>Now you must be getting to why we halve the search space in binary search rather than reducing it by a factor of, say, 3 or 4. Let's analyze this by looking at the generalized case with the <strong>m-ary tree</strong>:</p>
+<blockquote>
+<h3 id="m-ary-tree">m-ary Tree</h3>
+<p>In graph theory, an m-ary tree (for nonnegative integers m) is an an ordered tree in which each node has no more than m (branching factor) children. This generalizes the concept of binary trees, where each node has at most two children i.e. &gt; m = 2; similarly, a ternary tree is one where m = 3.</p>
+<p align="center">
+   <img src="/images/posts/measuring-distance/m-ary-search-tree.png" alt="m-ary search tree" style="border-radius:12px;max-width:80%"/>
+</p>
+</blockquote>
+<h3 id="m-ary-search-tree-efficiency">m-ary Search Tree Efficiency</h3>
+<p>To minimize the number of comparisons in an \( m \)-ary tree, the choice of \( m \) (branching factor) is critical. The goal is to balance the trade-off between the tree's <strong>height</strong> and the <strong>number of comparisons</strong> required at each node.</p>
+<ol>
+<li>
+<p><strong>Height of the Tree</strong>:</p>
+<ul>
+<li>The height \( h \) of an \( m \)-ary tree with \( N \) end-nodes is given by:
+$$
+\boxed{h = \lceil \log_m N \rceil}
+$$</li>
+<li>As \( m \) increases, the height \( h \) decreases which reduces the number of levels you need to traverse.</li>
+</ul>
+</li>
+<li>
+<p><strong>Comparisons at Each Node</strong>:</p>
+<ul>
+<li>At each node, the number of comparisons required is \( m - 1 \), because you need to decide which of the ( m ) children to follow.</li>
+<li>Larger values of \( m \) reduce the height of the tree but increase the number of comparisons at each node.</li>
+</ul>
+</li>
+</ol>
+<h4 id="total-comparisons"><strong>Total Comparisons</strong>:</h4>
+<p>The total number of comparisons to traverse the tree is approximately:</p>
+<p>$$
+\text{Total Comparisons} \approx (m - 1) \times h
+$$</p>
+<p>Substituting \( h = \lceil \log_m N \rceil \):</p>
+<p>$$
+\boxed{\text{Total Comparisons} \approx (m - 1) \times \lceil \log_m N \rceil}
+$$</p>
+<h5 id="calculation-for-m-3-and-n-1000">Calculation for \( m = 3 \) and \( N = 1000 \):</h5>
+<ul>
+<li>For \( m = 3 \):
+<ul>
+<li>The height of the tree is approximately \( \log_3 1000 \approx 6.29 \), which rounds up to \( h = 7 \).</li>
+<li>The number of comparisons per node is \( m - 1 = 2 \) comparisons at each node.</li>
+</ul>
+</li>
+</ul>
+<p>So, the total number of comparisons would be approximately:</p>
+<p>$$
+\text{Total Comparisons} \approx 7 \times 2 = 14
+$$</p>
+<h5 id="calculation-for-m-2-binary-tree">Calculation for \( m = 2 \) (Binary Tree):</h5>
+<ul>
+<li>For \( m = 2 \) (binary tree):
+<ul>
+<li>The height is \( \log_2 1000 \approx 9.97 \), which rounds up to \( h = 10 \).</li>
+<li>The number of comparisons per node is \( 1 \), because you compare between two children.</li>
+</ul>
+</li>
+</ul>
+<p>So, the total number of comparisons for a binary tree is:</p>
+<p>$$
+\text{Total Comparisons} \approx 10 \times 1 = 10
+$$</p>
+<h4 id="conclusion-1">Conclusion:</h4>
+<p align="center">
+   <img src="/images/posts/measuring-distance/m-ary-search.png" alt="Visualization of m-ary search tree" style="border-radius:12px;max-width:95%" onclick="this.requestFullscreen()"/>
+</p>
+<p>The increase in \( m \) helps reduce height but doesn't necessarily result in fewer total comparisons due to the higher number of comparisons per node. This emphasizes that <strong>binary trees</strong> often remain optimal in terms of minimizing the total number of comparisons.</p>
+<p>In some scenarios like large databases, where time to read the data far exceeds the time needed to compare keys the <strong>m-ary search tree</strong> might shine. Read more about <a rel="noopener nofollow noreferrer" target="_blank" href="https://en.wikipedia.org/wiki/B-tree">B-tree</a>.</p>
 <h2 id="references">References</h2>
 <ol>
 <li><a rel="noopener nofollow noreferrer" target="_blank" href="https://doi.org/10.1109/83.480765">E. A.B. Da Silva, D. G. Sampson, and M. Ghanbari. 1996. A successive approximation vector quantizer for wavelet transform image coding</a></li>

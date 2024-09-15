@@ -62,6 +62,7 @@ MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\\(','\\\)']]}});
 mjx-container{
    overflow-x: auto;
    overflow-y: hidden;
+   padding-top: 0.2em;
    /* font-size: 110% !important; */
 }
 @media (max-width: 768px) {
@@ -105,12 +106,8 @@ Let's represent the problem mathematically:
    r = D - n \cdot L
    $$
 
-2. **Iterative Approximation Process:**
-
-   Now by dividing the rope, we can measure distances like \\( \frac{L}{2} \\), \\( \frac{L}{4} \\), \\( \frac{L}{8} \\) and so forth.
-
-   Let us represent the smaller divisions by \\(l_i\\) where:
-
+2. **Iterative Approximation Process:**8. [m-ary tree - Wikipedia](https://en.wikipedia.org/wiki/M-ary_tree)
+3. [B-tree - Wikipedia](https://en.wikipedia.org/wiki/B-tree)
    $$l_i = \frac{L}{2^i}$$
 
    Now, as \\(0 \le r < L\\) we can estimate \\( r \\) by using combinations of \\(l_i\\). Therefore,
@@ -175,7 +172,7 @@ Let's represent the problem mathematically:
      r \approx \frac{L}{2} + \sum\_{i=1}^{\text{max iterations}} m_i \cdot l_i
      $$
 
-3. **Sum the Total Distance:**
+4. **Sum the Total Distance:**
 
    $$
    D \approx n \cdot L + \frac{L}{2} + \sum\_{i=1}^{\text{max iterations}} m_i \cdot l_i
@@ -313,7 +310,7 @@ This function estimates the `distance` compared to the `scale`, aiming to conver
 
 #### 2. `measure_repeated(distance, scale)`
 
-This function extends `measure` by handling cases where `distance` is greater than the `scale`. It breaks the `distance` into multiples of `scale`, then applies the `measure` function on the remainder.
+This function extends `measure` by handling cases where `distance` is greater than the `scale`. z-index: 10; It breaks the `distance` into multiples of `scale`, then applies the `measure` function on the remainder.
 
 ##### Key Steps:
 
@@ -629,6 +626,86 @@ The key is that the approximation process ensures you get as close as possible t
 <p align="center">
    <img src="/images/posts/measuring-distance/adc.gif" alt="Successive Approximation ADC" style="max-width:70%"/>
 </p>
+
+## Bonus: Analogy with Binary Search Algorithm
+
+**Have you ever wondered why binary search is the most optimal technique for searching a sorted array?**
+
+In computer science, binary search, also known as half-interval search, is a search algorithm that finds the position of a target value within a sorted array. It works by dividing the search space in half with each step, reducing the time complexity to \\( O(\log n) \\), making it far faster than linear search methods.
+
+Now you must be getting to why we halve the search space in binary search rather than reducing it by a factor of, say, 3 or 4. Let's analyze this by looking at the generalized case with the **m-ary tree**:
+
+> ### m-ary Tree
+>
+> In graph theory, an m-ary tree (for nonnegative integers m) is an an ordered tree in which each node has no more than m (branching factor) children. This generalizes the concept of binary trees, where each node has at most two children i.e. > m = 2; similarly, a ternary tree is one where m = 3.
+>
+> <p align="center">
+>    <img src="/images/posts/measuring-distance/m-ary-search-tree.png" alt="m-ary search tree" style="border-radius:12px;max-width:80%"/>
+> </p>
+
+### m-ary Search Tree Efficiency
+
+To minimize the number of comparisons in an \\( m \\)-ary tree, the choice of \\( m \\) (branching factor) is critical. The goal is to balance the trade-off between the tree's **height** and the **number of comparisons** required at each node.
+
+1. **Height of the Tree**:
+
+   - The height \\( h \\) of an \\( m \\)-ary tree with \\( N \\) end-nodes is given by:
+     $$
+     \boxed{h = \lceil \log_m N \rceil}
+     $$
+   - As \\( m \\) increases, the height \\( h \\) decreases which reduces the number of levels you need to traverse.
+
+2. **Comparisons at Each Node**:
+   - At each node, the number of comparisons required is \\( m - 1 \\), because you need to decide which of the \( m \) children to follow.
+   - Larger values of \\( m \\) reduce the height of the tree but increase the number of comparisons at each node.
+
+#### **Total Comparisons**:
+
+The total number of comparisons to traverse the tree is approximately:
+
+$$
+\text{Total Comparisons} \approx (m - 1) \times h
+$$
+
+Substituting \\( h = \lceil \log_m N \rceil \\):
+
+$$
+\boxed{\text{Total Comparisons} \approx (m - 1) \times \lceil \log_m N \rceil}
+$$
+
+##### Calculation for \\( m = 3 \\) and \\( N = 1000 \\):
+
+- For \\( m = 3 \\):
+  - The height of the tree is approximately \\( \log_3 1000 \approx 6.29 \\), which rounds up to \\( h = 7 \\).
+  - The number of comparisons per node is \\( m - 1 = 2 \\) comparisons at each node.
+
+So, the total number of comparisons would be approximately:
+
+$$
+\text{Total Comparisons} \approx 7 \times 2 = 14
+$$
+
+##### Calculation for \\( m = 2 \\) (Binary Tree):
+
+- For \\( m = 2 \\) (binary tree):
+  - The height is \\( \log_2 1000 \approx 9.97 \\), which rounds up to \\( h = 10 \\).
+  - The number of comparisons per node is \\( 1 \\), because you compare between two children.
+
+So, the total number of comparisons for a binary tree is:
+
+$$
+\text{Total Comparisons} \approx 10 \times 1 = 10
+$$
+
+#### Conclusion:
+
+<p align="center">
+   <img src="/images/posts/measuring-distance/m-ary-search.png" alt="Visualization of m-ary search tree" style="border-radius:12px;max-width:95%" onclick="this.requestFullscreen()"/>
+</p>
+
+The increase in \\( m \\) helps reduce height but doesn't necessarily result in fewer total comparisons due to the higher number of comparisons per node. This emphasizes that **binary trees** often remain optimal in terms of minimizing the total number of comparisons.
+
+In some scenarios like large databases, where time to read the data far exceeds the time needed to compare keys the **m-ary search tree** might shine. Read more about [B-tree](https://en.wikipedia.org/wiki/B-tree).
 
 ## References
 
