@@ -182,6 +182,21 @@ Let's represent the problem mathematically:
    D \approx n \cdot L + \frac{L}{2} + \sum\_{i=1}^{\text{max iterations}} m_i \cdot l_i
    $$
 
+<a id="approximation-formula"> </a>
+
+### Approximation Formula
+
+$$
+\boxed{D \approx n \cdot L + \frac{L}{2} + \sum\_{i=1}^{\text{max iterations}} m_i \cdot l_i}
+$$
+
+where:
+
+- \\( L \\) is the length of the rope
+- \\( n = \left\lfloor \frac{D}{L} \right\rfloor \\) is the number of full rope lengths
+- \\( l_i = \frac{L}{2^{i+1}} \\) is the length of smaller ropes formed by successive halving
+- \\( m_i \\) is the coefficient of length \\( l_i \\) and \\( m_i \in \lbrace 1, -1\rbrace \\) for \\( i = 1, 2, \dots, k \\)
+
 ### **Example:**
 
 Suppose you have a rope of length \\( L = 8 \\) meters, and you need to measure a distance \\( D = 19 \\) meters.

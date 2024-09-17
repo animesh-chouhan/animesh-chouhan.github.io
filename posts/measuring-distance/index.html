@@ -153,7 +153,7 @@ Animesh Chouhan | Measuring Distances using Rope
   <span class="icon">
     <i class="fas fa-pencil-alt"></i>
   </span>
-  <span>4427 words</span>
+  <span>4511 words</span>
 </span>
 
             </div>
@@ -357,6 +357,18 @@ D \approx n \cdot L + \frac{L}{2} + \sum_{i=1}^{\text{max iterations}} m_i \cdot
 $$</p>
 </li>
 </ol>
+<p><a id="approximation-formula"> </a></p>
+<h3 id="approximation-formula">Approximation Formula</h3>
+<p>$$
+\boxed{D \approx n \cdot L + \frac{L}{2} + \sum_{i=1}^{\text{max iterations}} m_i \cdot l_i}
+$$</p>
+<p>where:</p>
+<ul>
+<li>\( L \) is the length of the rope</li>
+<li>\( n = \left\lfloor \frac{D}{L} \right\rfloor \) is the number of full rope lengths</li>
+<li>\( l_i = \frac{L}{2^{i+1}} \) is the length of smaller ropes formed by successive halving</li>
+<li>\( m_i \) is the coefficient of length \( l_i \) and \( m_i \in \lbrace 1, -1\rbrace \) for \( i = 1, 2, \dots, k \)</li>
+</ul>
 <h3 id="example"><strong>Example:</strong></h3>
 <p>Suppose you have a rope of length \( L = 8 \) meters, and you need to measure a distance \( D = 19 \) meters.</p>
 <ol>
