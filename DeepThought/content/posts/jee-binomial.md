@@ -127,7 +127,7 @@ As \\( (1+x)^2 = 1 + 2 \cdot x + x^2 \\) the output is:
 
 ### Optimizations
 
-Experienced competitive programmers reading this code would be smelling exponential exponential time complexity due to overlapping subproblems. Let's put a dirty one-liner hotfix to resolve this:
+Experienced competitive programmers reading this code would be smelling exponential time complexity due to overlapping subproblems. Let's put a dirty one-liner hotfix to resolve this:
 
 ```python
 # Optimized coeff of x^p in (1+mx)^n
