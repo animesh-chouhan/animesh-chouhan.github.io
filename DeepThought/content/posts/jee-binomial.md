@@ -99,7 +99,6 @@ Here's how we can implement it in Python:
 ```python
 # Coeff of x^p in (1+mx)^n
 
-
 def coeff(m, n, p):
     if p == 0:
         return 1
@@ -133,7 +132,6 @@ Experienced competitive programmers reading this code would be smelling exponent
 # Optimized coeff of x^p in (1+mx)^n
 import functools
 
-
 @functools.cache
 def coeff(m, n, p):
     if p == 0:
@@ -151,6 +149,22 @@ Better? We can improve further by implementing this using an iterative approach 
 <p align="center">
    <img src="/images/posts/jee-binomial/functools-cache.jpg" alt="functools.cache meme" style="max-width:90%"/>
 </p>
+
+#### Using `math.comb()` to find the coefficient
+
+We can also take advantage of the binomial theorem to get the coefficient. Here's how:
+
+As the coefficient of \\( x^k \\) in the expansion of \\( (1+mx)^n \\) is given by \\( {n \choose k} (m^k) \\).
+
+```python
+# Coeff of x^p in (1+mx)^n
+from math import comb
+
+def coeff_binomial(m, n, p):
+    if p > n:
+        return 0
+    return comb(n, p) * pow(m, p)
+```
 
 ## Solution
 

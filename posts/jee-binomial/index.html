@@ -153,7 +153,7 @@ Animesh Chouhan | Solving JEE Advanced Problems in Python: Exploring Binomial Ex
   <span class="icon">
     <i class="fas fa-pencil-alt"></i>
   </span>
-  <span>1121 words</span>
+  <span>1193 words</span>
 </span>
 
             </div>
@@ -280,7 +280,6 @@ mjx-container{
 <p>Here's how we can implement it in Python:</p>
 <pre data-lang="python" style="background-color:#2b303b;color:#6c7079;" class="language-python "><code class="language-python" data-lang="python"><span style="font-style:italic;color:#5f697a;"># Coeff of x^p in (1+mx)^n
 </span><span style="color:#abb2bf;">
-</span><span style="color:#abb2bf;">
 </span><span style="color:#cd74e8;">def </span><span style="color:#5cb3fa;">coeff</span><span style="color:#abb2bf;">(</span><span style="color:#eb6772;">m</span><span style="color:#abb2bf;">, </span><span style="color:#eb6772;">n</span><span style="color:#abb2bf;">, </span><span style="color:#eb6772;">p</span><span style="color:#abb2bf;">):
 </span><span style="color:#abb2bf;">    </span><span style="color:#cd74e8;">if </span><span style="color:#abb2bf;">p </span><span style="color:#adb7c9;">== </span><span style="color:#db9d63;">0</span><span style="color:#abb2bf;">:
 </span><span style="color:#abb2bf;">        </span><span style="color:#cd74e8;">return </span><span style="color:#db9d63;">1
@@ -306,7 +305,6 @@ mjx-container{
 <pre data-lang="python" style="background-color:#2b303b;color:#6c7079;" class="language-python "><code class="language-python" data-lang="python"><span style="font-style:italic;color:#5f697a;"># Optimized coeff of x^p in (1+mx)^n
 </span><span style="color:#cd74e8;">import </span><span style="color:#abb2bf;">functools
 </span><span style="color:#abb2bf;">
-</span><span style="color:#abb2bf;">
 </span><span style="color:#abb2bf;">@functools.</span><span style="color:#eb6772;">cache
 </span><span style="color:#cd74e8;">def </span><span style="color:#5cb3fa;">coeff</span><span style="color:#abb2bf;">(</span><span style="color:#eb6772;">m</span><span style="color:#abb2bf;">, </span><span style="color:#eb6772;">n</span><span style="color:#abb2bf;">, </span><span style="color:#eb6772;">p</span><span style="color:#abb2bf;">):
 </span><span style="color:#abb2bf;">    </span><span style="color:#cd74e8;">if </span><span style="color:#abb2bf;">p </span><span style="color:#adb7c9;">== </span><span style="color:#db9d63;">0</span><span style="color:#abb2bf;">:
@@ -322,6 +320,17 @@ mjx-container{
 <p align="center">
    <img src="/images/posts/jee-binomial/functools-cache.jpg" alt="functools.cache meme" style="max-width:90%"/>
 </p>
+<h4 id="using-math-comb-to-find-the-coefficient">Using <code>math.comb()</code> to find the coefficient</h4>
+<p>We can also take advantage of the binomial theorem to get the coefficient. Here's how:</p>
+<p>As the coefficient of \( x^k \) in the expansion of \( (1+mx)^n \) is given by \( {n \choose k} (m^k) \).</p>
+<pre data-lang="python" style="background-color:#2b303b;color:#6c7079;" class="language-python "><code class="language-python" data-lang="python"><span style="font-style:italic;color:#5f697a;"># Coeff of x^p in (1+mx)^n
+</span><span style="color:#cd74e8;">from </span><span style="color:#abb2bf;">math </span><span style="color:#cd74e8;">import </span><span style="color:#abb2bf;">comb
+</span><span style="color:#abb2bf;">
+</span><span style="color:#cd74e8;">def </span><span style="color:#5cb3fa;">coeff_binomial</span><span style="color:#abb2bf;">(</span><span style="color:#eb6772;">m</span><span style="color:#abb2bf;">, </span><span style="color:#eb6772;">n</span><span style="color:#abb2bf;">, </span><span style="color:#eb6772;">p</span><span style="color:#abb2bf;">):
+</span><span style="color:#abb2bf;">    </span><span style="color:#cd74e8;">if </span><span style="color:#abb2bf;">p </span><span style="color:#adb7c9;">&gt; </span><span style="color:#abb2bf;">n:
+</span><span style="color:#abb2bf;">        </span><span style="color:#cd74e8;">return </span><span style="color:#db9d63;">0
+</span><span style="color:#abb2bf;">    </span><span style="color:#cd74e8;">return </span><span style="color:#eb6772;">comb</span><span style="color:#abb2bf;">(n, p) </span><span style="color:#adb7c9;">* </span><span style="color:#5ebfcc;">pow</span><span style="color:#abb2bf;">(m, p)
+</span></code></pre>
 <h2 id="solution">Solution</h2>
 <p>Enough with the fun! Now that we have an efficient coefficient function, let's get the problem out of the way. We had the coefficient of \( x^2 \) in the expansion of:</p>
 <p>$$ (1+x)^{2}+(1+x)^{3}+\cdots+(1+x)^{49}+(1+mx)^{50} = (3n+1)^{51}C_{3} $$</p>
