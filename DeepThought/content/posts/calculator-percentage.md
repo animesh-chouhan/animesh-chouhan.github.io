@@ -75,7 +75,7 @@ The GNOME calculator [documentation](https://help.gnome.org/users/gnome-calculat
 >
 > **`25% × 80`**
 
-Gnome Calculator (or any advanced calculator) is based on a parser and evaluator system. When you input an expression like 3 + 5 \* 2 into a calculator:
+GNOME Calculator (or any advanced calculator) is based on a parser and evaluator system. When you input an expression like 3 + 5 \* 2 into a calculator:
 
 1. Lexer breaks it into tokens: 3, +, 5, \*, 2.
 2. Parser processes those tokens into a structured format (like an AST) while respecting precedence and associativity.
