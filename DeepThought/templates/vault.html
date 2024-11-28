@@ -1,0 +1,205 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<style>
+  .vault-section {
+    min-height: 100vh;
+    padding: 6rem 2rem;
+    background-color: #fafafa;
+    color: #2c2c2c;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+
+  .vault-container {
+    max-width: 700px;
+    /* Narrower container for better readability */
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  .vault-section h2 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+
+  .vault-section p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+
+  .riddle {
+    font-size: 1.2rem;
+    color: #2c2c2c;
+    margin: 2rem 0;
+    font-style: italic;
+    text-align: center;
+    position: relative;
+    padding: 2rem 0;
+  }
+
+  .riddle::before,
+  .riddle::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 1px;
+    background-color: #2c2c2c;
+  }
+
+  .riddle::before {
+    top: 0;
+  }
+
+  .riddle::after {
+    bottom: 0;
+  }
+
+  .vault-input {
+    margin: 1.5rem 0;
+    text-align: center;
+  }
+
+  .vault-input input {
+    width: 100%;
+    max-width: 400px;
+    padding: 0.8rem;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    margin-bottom: 1rem;
+  }
+
+  .vault-input button {
+    background-color: #2c2c2c;
+    color: white;
+    border: none;
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+
+  .vault-input button:hover {
+    background-color: #444;
+  }
+
+  #error-message {
+    color: #dc3545;
+    font-size: 0.9rem;
+    margin-top: 1rem;
+    display: none;
+  }
+
+  #vault-content {
+    display: none;
+    margin-top: 1rem;
+  }
+
+  #vault-content h3 {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+  }
+
+  .book-list {
+    list-style: none;
+    padding: 0;
+  }
+
+
+
+  .book-list li strong {
+    font-weight: 500;
+  }
+
+  .book-list li em {
+    font-style: italic;
+  }
+
+  /* Add a quote style */
+  .quote {
+    font-style: italic;
+    color: #666;
+    border-left: 3px solid #ddd;
+    padding-left: 1.5rem;
+    margin: 1rem 0;
+  }
+
+  @media (max-width: 768px) {
+    .vault-container {
+      padding: 2rem 1.5rem;
+    }
+
+    .vault-section {
+      padding: 4rem 1rem;
+    }
+  }
+</style>
+
+<section class="section">
+  <div class="container">
+    <div class="has-text-centered">
+      <h1 class="title is-2">Vault</h1>
+
+      <div class="vault-container" style="max-width: 700px;margin: 0 auto;padding: 1rem; text-align: left;">
+        <div class="quote">
+
+          "He that has eyes to see and ears to hear may convince himself that no mortal can keep a secret. If his lips
+          are silent, he chatters with his fingertips; betrayal oozes out of him at every pore." — Sigmund Freud
+
+        </div>
+        <p>This section contains a hidden gem.
+          To access it, answer this riddle:</p>
+        <p class="riddle"><strong>
+            What are you if your curved shape manipulates airflow to create a pressure difference and generate lift, all
+            while remaining an essential component of wings and propellers?
+          </strong></p>
+
+        <p>Enter the answer in British English, followed by the year 2024. For eg: <strong><i>screw2024</i></strong></p>
+
+        <div class="vault-input">
+          <input type="text" id="vault-answer" placeholder="Your answer here">
+          <button onclick="checkAnswer()">Submit</button>
+          <p id="error-message">Incorrect answer! Try again.</p>
+        </div>
+
+        <div id="vault-content">
+        </div>
+        <br>
+      </div>
+      <script src="https://cdn.jsdelivr.net/npm/md5@2.3.0/dist/md5.min.js"></script>
+      <script>
+
+        function checkAnswer() {
+          const userAnswer = document.getElementById("vault-answer").value.toLowerCase().trim();
+          const vaultContent = document.getElementById("vault-content");
+          const errorMessage = document.getElementById("error-message");
+
+          // Nice try, hacker, but are you sure you’ve thought this through?
+          // Try reversing this md5 hash :)
+          const correctAnswerHash = "b0e4cacd988eb06a6f7933e28f41d974";
+          const encodedData = "PGRpdiBjbGFzcz0icXVvdGUiPiJVbnRpbCBJIGZlYXJlZCBJIHdvdWxkIGxvc2UgaXQsIEkgbmV2ZXIgbG92ZWQgdG8gcmVhZC4gT25lIGRvZXMgbm90IGxvdmUgYnJlYXRoaW5nLiIgLSBIYXJwZXIgTGVlPC9kaXY+PHA+VGhpcyA8YSBocmVmPSJodHRwczovL3d3dy55b3V0dWJlLmNvbS93YXRjaD92PWRRdzR3OVdnWGNRIiB0YXJnZXQ9Il9ibGFuayI+dmlkZW88L2E+IGNvbXBsZXRlbHkgY2hhbmdlZCBteSBsaWZlLiBJIHdpc2ggSSBoYWQgc2VlbiBpdCBzb29uZXIhPC9wPjwvZGl2Pgo=";
+
+
+          if (correctAnswerHash === MD5(userAnswer)) {
+            const decodedData = window.atob(encodedData);
+            vaultContent.innerHTML = decodedData.replace("-", "—")
+            vaultContent.style.display = "block";
+            errorMessage.style.display = "none";
+          } else {
+            errorMessage.style.display = "block";
+            vaultContent.style.display = "none";
+          }
+        }
+      </script>
+      {{ macros:: social_links( social_config=config.extra.social) }}
+      <p class="my-6">
+      </p>
+    </div>
+  </div>
+</section>
+{% endblock %}

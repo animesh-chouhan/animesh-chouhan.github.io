@@ -64,6 +64,10 @@
         <loc>https://animeshchouhan.com/posts/</loc>
     </url>
     <url>
+        <loc>https://animeshchouhan.com/posts/calculator-percentage/</loc>
+        <lastmod>2024-10-13</lastmod>
+    </url>
+    <url>
         <loc>https://animeshchouhan.com/posts/circle-random/</loc>
         <lastmod>2024-02-24</lastmod>
     </url>
@@ -81,6 +85,9 @@
     </url>
     <url>
         <loc>https://animeshchouhan.com/posts/page/1/</loc>
+    </url>
+    <url>
+        <loc>https://animeshchouhan.com/posts/page/2/</loc>
     </url>
     <url>
         <loc>https://animeshchouhan.com/posts/sleepsort/</loc>
@@ -221,5 +228,8 @@
     </url>
     <url>
         <loc>https://animeshchouhan.com/tags/youtube/page/1/</loc>
+    </url>
+    <url>
+        <loc>https://animeshchouhan.com/vault/</loc>
     </url>
 </urlset>

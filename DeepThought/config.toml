@@ -171,6 +171,7 @@ navbar_items = [
         { url = "/", name = "Home" },
         { url = "/projects", name = "Projects" },
         { url = "/posts", name = "Posts" },
+        { url = "/vault", name = "Vault" },
     ] },
 ]
 
