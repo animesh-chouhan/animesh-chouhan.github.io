@@ -11,7 +11,7 @@
   
 <meta property="og:title" content="Animesh Chouhan | How Percentage Works in Calculators?" />
 <meta property="og:description" content="" />
-<meta property="og:image" content="https://animeshchouhan.com/images/posts/calculator-percentage.png" />
+<meta property="og:image" content="https://animeshchouhan.com/images/posts/calculator-percentage.jpg" />
 <meta name="description" content="">
 
 
@@ -143,7 +143,7 @@ Animesh Chouhan | How Percentage Works in Calculators?
   <span class="icon">
     <i class="far fa-calendar-alt"></i>
   </span>
-  <span><time datetime="2024-10-13">October 13, 2024</time></span>
+  <span><time datetime="2024-11-28">November 28, 2024</time></span>
 </span>
 
             </div>
@@ -153,11 +153,11 @@ Animesh Chouhan | How Percentage Works in Calculators?
   <span class="icon">
     <i class="far fa-clock"></i>
   </span>
-  <span>4 min,</span>
+  <span>5 min,</span>
   <span class="icon">
     <i class="fas fa-pencil-alt"></i>
   </span>
-  <span>703 words</span>
+  <span>958 words</span>
 </span>
 
             </div>
@@ -178,12 +178,12 @@ Animesh Chouhan | How Percentage Works in Calculators?
   </a>
   
   <a class="has-text-info-dark has-text-weight-semibold"
-    href="https://animeshchouhan.com/categories/python/">
+    href="https://animeshchouhan.com/categories/calculator/">
     <span class="icon-text">
       <span class="icon">
         <i class="fas fa-cube"></i>
       </span>
-      <span>Python</span>
+      <span>Calculator</span>
     </span>
   </a>
   
@@ -197,12 +197,12 @@ Animesh Chouhan | How Percentage Works in Calculators?
 <p>
   Tags:
   
-  <a class="has-text-info-dark has-text-weight-semibold" href="https://animeshchouhan.com/tags/python/">
+  <a class="has-text-info-dark has-text-weight-semibold" href="https://animeshchouhan.com/tags/calcuator/">
     <span class="icon-text">
       <span class="icon">
         <i class="fas fa-tag"></i>
       </span>
-      <span>python</span>
+      <span>calcuator</span>
     </span>
   </a>
   
@@ -224,7 +224,7 @@ Animesh Chouhan | How Percentage Works in Calculators?
           <div class="content mt-2">
             <!-- Add summary here -->
 <span id="continue-reading"></span><p align="center">
-   <img src="/images/posts/jee-binomial/calculator-percentage.jpg" alt="jee-binomial-meme" style="max-width:98%"/>
+   <img src="/images/posts/calculator-percentage/calculator-percentage.jpg" alt="calculator-percentage" style="max-width:98%"/>
 </p>
 <h2 id="motivation">Motivation?</h2>
 <blockquote class="twitter-tweet" align="center"><p lang="en" dir="ltr">Always trust your calculators <a href="https://t.co/xoSH7VFRT7">pic.twitter.com/xoSH7VFRT7</a></p>&mdash; World of Engineering (@engineers_feed) <a href="https://twitter.com/engineers_feed/status/1850951001190039880?ref_src=twsrc%5Etfw">October 28, 2024</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
@@ -253,7 +253,7 @@ Animesh Chouhan | How Percentage Works in Calculators?
 </span></code></pre>
 <p>Others may require you to first multiply 150 by 1.2 for the same effect.</p>
 <h2 id="implementation">Implementation</h2>
-<p>We will look at two implementation of this operator in two open-source calculators: <strong>GNOME</strong> and <strong>Android</strong> calculator</p>
+<p>We will look at the implementation of this operator in an open-source <strong>GNOME</strong> calculator.</p>
 <h3 id="gnome-calculator">GNOME Calculator</h3>
 <p>The GNOME calculator <a rel="noopener nofollow noreferrer" target="_blank" href="https://help.gnome.org/users/gnome-calculator/stable/percentage.html.en">documentation</a> describes how percentages are handled:</p>
 <blockquote>
@@ -263,42 +263,18 @@ Animesh Chouhan | How Percentage Works in Calculators?
 <p>In all other cases the percentage symbol resolves to a fraction out of 100. The following equation calculates one quarter of 80 apples ((25÷100)×80).</p>
 <p><strong><code>25% × 80</code></strong></p>
 </blockquote>
-<pre data-lang="cpp" style="background-color:#2b303b;color:#6c7079;" class="language-cpp "><code class="language-cpp" data-lang="cpp"><span style="color:#abb2bf;">public </span><span style="color:#cd74e8;">class</span><span style="color:#abb2bf;"> PercentNode </span><span style="color:#adb7c9;">:</span><span style="color:#abb2bf;"> RNode
-</span><span style="color:#abb2bf;">{
-</span><span style="color:#abb2bf;">    public </span><span style="color:#eb6772;">PercentNode </span><span style="color:#abb2bf;">(Parser parser, LexerToken</span><span style="color:#adb7c9;">?</span><span style="color:#abb2bf;"> token, uint precedence, Associativity associativity)
-</span><span style="color:#abb2bf;">    {
-</span><span style="color:#abb2bf;">        </span><span style="color:#eb6772;">base </span><span style="color:#abb2bf;">(parser, token, precedence, associativity);
-</span><span style="color:#abb2bf;">    }
-</span><span style="color:#abb2bf;">
-</span><span style="color:#abb2bf;">    public override Number</span><span style="color:#adb7c9;">? </span><span style="color:#eb6772;">solve_r </span><span style="color:#abb2bf;">(Number r)
-</span><span style="color:#abb2bf;">    {
-</span><span style="color:#abb2bf;">        </span><span style="color:#cd74e8;">return</span><span style="color:#abb2bf;"> r.</span><span style="color:#eb6772;">divide_integer </span><span style="color:#abb2bf;">(</span><span style="color:#db9d63;">100</span><span style="color:#abb2bf;">);
-</span><span style="color:#abb2bf;">    }
-</span><span style="color:#abb2bf;">}
-</span></code></pre>
-<pre data-lang="cpp" style="background-color:#2b303b;color:#6c7079;" class="language-cpp "><code class="language-cpp" data-lang="cpp"><span style="color:#abb2bf;">public </span><span style="color:#cd74e8;">class</span><span style="color:#abb2bf;"> AddNode </span><span style="color:#adb7c9;">:</span><span style="color:#abb2bf;"> LRNode
-</span><span style="color:#abb2bf;">{
-</span><span style="color:#abb2bf;">    public </span><span style="color:#cd74e8;">bool</span><span style="color:#abb2bf;"> do_percentage </span><span style="color:#adb7c9;">= </span><span style="color:#db9d63;">false</span><span style="color:#abb2bf;">;
-</span><span style="color:#abb2bf;">
-</span><span style="color:#abb2bf;">    public </span><span style="color:#eb6772;">AddNode </span><span style="color:#abb2bf;">(Parser parser, LexerToken</span><span style="color:#adb7c9;">?</span><span style="color:#abb2bf;"> token, uint precedence, Associativity associativity)
-</span><span style="color:#abb2bf;">    {
-</span><span style="color:#abb2bf;">        </span><span style="color:#eb6772;">base </span><span style="color:#abb2bf;">(parser, token, precedence, associativity);
-</span><span style="color:#abb2bf;">    }
-</span><span style="color:#abb2bf;">
-</span><span style="color:#abb2bf;">    public override Number </span><span style="color:#eb6772;">solve_lr </span><span style="color:#abb2bf;">(Number l, Number r)
-</span><span style="color:#abb2bf;">    {
-</span><span style="color:#abb2bf;">        </span><span style="color:#cd74e8;">if </span><span style="color:#abb2bf;">(do_percentage)
-</span><span style="color:#abb2bf;">        {
-</span><span style="color:#abb2bf;">            var per </span><span style="color:#adb7c9;">=</span><span style="color:#abb2bf;"> r.</span><span style="color:#eb6772;">add </span><span style="color:#abb2bf;">(</span><span style="color:#cd74e8;">new</span><span style="color:#abb2bf;"> Number.</span><span style="color:#eb6772;">integer </span><span style="color:#abb2bf;">(</span><span style="color:#db9d63;">100</span><span style="color:#abb2bf;">));
-</span><span style="color:#abb2bf;">            per </span><span style="color:#adb7c9;">=</span><span style="color:#abb2bf;"> per.</span><span style="color:#eb6772;">divide_integer </span><span style="color:#abb2bf;">(</span><span style="color:#db9d63;">100</span><span style="color:#abb2bf;">);
-</span><span style="color:#abb2bf;">            </span><span style="color:#cd74e8;">return</span><span style="color:#abb2bf;"> l.</span><span style="color:#eb6772;">multiply </span><span style="color:#abb2bf;">(per);
-</span><span style="color:#abb2bf;">        }
-</span><span style="color:#abb2bf;">        </span><span style="color:#cd74e8;">else
-</span><span style="color:#abb2bf;">            </span><span style="color:#cd74e8;">return</span><span style="color:#abb2bf;"> l.</span><span style="color:#eb6772;">add </span><span style="color:#abb2bf;">(r);
-</span><span style="color:#abb2bf;">    }
-</span><span style="color:#abb2bf;">}
-</span></code></pre>
-<p>https://github.com/GNOME/gnome-calculator/blob/8af88e1407ec47ed597068ed81db11862b82db18/lib/equation-parser.vala#L1795C1-L1803C10</p>
+<p>Gnome Calculator (or any advanced calculator) is based on a parser and evaluator system. When you input an expression like 3 + 5 * 2 into a calculator:</p>
+<ol>
+<li>Lexer breaks it into tokens: 3, +, 5, *, 2.</li>
+<li>Parser processes those tokens into a structured format (like an AST) while respecting precedence and associativity.</li>
+<li>Evaluator computes the final result using the structured format.</li>
+</ol>
+<p>Let's look at how this is implemented for the percetage operation:</p>
+<h3 id="lexer-and-parser">Lexer and Parser</h3>
+<p>The percentage operation is parsed differently depending on its context—whether it appears standalone or in conjunction with an addition or subtraction operator.</p>
+<ul>
+<li><a rel="noopener nofollow noreferrer" target="_blank" href="https://github.com/GNOME/gnome-calculator/blob/8af88e1407ec47ed597068ed81db11862b82db18/lib/equation-parser.vala#L1795C1-L1803C10">Standalone Percentage Operator</a></li>
+</ul>
 <pre data-lang="cpp" style="background-color:#2b303b;color:#6c7079;" class="language-cpp "><code class="language-cpp" data-lang="cpp"><span style="color:#cd74e8;">else if </span><span style="color:#abb2bf;">(token.</span><span style="color:#eb6772;">type </span><span style="color:#adb7c9;">==</span><span style="color:#abb2bf;"> LexerTokenType.</span><span style="color:#eb6772;">PERCENTAGE</span><span style="color:#abb2bf;">)
 </span><span style="color:#abb2bf;">{
 </span><span style="color:#abb2bf;">    </span><span style="color:#eb6772;">insert_into_tree_unary </span><span style="color:#abb2bf;">(</span><span style="color:#cd74e8;">new </span><span style="color:#eb6772;">PercentNode </span><span style="color:#abb2bf;">(</span><span style="color:#eb6772;">this</span><span style="color:#abb2bf;">, token, </span><span style="color:#eb6772;">make_precedence_t </span><span style="color:#abb2bf;">(token.</span><span style="color:#eb6772;">type</span><span style="color:#abb2bf;">), </span><span style="color:#eb6772;">get_associativity </span><span style="color:#abb2bf;">(token)));
@@ -309,8 +285,11 @@ Animesh Chouhan | How Percentage Works in Calculators?
 </span><span style="color:#abb2bf;">    </span><span style="color:#cd74e8;">return </span><span style="color:#db9d63;">true</span><span style="color:#abb2bf;">;
 </span><span style="color:#abb2bf;">}
 </span></code></pre>
-<p>https://github.com/GNOME/gnome-calculator/blob/8af88e1407ec47ed597068ed81db11862b82db18/lib/equation-parser.vala#L1870C2-L1913C10</p>
-<pre data-lang="cpp" style="background-color:#2b303b;color:#6c7079;" class="language-cpp "><code class="language-cpp" data-lang="cpp"><span style="color:#cd74e8;">else if </span><span style="color:#abb2bf;">(token.</span><span style="color:#eb6772;">type </span><span style="color:#adb7c9;">==</span><span style="color:#abb2bf;"> LexerTokenType.</span><span style="color:#eb6772;">ADD</span><span style="color:#abb2bf;">)
+<ul>
+<li><a rel="noopener nofollow noreferrer" target="_blank" href="https://github.com/GNOME/gnome-calculator/blob/8af88e1407ec47ed597068ed81db11862b82db18/lib/equation-parser.vala#L1870C2-L1913C10">Addition Operator</a></li>
+</ul>
+<p>From the source code we can see that in case of addition, the parser also checks for the existence of % operator in the operands. If % has lower precedence, it is treated as part of the addition; otherwise, it is handled as a separate percentage operation. The parser uses lookahead and rollback mechanisms to make this determination while ensuring the correct precedence and associativity.</p>
+<pre data-lang="cpp" style="background-color:#2b303b;color:#6c7079;" class="language-cpp "><code class="language-cpp" data-lang="cpp"><span style="color:#cd74e8;">if </span><span style="color:#abb2bf;">(token.</span><span style="color:#eb6772;">type </span><span style="color:#adb7c9;">==</span><span style="color:#abb2bf;"> LexerTokenType.</span><span style="color:#eb6772;">ADD</span><span style="color:#abb2bf;">)
 </span><span style="color:#abb2bf;">{
 </span><span style="color:#abb2bf;">    var node </span><span style="color:#adb7c9;">= </span><span style="color:#cd74e8;">new </span><span style="color:#eb6772;">AddNode </span><span style="color:#abb2bf;">(</span><span style="color:#eb6772;">this</span><span style="color:#abb2bf;">, token, </span><span style="color:#eb6772;">make_precedence_t </span><span style="color:#abb2bf;">(token.</span><span style="color:#eb6772;">type</span><span style="color:#abb2bf;">), </span><span style="color:#eb6772;">get_associativity </span><span style="color:#abb2bf;">(token));
 </span><span style="color:#abb2bf;">    </span><span style="color:#eb6772;">insert_into_tree </span><span style="color:#abb2bf;">(node);
@@ -346,25 +325,73 @@ Animesh Chouhan | How Percentage Works in Calculators?
 </span><span style="color:#abb2bf;">                </span><span style="color:#cd74e8;">return </span><span style="color:#db9d63;">true</span><span style="color:#abb2bf;">;
 </span><span style="color:#abb2bf;">        }
 </span><span style="color:#abb2bf;">    }
-</span><span style="color:#abb2bf;">    </span><span style="color:#cd74e8;">else
-</span><span style="color:#abb2bf;">        lexer.</span><span style="color:#eb6772;">roll_back </span><span style="color:#abb2bf;">();
-</span><span style="color:#abb2bf;">
-</span><span style="color:#abb2bf;">    </span><span style="color:#cd74e8;">if </span><span style="color:#abb2bf;">(</span><span style="color:#adb7c9;">!</span><span style="color:#eb6772;">expression_2 </span><span style="color:#abb2bf;">())
-</span><span style="color:#abb2bf;">        </span><span style="color:#cd74e8;">return </span><span style="color:#db9d63;">false</span><span style="color:#abb2bf;">;
-</span><span style="color:#abb2bf;">
-</span><span style="color:#abb2bf;">    </span><span style="color:#cd74e8;">return </span><span style="color:#db9d63;">true</span><span style="color:#abb2bf;">;
 </span><span style="color:#abb2bf;">}
 </span></code></pre>
-<p>https://gitlab.gnome.org/GNOME/gnome-calculator/-/issues/?sort=created_date&amp;state=all&amp;search=percent&amp;first_page_size=20</p>
-<h3 id="android-calculator">Android Calculator</h3>
-<p>https://android.googlesource.com/platform/packages/apps/ExactCalculator/+/7265aa3a922a7e7c0389dae4b26cca562aa777a6/src/com/android/calculator2/CalculatorExpr.java#932</p>
+<h3 id="evaluation">Evaluation</h3>
+<ul>
+<li>Standalone Percentage Operator</li>
+</ul>
+<p>When a percentage is used standalone (e.g., 50%), it typically represents the value divided by 100:</p>
+<p><code>50% → 50 / 100 → 0.5</code></p>
+<pre data-lang="cpp" style="background-color:#2b303b;color:#6c7079;" class="language-cpp "><code class="language-cpp" data-lang="cpp"><span style="color:#abb2bf;">public </span><span style="color:#cd74e8;">class</span><span style="color:#abb2bf;"> PercentNode </span><span style="color:#adb7c9;">:</span><span style="color:#abb2bf;"> RNode
+</span><span style="color:#abb2bf;">{
+</span><span style="color:#abb2bf;">    public </span><span style="color:#eb6772;">PercentNode </span><span style="color:#abb2bf;">(Parser parser, LexerToken</span><span style="color:#adb7c9;">?</span><span style="color:#abb2bf;"> token, uint precedence, Associativity associativity)
+</span><span style="color:#abb2bf;">    {
+</span><span style="color:#abb2bf;">        </span><span style="color:#eb6772;">base </span><span style="color:#abb2bf;">(parser, token, precedence, associativity);
+</span><span style="color:#abb2bf;">    }
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">    public override Number</span><span style="color:#adb7c9;">? </span><span style="color:#eb6772;">solve_r </span><span style="color:#abb2bf;">(Number r)
+</span><span style="color:#abb2bf;">    {
+</span><span style="color:#abb2bf;">        </span><span style="color:#cd74e8;">return</span><span style="color:#abb2bf;"> r.</span><span style="color:#eb6772;">divide_integer </span><span style="color:#abb2bf;">(</span><span style="color:#db9d63;">100</span><span style="color:#abb2bf;">);
+</span><span style="color:#abb2bf;">    }
+</span><span style="color:#abb2bf;">}
+</span></code></pre>
+<ul>
+<li>Addition Operator</li>
+</ul>
+<p>When percentages are combined with + or -, they usually operate on the preceding value:</p>
+<p><code>100 + 50% → 100 + (100 * 50 / 100) → 100 + 50 → 150</code></p>
+<pre data-lang="cpp" style="background-color:#2b303b;color:#6c7079;" class="language-cpp "><code class="language-cpp" data-lang="cpp"><span style="color:#abb2bf;">public </span><span style="color:#cd74e8;">class</span><span style="color:#abb2bf;"> AddNode </span><span style="color:#adb7c9;">:</span><span style="color:#abb2bf;"> LRNode
+</span><span style="color:#abb2bf;">{
+</span><span style="color:#abb2bf;">    public </span><span style="color:#cd74e8;">bool</span><span style="color:#abb2bf;"> do_percentage </span><span style="color:#adb7c9;">= </span><span style="color:#db9d63;">false</span><span style="color:#abb2bf;">;
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">    public </span><span style="color:#eb6772;">AddNode </span><span style="color:#abb2bf;">(Parser parser, LexerToken</span><span style="color:#adb7c9;">?</span><span style="color:#abb2bf;"> token, uint precedence, Associativity associativity)
+</span><span style="color:#abb2bf;">    {
+</span><span style="color:#abb2bf;">        </span><span style="color:#eb6772;">base </span><span style="color:#abb2bf;">(parser, token, precedence, associativity);
+</span><span style="color:#abb2bf;">    }
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">    public override Number </span><span style="color:#eb6772;">solve_lr </span><span style="color:#abb2bf;">(Number l, Number r)
+</span><span style="color:#abb2bf;">    {
+</span><span style="color:#abb2bf;">        </span><span style="color:#cd74e8;">if </span><span style="color:#abb2bf;">(do_percentage)
+</span><span style="color:#abb2bf;">        {
+</span><span style="color:#abb2bf;">            var per </span><span style="color:#adb7c9;">=</span><span style="color:#abb2bf;"> r.</span><span style="color:#eb6772;">add </span><span style="color:#abb2bf;">(</span><span style="color:#cd74e8;">new</span><span style="color:#abb2bf;"> Number.</span><span style="color:#eb6772;">integer </span><span style="color:#abb2bf;">(</span><span style="color:#db9d63;">100</span><span style="color:#abb2bf;">));
+</span><span style="color:#abb2bf;">            per </span><span style="color:#adb7c9;">=</span><span style="color:#abb2bf;"> per.</span><span style="color:#eb6772;">divide_integer </span><span style="color:#abb2bf;">(</span><span style="color:#db9d63;">100</span><span style="color:#abb2bf;">);
+</span><span style="color:#abb2bf;">            </span><span style="color:#cd74e8;">return</span><span style="color:#abb2bf;"> l.</span><span style="color:#eb6772;">multiply </span><span style="color:#abb2bf;">(per);
+</span><span style="color:#abb2bf;">        }
+</span><span style="color:#abb2bf;">        </span><span style="color:#cd74e8;">else
+</span><span style="color:#abb2bf;">            </span><span style="color:#cd74e8;">return</span><span style="color:#abb2bf;"> l.</span><span style="color:#eb6772;">add </span><span style="color:#abb2bf;">(r);
+</span><span style="color:#abb2bf;">    }
+</span><span style="color:#abb2bf;">}
+</span></code></pre>
+<h2 id="original-question">Original Question</h2>
+<p>Now coming back to the original question:</p>
+<p><strong><code>1% - 1%</code></strong></p>
+<p>The evaluation depends on the calculator's implementation of precedence and associativity. However, in most calculators, it is typically evaluated as follows:</p>
+<pre style="background-color:#2b303b;color:#6c7079;"><code><span style="color:#abb2bf;">1% - 1% = 0.01 - 1%
+</span><span style="color:#abb2bf;">        = 0.01 - (0.01 * 1 / 100)
+</span><span style="color:#abb2bf;">        = 0.01 - 0.0001 = 0.0099
+</span></code></pre>
+<!-- https://gitlab.gnome.org/GNOME/gnome-calculator/-/issues/?sort=created_date&state=all&search=percent&first_page_size=20 -->
+<!-- ### Android Calculator
+
+https://android.googlesource.com/platform/packages/apps/ExactCalculator/+/7265aa3a922a7e7c0389dae4b26cca562aa777a6/src/com/android/calculator2/CalculatorExpr.java#932 -->
 <h2 id="conclusion">Conclusion</h2>
 <p>Calculators handle percentages intuitively for most simple operations, but when working with more complex scenarios—like increases followed by discounts—understanding the underlying math becomes essential. Familiarizing yourself with these patterns will allow you to leverage the full potential of percentages in everyday calculations!</p>
 <h2 id="references">References</h2>
 <ol>
-<li><a rel="noopener nofollow noreferrer" target="_blank" href="https://jeeadv.ac.in/archive.html">JEE (Advanced) Archive</a></li>
+<li><a rel="noopener nofollow noreferrer" target="_blank" href="https://www.wikihow.com/Do-Percentages-on-a-Calculator">Using a Calculator: How to Do Percentages for School &amp; Work</a></li>
 <li><a rel="noopener nofollow noreferrer" target="_blank" href="https://help.gnome.org/users/gnome-calculator/stable/percentage.html.en">Percentages</a></li>
-<li><a rel="noopener nofollow noreferrer" target="_blank" href="https://docs.python.org/3/library/functools.html">functools — Python 3.13.0 documentation</a></li>
+<li><a rel="noopener nofollow noreferrer" target="_blank" href="https://github.com/GNOME/gnome-calculator/">GNOME/gnome-calculator</a></li>
 </ol>
 <h2 id="stay-tuned">Stay Tuned</h2>
 <p>Hope you enjoyed reading this. Stay tuned for more cool stuff coming your way!</p>

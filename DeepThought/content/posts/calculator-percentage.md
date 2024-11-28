@@ -1,12 +1,12 @@
 +++
 title="How Percentage Works in Calculators?"
-extra.featured="/images/posts/calculator-percentage.png"
-date=2024-10-13
+extra.featured="/images/posts/calculator-percentage.jpg"
+date=2024-11-28
 extra.status="Done"
 
 [taxonomies]
-categories = ["Maths", "Python"]
-tags = ["python", "maths"]
+categories = ["Maths", "Calculator"]
+tags = ["calcuator", "maths"]
 
 +++
 
@@ -15,7 +15,7 @@ tags = ["python", "maths"]
 <!-- more -->
 
 <p align="center">
-   <img src="/images/posts/jee-binomial/calculator-percentage.jpg" alt="jee-binomial-meme" style="max-width:98%"/>
+   <img src="/images/posts/calculator-percentage/calculator-percentage.jpg" alt="calculator-percentage" style="max-width:98%"/>
 </p>
 
 ## Motivation?
@@ -59,7 +59,7 @@ Others may require you to first multiply 150 by 1.2 for the same effect.
 
 ## Implementation
 
-We will look at two implementation of this operator in two open-source calculators: **GNOME** and **Android** calculator
+We will look at the implementation of this operator in an open-source **GNOME** calculator.
 
 ### GNOME Calculator
 
@@ -75,46 +75,19 @@ The GNOME calculator [documentation](https://help.gnome.org/users/gnome-calculat
 >
 > **`25% × 80`**
 
-```cpp
-public class PercentNode : RNode
-{
-    public PercentNode (Parser parser, LexerToken? token, uint precedence, Associativity associativity)
-    {
-        base (parser, token, precedence, associativity);
-    }
+Gnome Calculator (or any advanced calculator) is based on a parser and evaluator system. When you input an expression like 3 + 5 \* 2 into a calculator:
 
-    public override Number? solve_r (Number r)
-    {
-        return r.divide_integer (100);
-    }
-}
-```
+1. Lexer breaks it into tokens: 3, +, 5, \*, 2.
+2. Parser processes those tokens into a structured format (like an AST) while respecting precedence and associativity.
+3. Evaluator computes the final result using the structured format.
 
-```cpp
-public class AddNode : LRNode
-{
-    public bool do_percentage = false;
+Let's look at how this is implemented for the percetage operation:
 
-    public AddNode (Parser parser, LexerToken? token, uint precedence, Associativity associativity)
-    {
-        base (parser, token, precedence, associativity);
-    }
+### Lexer and Parser
 
-    public override Number solve_lr (Number l, Number r)
-    {
-        if (do_percentage)
-        {
-            var per = r.add (new Number.integer (100));
-            per = per.divide_integer (100);
-            return l.multiply (per);
-        }
-        else
-            return l.add (r);
-    }
-}
-```
+The percentage operation is parsed differently depending on its context—whether it appears standalone or in conjunction with an addition or subtraction operator.
 
-https://github.com/GNOME/gnome-calculator/blob/8af88e1407ec47ed597068ed81db11862b82db18/lib/equation-parser.vala#L1795C1-L1803C10
+- [Standalone Percentage Operator](https://github.com/GNOME/gnome-calculator/blob/8af88e1407ec47ed597068ed81db11862b82db18/lib/equation-parser.vala#L1795C1-L1803C10)
 
 ```cpp
 else if (token.type == LexerTokenType.PERCENTAGE)
@@ -128,10 +101,12 @@ else if (token.type == LexerTokenType.PERCENTAGE)
 }
 ```
 
-https://github.com/GNOME/gnome-calculator/blob/8af88e1407ec47ed597068ed81db11862b82db18/lib/equation-parser.vala#L1870C2-L1913C10
+- [Addition Operator](https://github.com/GNOME/gnome-calculator/blob/8af88e1407ec47ed597068ed81db11862b82db18/lib/equation-parser.vala#L1870C2-L1913C10)
+
+From the source code we can see that in case of addition, the parser also checks for the existence of % operator in the operands. If % has lower precedence, it is treated as part of the addition; otherwise, it is handled as a separate percentage operation. The parser uses lookahead and rollback mechanisms to make this determination while ensuring the correct precedence and associativity.
 
 ```cpp
-else if (token.type == LexerTokenType.ADD)
+if (token.type == LexerTokenType.ADD)
 {
     var node = new AddNode (this, token, make_precedence_t (token.type), get_associativity (token));
     insert_into_tree (node);
@@ -167,21 +142,81 @@ else if (token.type == LexerTokenType.ADD)
                 return true;
         }
     }
-    else
-        lexer.roll_back ();
-
-    if (!expression_2 ())
-        return false;
-
-    return true;
 }
 ```
 
-https://gitlab.gnome.org/GNOME/gnome-calculator/-/issues/?sort=created_date&state=all&search=percent&first_page_size=20
+### Evaluation
 
-### Android Calculator
+- Standalone Percentage Operator
 
-https://android.googlesource.com/platform/packages/apps/ExactCalculator/+/7265aa3a922a7e7c0389dae4b26cca562aa777a6/src/com/android/calculator2/CalculatorExpr.java#932
+When a percentage is used standalone (e.g., 50%), it typically represents the value divided by 100:
+
+`50% → 50 / 100 → 0.5`
+
+```cpp
+public class PercentNode : RNode
+{
+    public PercentNode (Parser parser, LexerToken? token, uint precedence, Associativity associativity)
+    {
+        base (parser, token, precedence, associativity);
+    }
+
+    public override Number? solve_r (Number r)
+    {
+        return r.divide_integer (100);
+    }
+}
+```
+
+- Addition Operator
+
+When percentages are combined with + or -, they usually operate on the preceding value:
+
+`100 + 50% → 100 + (100 * 50 / 100) → 100 + 50 → 150`
+
+```cpp
+public class AddNode : LRNode
+{
+    public bool do_percentage = false;
+
+    public AddNode (Parser parser, LexerToken? token, uint precedence, Associativity associativity)
+    {
+        base (parser, token, precedence, associativity);
+    }
+
+    public override Number solve_lr (Number l, Number r)
+    {
+        if (do_percentage)
+        {
+            var per = r.add (new Number.integer (100));
+            per = per.divide_integer (100);
+            return l.multiply (per);
+        }
+        else
+            return l.add (r);
+    }
+}
+```
+
+## Original Question
+
+Now coming back to the original question:
+
+**`1% - 1%`**
+
+The evaluation depends on the calculator's implementation of precedence and associativity. However, in most calculators, it is typically evaluated as follows:
+
+```
+1% - 1% = 0.01 - 1%
+        = 0.01 - (0.01 * 1 / 100)
+        = 0.01 - 0.0001 = 0.0099
+```
+
+<!-- https://gitlab.gnome.org/GNOME/gnome-calculator/-/issues/?sort=created_date&state=all&search=percent&first_page_size=20 -->
+
+<!-- ### Android Calculator
+
+https://android.googlesource.com/platform/packages/apps/ExactCalculator/+/7265aa3a922a7e7c0389dae4b26cca562aa777a6/src/com/android/calculator2/CalculatorExpr.java#932 -->
 
 ## Conclusion
 
@@ -189,9 +224,9 @@ Calculators handle percentages intuitively for most simple operations, but when 
 
 ## References
 
-1. [JEE (Advanced) Archive](https://jeeadv.ac.in/archive.html)
+1. [Using a Calculator: How to Do Percentages for School & Work](https://www.wikihow.com/Do-Percentages-on-a-Calculator)
 2. [Percentages](https://help.gnome.org/users/gnome-calculator/stable/percentage.html.en)
-3. [functools — Python 3.13.0 documentation](https://docs.python.org/3/library/functools.html)
+3. [GNOME/gnome-calculator](https://github.com/GNOME/gnome-calculator/)
 
 ## Stay Tuned
 
