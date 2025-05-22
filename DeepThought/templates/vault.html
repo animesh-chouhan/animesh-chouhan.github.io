@@ -159,7 +159,7 @@
             while remaining an essential component of wings and propellers?
           </strong></p>
 
-        <p>Enter the answer in British English, followed by the year 2024. For eg: <strong><i>screw2024</i></strong></p>
+        <p>Enter the answer in British English, followed by the year 2025. For eg: <strong><i>screw2025</i></strong></p>
 
         <div class="vault-input">
           <input type="text" id="vault-answer" placeholder="Your answer here">
@@ -170,36 +170,48 @@
         <div id="vault-content">
         </div>
         <br>
+        <p class="has-text-centered">
+          <b>Credits:</b> <a href="https://khushimittal.com/" target="_blank" rel="noopener noreferrer">Khushi Mittal's
+            Vault</a>
+        </p>
       </div>
-      <script src="https://cdn.jsdelivr.net/npm/md5@2.3.0/dist/md5.min.js"></script>
-      <script>
-
-        function checkAnswer() {
-          const userAnswer = document.getElementById("vault-answer").value.toLowerCase().trim();
-          const vaultContent = document.getElementById("vault-content");
-          const errorMessage = document.getElementById("error-message");
-
-          // Nice try, hacker, but are you sure you’ve thought this through?
-          // Try reversing this md5 hash :)
-          const correctAnswerHash = "b0e4cacd988eb06a6f7933e28f41d974";
-          const encodedData = "PGRpdiBjbGFzcz0icXVvdGUiPiJUaGUgZ3JlYXRlc3QgZ29vZCB5b3UgY2FuIGRvIGZvciBhbm90aGVyIGlzIG5vdCBqdXN0IHRvIHNoYXJlIHlvdXIgcmljaGVzLCBidXQgdG8gcmV2ZWFsIHRvIGhpbSBoaXMgb3duLiIgLSBCZW5qYW1pbiBEaXNyYWVsaTwvZGl2PjxwPlRoaXMgPGEgaHJlZj0iaHR0cHM6Ly93d3cueW91dHViZS5jb20vd2F0Y2g/dj1kUXc0dzlXZ1hjUSIgdGFyZ2V0PSJfYmxhbmsiPnZpZGVvPC9hPiBjb21wbGV0ZWx5IGNoYW5nZWQgbXkgbGlmZS4gSSB3aXNoIEkgaGFkIHNlZW4gaXQgc29vbmVyITwvcD48L2Rpdj4K";
-
-
-          if (correctAnswerHash === MD5(userAnswer)) {
-            const decodedData = window.atob(encodedData);
-            vaultContent.innerHTML = decodedData.replace("-", "—")
-            vaultContent.style.display = "block";
-            errorMessage.style.display = "none";
-          } else {
-            errorMessage.style.display = "block";
-            vaultContent.style.display = "none";
-          }
-        }
-      </script>
-      {{ macros:: social_links( social_config=config.extra.social) }}
-      <p class="my-6">
-      </p>
+      <div class="quote">"The greatest good you can do for another is not just to share your riches, but to reveal to
+        him his own." - Benjamin Disraeli</div>
+      <p>This <a style="cursor: pointer;"
+          onclick="window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ', '_blank');">video</a> completely changed
+        my life. I wish I had seen it sooner!</p>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/md5@2.3.0/dist/md5.min.js"></script>
+    <script>
+
+      function checkAnswer() {
+        const userAnswer = document.getElementById("vault-answer").value.toLowerCase().trim();
+        const vaultContent = document.getElementById("vault-content");
+        const errorMessage = document.getElementById("error-message");
+
+        // Nice try, hacker, but are you sure you’ve thought this through?
+        // Try reversing this md5 hash :)
+        const correctAnswerHash = "1727f648084d5d5da24b75aefd918084";
+        const encodedData = "PGRpdiBjbGFzcz0icXVvdGUiPiJUaGUgZ3JlYXRlc3QgZ29vZCB5b3UgY2FuIGRvIGZvciBhbm90aGVyIGlzIG5vdCBqdXN0IHRvIHNoYXJlIHlvdXIgcmljaGVzLCBidXQgdG8gcmV2ZWFsIHRvIGhpbSBoaXMgb3duLiIgLSBCZW5qYW1pbiBEaXNyYWVsaTwvZGl2PjxwPlRoaXMgPGEgaHJlZj0iaHR0cHM6Ly93d3cueW91dHViZS5jb20vd2F0Y2g/dj1kUXc0dzlXZ1hjUSIgdGFyZ2V0PSJfYmxhbmsiPnZpZGVvPC9hPiBjb21wbGV0ZWx5IGNoYW5nZWQgbXkgbGlmZS4gSSB3aXNoIEkgaGFkIHNlZW4gaXQgc29vbmVyITwvcD48L2Rpdj4K";
+
+
+        if (correctAnswerHash === MD5(userAnswer)) {
+          const decodedData = window.atob(encodedData);
+          vaultContent.innerHTML = decodedData.replace("-", "—")
+          vaultContent.style.display = "block";
+          errorMessage.style.display = "none";
+        } else {
+          errorMessage.style.display = "block";
+          vaultContent.style.display = "none";
+        }
+      }
+
+
+    </script>
+    {{ macros:: social_links( social_config=config.extra.social) }}
+
+  </div>
   </div>
 </section>
 {% endblock %}
