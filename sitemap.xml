@@ -7,6 +7,12 @@
         <loc>https://animeshchouhan.com/categories/</loc>
     </url>
     <url>
+        <loc>https://animeshchouhan.com/categories/ai/</loc>
+    </url>
+    <url>
+        <loc>https://animeshchouhan.com/categories/ai/page/1/</loc>
+    </url>
+    <url>
         <loc>https://animeshchouhan.com/categories/algorithms/</loc>
     </url>
     <url>
@@ -76,6 +82,10 @@
     <url>
         <loc>https://animeshchouhan.com/posts/circle-random/</loc>
         <lastmod>2024-02-24</lastmod>
+    </url>
+    <url>
+        <loc>https://animeshchouhan.com/posts/differentiation/</loc>
+        <lastmod>2025-06-01</lastmod>
     </url>
     <url>
         <loc>https://animeshchouhan.com/posts/dotfiles/</loc>

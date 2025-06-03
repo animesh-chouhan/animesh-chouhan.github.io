@@ -295,41 +295,135 @@
             Vault</a>
         </p>
       </div>
-      <div class="quote">"The greatest good you can do for another is not just to share your riches, but to reveal to
-        him his own." - Benjamin Disraeli</div>
-      <p>This <a style="cursor: pointer;"
-          onclick="window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ', '_blank');">video</a> completely changed
-        my life. I wish I had seen it sooner!</p>
-    </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/md5@2.3.0/dist/md5.min.js"></script>
-    <script>
+      <script src="https://cdn.jsdelivr.net/npm/md5@2.3.0/dist/md5.min.js"></script>
+      <script>
 
-      function checkAnswer() {
-        const userAnswer = document.getElementById("vault-answer").value.toLowerCase().trim();
-        const vaultContent = document.getElementById("vault-content");
-        const errorMessage = document.getElementById("error-message");
-
-        // Nice try, hacker, but are you sure you’ve thought this through?
-        // Try reversing this md5 hash :)
-        const correctAnswerHash = "1727f648084d5d5da24b75aefd918084";
-        const encodedData = "PGRpdiBjbGFzcz0icXVvdGUiPiJUaGUgZ3JlYXRlc3QgZ29vZCB5b3UgY2FuIGRvIGZvciBhbm90aGVyIGlzIG5vdCBqdXN0IHRvIHNoYXJlIHlvdXIgcmljaGVzLCBidXQgdG8gcmV2ZWFsIHRvIGhpbSBoaXMgb3duLiIgLSBCZW5qYW1pbiBEaXNyYWVsaTwvZGl2PjxwPlRoaXMgPGEgaHJlZj0iaHR0cHM6Ly93d3cueW91dHViZS5jb20vd2F0Y2g/dj1kUXc0dzlXZ1hjUSIgdGFyZ2V0PSJfYmxhbmsiPnZpZGVvPC9hPiBjb21wbGV0ZWx5IGNoYW5nZWQgbXkgbGlmZS4gSSB3aXNoIEkgaGFkIHNlZW4gaXQgc29vbmVyITwvcD48L2Rpdj4K";
-
-
-        if (correctAnswerHash === MD5(userAnswer)) {
-          const decodedData = window.atob(encodedData);
-          vaultContent.innerHTML = decodedData.replace("-", "—")
-          vaultContent.style.display = "block";
-          errorMessage.style.display = "none";
-        } else {
-          errorMessage.style.display = "block";
-          vaultContent.style.display = "none";
+        async function hashKey(password) {
+          const keyMaterial = await crypto.subtle.importKey(
+            "raw",
+            new TextEncoder().encode(password),
+            { name: "PBKDF2" },
+            false,
+            ["deriveBits"]
+          );
+          const keyBits = await crypto.subtle.deriveBits(
+            {
+              name: "PBKDF2",
+              salt: new Uint8Array([]), // No salt for deterministic hashing
+              iterations: 1,
+              hash: "SHA-256",
+            },
+            keyMaterial,
+            256
+          );
+          return keyBits;
         }
-      }
+
+        async function encryptData(plaintext, password) {
+          const keyBits = await hashKey(password);
+          const aesKey = await crypto.subtle.importKey(
+            "raw",
+            keyBits,
+            "AES-GCM",
+            false,
+            ["encrypt"]
+          );
+          const iv = crypto.getRandomValues(new Uint8Array(12));
+          const encodedText = new TextEncoder().encode(plaintext);
+          const ciphertext = await crypto.subtle.encrypt(
+            { name: "AES-GCM", iv },
+            aesKey,
+            encodedText
+          );
+
+          return {
+            iv: buf2hex(iv),
+            ciphertext: buf2hex(ciphertext)
+          };
+        }
+
+        async function decryptData(ivHex, ciphertextHex, password) {
+          try {
+            const keyBits = await hashKey(password);
+            const aesKey = await crypto.subtle.importKey(
+              "raw",
+              keyBits,
+              "AES-GCM",
+              false,
+              ["decrypt"]
+            );
+            const iv = hex2buf(ivHex);
+            const ciphertext = hex2buf(ciphertextHex);
+            const decrypted = await crypto.subtle.decrypt(
+              { name: "AES-GCM", iv },
+              aesKey,
+              ciphertext
+            );
+            return new TextDecoder().decode(decrypted);
+          } catch (err) {
+            return "**Incorrect key or corrupted data**";
+          }
+        }
+
+        // Utility functions
+        function buf2hex(buffer) {
+          return [...new Uint8Array(buffer)]
+            .map(b => b.toString(16).padStart(2, "0"))
+            .join("");
+        }
+
+        function hex2buf(hex) {
+          const bytes = new Uint8Array(hex.length / 2);
+          for (let i = 0; i < hex.length; i += 2) {
+            bytes[i / 2] = parseInt(hex.substring(i, i + 2), 16);
+          }
+          return bytes;
+        }
+
+        // 🔐 DEMO
+        // (async () => {
+        //   const password = "answer";
+        //   const plaintext = "Secret launch codes: 1234";
+
+        //   const { iv, ciphertext } = await encryptData(plaintext, password);
+        //   console.log("Encrypted:");
+        //   console.log("IV:", iv);
+        //   console.log("Ciphertext:", ciphertext);
+
+        //   // Simulate user typing the password later:
+        //   const userInput = "answer"; // try changing this to a wrong password
+        //   const decrypted = await decryptData(iv, ciphertext, userInput);
+        //   console.log("Decrypted:", decrypted);
+        // })();
 
 
-    </script>
-    
+        async function checkAnswer() {
+          const userAnswer = document.getElementById("vault-answer").value.toLowerCase().trim();
+          const vaultContent = document.getElementById("vault-content");
+          const errorMessage = document.getElementById("error-message");
+
+          // Nice try, hacker, but are you sure you’ve thought this through?
+          // Try reversing this md5 hash and encryption :)
+          const correctAnswerHash = "1727f648084d5d5da24b75aefd918084";
+          const iv = "d004bafe4caeb3b8227d3bd7"
+          const cipherText = "f69fd25933f4d28b50242477d4493e68fe78d8afab9d412d8013e8eb33da5217128f5c0eef7253e949936d616d559bfad24b675248861f7b052f3ed663e85e6d55919c4c67b78fe5e27669adfffe69b9c17e535b7ee7cea2a4485014a932fad789b311426af9f32916456a03220f709eb45cdc2fd83b3b2d04744c4219326fa79d5d4d1b2d4ff5c2f18ad6b1168a1f7ace941a1c34b038ab28b80b2ab49c11ab53e009ce53631265b857fca6e9f42e1fc65d6e8c9ea5ee26e97772fba5c44099fdf4006ad5e6c61a4941e6e47889fd6f542112362cb0a395c772b706c6e165bacfa2b089236debf6e44e544dac035a1916d547728ac36d7d0081accc970d96c9c99fe42d72922c6d53058e3477b18ac6ae750759eec1c7a3022c7ad684e78a71982d70b73a562bb6bd52b1dbacc621656c52b0e599480d194441bc0a8d5d31d4d75aa85e85a268912c020c6b58611db41ee1fe236c2d37a4312850fd5e21fce77b4ea699cf3cae9dc136153145515c6c36ea35e62e27d16cb8d3a55f1d6c5a4f9544385005aa3bdc68f95f7c2893861aad372d174ab42cf07bfeac94c450882605e457f811837856"
+
+          if (correctAnswerHash === MD5(userAnswer)) {
+            const encodedData = await decryptData(iv, cipherText, userAnswer);
+            const decodedData = window.atob(encodedData);
+            vaultContent.innerHTML = decodedData.replace("-", "—")
+            vaultContent.style.display = "block";
+            errorMessage.style.display = "none";
+          } else {
+            errorMessage.style.display = "block";
+            vaultContent.style.display = "none";
+          }
+        }
+
+
+      </script>
+      
 <p>
   
 
@@ -419,7 +513,7 @@
 </p>
 
 
-  </div>
+    </div>
   </div>
 </section>
 
@@ -487,7 +581,7 @@
           <span class="icon">
             <i class="far fa-copyright"></i>
           </span>
-          <span>2024</span>
+          <span>2025</span>
         </span>
       </p>
     </div>

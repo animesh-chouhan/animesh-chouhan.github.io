@@ -7,7 +7,16 @@
       <generator>Zola</generator>
       <language>en</language>
       <atom:link href="https://animeshchouhan.com/tags/python/rss.xml" rel="self" type="application/rss+xml"/>
-      <lastBuildDate>Sun, 13 Oct 2024 00:00:00 +0000</lastBuildDate>
+      <lastBuildDate>Sun, 01 Jun 2025 00:00:00 +0000</lastBuildDate>
+      <item>
+          <title>How Differentiation Works in Computers? 🧮</title>
+          <pubDate>Sun, 01 Jun 2025 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://animeshchouhan.com/posts/differentiation/</link>
+          <guid>https://animeshchouhan.com/posts/differentiation/</guid>
+          <description xml:base="https://animeshchouhan.com/posts/differentiation/">&lt;!-- Add summary here --&gt;
+</description>
+      </item>
       <item>
           <title>Solving JEE Advanced Problems in Python: Exploring Binomial Expansion</title>
           <pubDate>Sun, 13 Oct 2024 00:00:00 +0000</pubDate>
