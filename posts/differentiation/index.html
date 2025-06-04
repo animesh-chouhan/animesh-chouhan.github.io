@@ -153,11 +153,11 @@ Animesh Chouhan | How Differentiation Works in Computers? 🧮
   <span class="icon">
     <i class="far fa-clock"></i>
   </span>
-  <span>4 min,</span>
+  <span>6 min,</span>
   <span class="icon">
     <i class="fas fa-pencil-alt"></i>
   </span>
-  <span>633 words</span>
+  <span>1066 words</span>
 </span>
 
             </div>
@@ -301,6 +301,44 @@ $$</p>
 </ol>
 <p align="center">
    <img src="/images/posts/differentiation/gradient_descent.jpg" alt="gradient_descent" style="max-width:70%"/>
+</p>
+<h2 id="differentiation-methods">Differentiation Methods</h2>
+<p>When it comes to differentiating with a computer, our first instinct is often the method we learned in high school, using known rules for common functions and applying them step by step. Let’s take a closer look at how that works!</p>
+<h3 id="symbolic-differentiation">Symbolic Differentiation</h3>
+<p>Symbolic differentiation relies on the fundamental definition of a derivative which is taking the limit of the difference quotient. After establishing the derivatives of basic functions, we can systematically apply differentiation rules to compute the derivatives of more complex expressions.</p>
+<p>$$
+\boxed{L = \lim_{h \to 0} \frac{f(a + h) - f(a)}{h}}
+$$</p>
+<p>Let’s calculate it for a simple function: \( f(x)=x^n \)</p>
+<p>$$
+\displaylines{\begin{align} f(x) &amp;= x^n \\ f'(x) &amp;= \lim_{h \to 0} \frac{f(x+h) - f(x)}{h} \\ &amp;= \lim_{h \to 0} \frac{(x + h)^n - x^n}{h}\end{align}}
+$$</p>
+<p>Now apply the <strong>Binomial Theorem</strong>:</p>
+<p>$$
+(x + h)^n = x^n + n x^{n-1} h + \frac{n(n-1)}{2!} x^{n-2} h^2 + \cdots + h^n
+$$</p>
+<p>Substitute this back into the limit:</p>
+<p>$$
+\displaylines{\begin{align}f'(x) &amp;= \lim_{h \to 0} \frac{x^n + nx^{n-1}h + \frac{n(n-1)}{2!}x^{n-2}h^2 + \cdots + h^n - x^n}{h} \\ &amp;= \lim_{h \to 0} \frac{nx^{n-1}h + \frac{n(n-1)}{2!}x^{n-2}h^2 + \cdots + h^n}{h} \\ &amp;= \lim_{h \to 0} \left(nx^{n-1} + \frac{n(n-1)}{2!}x^{n-2}h + \cdots + h^{n-1}\right) \\ &amp;= nx^{n-1}\end{align}}
+$$</p>
+<p>Using the power rule from symbolic differentiation, the derivative is:</p>
+<p>$$
+\frac{d}{dx} x^n = n x^{n-1}
+$$</p>
+<p>This rule is one of the foundational results and forms the basis for differentiating more complex expressions built from powers of \(x\). You’ve probably seen a sheet that lists differentiation rules formulas like this:</p>
+<p align="center">
+   <img src="/images/posts/differentiation/derivative-rules.png" alt="derivate_rules" style="max-width:90%"/>
+</p>
+<p>By breaking a complex function into smaller components and systematically applying basic rules such as the power, product, and chain rules you can compute the derivative of complex functions step-by-step.</p>
+<h2 id="references">References</h2>
+<ol>
+<li><a rel="noopener nofollow noreferrer" target="_blank" href="https://en.wikipedia.org/wiki/Derivative">Derivative - Wikipedia</a></li>
+<li><a rel="noopener nofollow noreferrer" target="_blank" href="https://www.mathmindsacademy.com/differentiation-rules.html">Differentiation Rules - MATH MINDS ACADEMY</a></li>
+</ol>
+<h2 id="stay-tuned">Stay Tuned</h2>
+<p>Hope you enjoyed reading this. Stay tuned for more cool stuff coming your way!<br><br></p>
+<p align="center">
+<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/4JGKZS7h4Qa16gOU3oNETV?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
 </p>
 
           </div>
