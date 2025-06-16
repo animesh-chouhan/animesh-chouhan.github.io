@@ -23,7 +23,7 @@ tags = ["python", "maths"]
 It all started when I was watching the YouTube video on [Finding The Slope Algorithm (Forward Mode Automatic Differentiation)](https://www.youtube.com/watch?v=QwFLA5TrviI&ab_channel=Computerphile) by Computerphile:
 
 <p align="center" >
-<iframe style="max-width: 90%;" width="625" height="350" src="https://www.youtube.com/embed/QwFLA5TrviI?si=Stvftc2CmPGQJGSQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe style="width: 90%;aspect-ratio: 16 / 9;" src="https://www.youtube.com/embed/QwFLA5TrviI?si=Stvftc2CmPGQJGSQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </p>
 
 In this video, Mark Williams demonstrates Forward Mode Automatic Differentiation and explains how it addresses the limitations of traditional methods like [Symbolic](https://en.wikipedia.org/wiki/Computer_algebra) and [Numerical](https://en.wikipedia.org/wiki/Numerical_differentiation) Differentiation. The video also introduces the concept of [Dual Numbers](https://en.wikipedia.org/wiki/Dual_number) and shows how they can be efficiently used to compute the gradient of a function at any point.
@@ -103,7 +103,7 @@ This makes derivatives crucial wherever change, sensitivity, or optimization is 
 
 When it comes to differentiating with a computer, our first instinct is often the method we learned in high school, using known rules for common functions and applying them step by step. Let’s take a closer look at how that works!
 
-### Symbolic Differentiation
+### 1. Symbolic Differentiation
 
 Symbolic differentiation relies on the fundamental definition of a derivative which is taking the limit of the difference quotient. After establishing the derivatives of basic functions, we can systematically apply differentiation rules to compute the derivatives of more complex expressions.
 
@@ -143,10 +143,196 @@ This rule is one of the foundational results and forms the basis for differentia
 
 By breaking a complex function into smaller components and systematically applying basic rules such as the power, product, and chain rules you can compute the derivative of complex functions step-by-step.
 
+We can implement this in any programming language by defining the fundamental rules and using them to compute derivatives. However, in Python, this functionality is already available through the `sympy` library. Let’s look at an example:
+
+```python
+import sympy as sp
+
+x = sp.Symbol("x")
+
+f = x**2 + sp.sin(x)
+f_prime = sp.diff(f, x)
+
+print("f(x):", f)
+print("f'(x):", f_prime)
+
+# Substitute x = π
+value = f_prime.subs(x, sp.pi)
+# Evaluate the numeric value
+numeric_value = value.evalf()
+print(f"f'(π)={value}={numeric_value}")
+```
+
+**Output**
+
+```txt
+f(x): x**2 + sin(x)
+f'(x): 2*x + cos(x)
+f'(π)=-1 + 2*pi=5.28318530717959
+```
+
+While symbolic differentiation provides the exact mathematical expression for a function's rate of change, this elegance often falls short in real-world applications. What if your function isn't a neat equation, but rather a stream of experimental data or a "black-box" algorithm?
+
+In these common scenarios, symbolic methods are simply unfeasible. This is precisely where numerical differentiation comes into picture. By approximating the derivative using discrete function values, it allows us to analyze the behavior of functions derived from empirical observations, complex simulations, or even cutting-edge machine learning models—areas where symbolic methods can't reach.
+
+### 2. Numerical Differentiation
+
+Numerical differentiation is the process of approximating the derivative of a function using its values at discrete points, rather than deriving an exact symbolic expression. It's used when a function's formula is unknown, too complex, or only available as data.
+
+The simplest method used for numerical differentiation is finite difference approximations.
+
+<p align="center">
+   <img src="/images/posts/differentiation/numerical-diff.png" alt="numerical-differentiation" style="max-width:70%"/>
+</p>
+
+A simple two-point estimation is to compute the slope of a nearby secant line through the points \\( (x, f(x)) \\) and \\( (x + h, f(x + h)) \\). Choosing a small number \\( h \\), \\( h \\) represents a small change in \\( x \\), and it can be either positive or negative. The slope of this line is
+
+$$
+{\displaystyle {\frac {f(x+h)-f(x)}{h}}.}
+$$
+
+This expression is **Newton's difference quotient** (also known as a first-order divided difference).
+
+The slope of this secant line differs from the slope of the tangent line by an amount that is approximately proportional to \\( h \\). As \\( h \\) approaches zero, the slope of the secant line approaches the slope of the tangent line. Therefore, the true **derivative of f at x** is the limit of the value of the difference quotient as the secant lines get closer and closer to being a tangent line:
+
+$$
+{\displaystyle f'(x)=\lim _{h\to 0}{\frac {f(x+h)-f(x)}{h}}.}
+$$
+
+We can easily implement numerical differentiation for any function. Let's look at the Python implementation for this:
+
+```python
+import math
+
+def f(x):
+    return math.sin(x)
+
+def f_dash(f, x, dx):
+    return (f(x + dx) - f(x)) / dx
+
+x = math.pi / 4
+true_derivative = math.cos(x)
+print("True Derivative: ", true_derivative)
+print("Numerical Derivative: ", f_dash(f, x, dx=0.0001))
+```
+
+**Output**
+
+```txt
+True Derivative:  0.7071067811865476
+Numerical Derivative:  0.7070714246693033
+```
+
+</br>
+
+Another two-point formula is to compute the slope of a nearby secant line through the points \\( (x − h, f(x − h)) \\) and \\( (x + h, f(x + h)) \\). The slope of this line is
+
+$$
+{\displaystyle {\frac {f(x+h)-f(x-h)}{2h}}.}
+$$
+
+This formula is known as the **Symmetric difference quotient**. In this case the first-order errors cancel, so the slope of these secant lines differ from the slope of the tangent line by an amount that is approximately proportional to \\( h^{2} \\). Hence for small values of \\( h \\) this is a more accurate approximation to the tangent line than the one-sided estimation.
+
+Let's implement this in Python:
+
+```python
+import math
+
+def f(x):
+    return math.sin(x)
+
+def f_dash_symetric(f, x, dx):
+    return (f(x + dx) - f(x - dx)) / (2 * dx)
+
+x = math.pi / 4
+true_derivative = math.cos(x)
+print("True Derivative: ", true_derivative)
+print("Numerical Derivative: ", f_dash_symetric(f, x, dx=0.0001))
+```
+
+**Output**
+
+```txt
+True Derivative:  0.7071067811865476
+Numerical Derivative:  0.70710678000796
+```
+
+</br>
+
+Numerical differentiation is quick and easy to implement, especially when an explicit formula for the derivative is unavailable or the function is defined only through data points. However, it comes with certain limitations. The results are highly sensitive to the choice of step size, too large and the approximation is inaccurate; too small and rounding errors dominate due to floating-point precision limits. The following diagram represents this tradeoff and the sweet-spot for accurate calculations.
+
+<p align="center">
+   <img src="/images/posts/differentiation/AbsoluteErrorNumericalDifferentiationExample.png" alt="AbsoluteErrorNumericalDifferentiation" style="max-width:90%"/>
+</p>
+
+Let's try to replicate the results by calculating this error and plotting using Matplotlib:
+
+```python
+import math
+import matplotlib.pyplot as plt
+
+def f(x):
+    return math.sin(x)
+
+def f_dash(f, x, dx):
+    # Newton's difference
+    return (f(x + dx) - f(x)) / dx
+
+def f_dash_symetric(f, x, dx):
+    # Symmetric difference
+    return (f(x + dx) - f(x - dx)) / (2 * dx)
+
+# Point at which to differentiate
+x = math.pi / 4
+true_derivative = math.cos(x)
+
+# dx values
+dx_values = [2 ** (-i) for i in range(1, 50)]
+
+# Compute numerical derivatives and errors
+errors_newton = [abs(f_dash(f, x, dx) - true_derivative) for dx in dx_values]
+errors_symmetric = [
+    abs(f_dash_symetric(f, x, dx) - true_derivative) for dx in dx_values
+]
+
+# Plotting
+plt.figure(figsize=(16, 9))
+plt.loglog(dx_values, errors_newton, marker="o", label="Newton's Difference")
+plt.loglog(dx_values, errors_symmetric, marker="s", label="Symmetric Difference")
+plt.xlabel("dx (step size)")
+plt.ylabel("Absolute Error")
+plt.title("Error Comparison of Numerical Differentiation Methods at x = π/4")
+plt.grid(True, which="both", ls="--")
+plt.legend()
+plt.show()
+```
+
+**Output:**
+
+<p align="center">
+   <img src="/images/posts/differentiation/numerical-diff-comparison.png" alt="Numerical Differentiation Comparison" style="max-width:95%"/>
+</p>
+
+We observe a similar pattern as in the previous diagram, highlighting how numerical differentiation is sensitive to step size. Apart from this it also tends to amplify any noise in the data, making it unreliable for real-world measurements or simulations with fluctuations. Additionally, it provides only pointwise estimates and does not yield a general formula, limiting its usefulness in analytical studies or symbolic manipulation.
+
+### 3. Automatic Differentiation
+
+Now let’s look into automatic differentiation, a powerful technique that computes exact derivatives by breaking down functions into elementary operations and applying the chain rule systematically.
+
+Unlike numerical differentiation, it avoids rounding and truncation errors, and unlike symbolic differentiation, it scales well with complex functions. This makes it especially powerful in machine learning and scientific computing where accurate gradients are essential.
+
+<p align="center">
+   <img src="/images/posts/differentiation/ForwardAccumulationAutomaticDifferentiation.png" alt="Automatic Differentiation" style="max-width:90%"/>
+</p>
+
+Auto-differentiation is thus neither numeric nor symbolic, nor is it a combination of both. It is also preferable to ordinary numerical methods: In contrast to the more traditional numerical methods based on finite differences, auto-differentiation is 'in theory' exact, and in comparison to symbolic algorithms, it is computationally inexpensive.
+
 ## References
 
 1. [Derivative - Wikipedia](https://en.wikipedia.org/wiki/Derivative)
 2. [Differentiation Rules - MATH MINDS ACADEMY](https://www.mathmindsacademy.com/differentiation-rules.html)
+3. [Numerical differentiation - Wikipedia](https://en.wikipedia.org/wiki/Numerical_differentiation)
+4. [Automatic differentiation - Wikipedia](https://en.wikipedia.org/wiki/Automatic_differentiation)
 
 ## Stay Tuned
 
