@@ -259,7 +259,9 @@ Numerical Derivative:  0.70710678000796
 
 </br>
 
-Numerical differentiation is quick and easy to implement, especially when an explicit formula for the derivative is unavailable or the function is defined only through data points. However, it comes with certain limitations. The results are highly sensitive to the choice of step size, too large and the approximation is inaccurate; too small and rounding errors dominate due to floating-point precision limits. The following diagram represents this tradeoff and the sweet-spot for accurate calculations.
+Numerical differentiation is quick and easy to implement, especially when an explicit formula for the derivative is unavailable or the function is defined only through data points.
+
+However, it comes with certain limitations. The results are highly sensitive to the choice of step size, too large and the approximation is inaccurate; too small and rounding errors dominate due to floating-point precision limits. The following diagram represents this tradeoff and the sweet-spot for accurate calculations.
 
 <p align="center">
    <img src="/images/posts/differentiation/AbsoluteErrorNumericalDifferentiationExample.png" alt="AbsoluteErrorNumericalDifferentiation" style="max-width:90%"/>
@@ -319,7 +321,7 @@ We observe a similar pattern as in the previous diagram, highlighting how numeri
 
 Now let’s look into automatic differentiation, a powerful technique that computes exact derivatives by breaking down functions into elementary operations and applying the chain rule systematically.
 
-Unlike numerical differentiation, it avoids rounding and truncation errors, and unlike symbolic differentiation, it scales well with complex functions. This makes it especially powerful in machine learning and scientific computing where accurate gradients are essential.
+Unlike numerical differentiation, it avoids rounding and truncation errors, and unlike symbolic differentiation, it scales well with complex functions. Both of these classical methods have problems with calculating higher derivatives, where complexity and errors increase. This makes automatic differentiation especially powerful in machine learning and scientific computing where accurate gradients are essential.
 
 <p align="center">
    <img src="/images/posts/differentiation/ForwardAccumulationAutomaticDifferentiation.png" alt="Automatic Differentiation" style="max-width:90%"/>
@@ -327,12 +329,131 @@ Unlike numerical differentiation, it avoids rounding and truncation errors, and 
 
 Auto-differentiation is thus neither numeric nor symbolic, nor is it a combination of both. It is also preferable to ordinary numerical methods: In contrast to the more traditional numerical methods based on finite differences, auto-differentiation is 'in theory' exact, and in comparison to symbolic algorithms, it is computationally inexpensive.
 
+Automatic Differentiation (AD) is a structured, algorithmic method for efficiently computing derivatives by systematically applying the chain rule. At its core, AD relies on breaking down the differentiation process using the chain rule for composite functions.
+
+For a nested function:
+
+$$
+y = f(g(h(x))) = f(g(h(w_0))) = f(g(w_1)) = f(w_2) = w_3
+$$
+
+with intermediate variables:
+
+$$
+\displaylines{\begin{align}w_0 &= x \\\ \quad w_1 &= h(w_0) \\\ \quad w_2 &= g(w_1) \\\ \quad w_3 &= f(w_2) = y\end{align}}
+$$
+
+the chain rule gives:
+
+$$
+\frac{\partial y}{\partial x} = \frac{\partial y}{\partial w_2} \cdot \frac{\partial w_2}{\partial w_1} \cdot \frac{\partial w_1}{\partial x} = \frac{\partial f(w_2)}{\partial w_2} \cdot \frac{\partial g(w_1)}{\partial w_1} \cdot \frac{\partial h(w_0)}{\partial x}.
+$$
+
+#### Types of Automatic Differentiation
+
+Usually, two distinct modes of automatic differentiation are presented:
+
+- Forward accumulation (also called bottom-up, forward mode, or tangent mode)
+- reverse accumulation (also called top-down, reverse mode, or adjoint mode)
+
+Forward accumulation specifies that one traverses the chain rule from inside to outside (that is, first compute \\( \partial w\_{1}/\partial x \\) and then \\( \partial w\_{2}/\partial w\_{1} \\) and lastly \\( \partial y/\partial w\*{2}\\) ), while reverse accumulation traverses from outside to inside (first compute \\( \partial y/\partial w\_{2} \\) and then \\( \partial w\_{2}/\partial w\_{1} \\) and lastly \\( \partial w\_{1}/\partial x\\) ).
+
+#### Forward-mode Automatic Differentiation
+
+In forward accumulation AD, one first fixes the independent variable with respect to which differentiation is performed and computes the derivative of each sub-expression recursively. In a pen-and-paper calculation, this involves repeatedly substituting the derivative of the inner functions in the chain rule:
+
+Let the chain of intermediate variables be:
+
+$$
+w_0 = x, \quad w_1 = f_1(w_0), \quad w_2 = f_2(w_1), \quad \dots, \quad w_n = f_n(w_{n-1}) = y
+$$
+
+Then, by the chain rule, the derivative of \\( y \\) with respect to \\( x \\) is:
+
+$$
+\frac{dy}{dx} = \frac{dw_n}{dw_{n-1}} \cdot \frac{dw_{n-1}}{dw_{n-2}} \cdot \dots \cdot \frac{dw_1}{dw_0}
+$$
+
+In forward mode automatic differentiation, we compute both the value and the derivative of each intermediate variable \\( w_i \\) in a single forward pass:
+
+$$
+\text{For each } i = 1 \text{ to } n: \displaylines{\begin{align} w_i &= f_i(w_{i-1}) \\\ \dot{w_i} &= f_i'(w_{i-1}) \cdot \dot{w}_{i-1} \end{align}}
+$$
+
+where \\( \dot{w}\_i = \frac{dw_i}{dx} \\) denotes the derivative of \\( w_i \\) with respect to the fixed input variable \\( x \\).
+
+<p align="center">
+   <img src="/images/posts/differentiation/ForwardAD.png" alt="Forward Automatic Differentiation" style="max-width:90%"/>
+</p>
+
+We will now look at the dual number-based implementation of forward mode automatic differentiation, which allows us to compute derivatives alongside function evaluations in a natural and efficient way.
+
+#### Dual Numbers
+
+**Definition**
+
+Dual numbers extend the real numbers by introducing a new element \\( \varepsilon \\) (epsilon) such that:
+
+$$
+\varepsilon^2 = 0, \quad \varepsilon \ne 0
+$$
+
+Any dual number has the form:
+
+$$
+a + b\varepsilon
+$$
+
+where:
+
+- \\( a \\) and \\( b \\) are real numbers,
+- \\( \varepsilon \\) is a \\( \textit{nilpotent} \\) element (i.e., its square is zero).
+
+**Arithmetic**
+
+Let \\( x = a + b\varepsilon \\), \\( y = c + d\varepsilon \\).
+
+1. **Addition:**
+
+   $$
+   x + y = (a + c) + (b + d)\varepsilon
+   $$
+
+2. **Multiplication:**
+
+   $$
+   x \cdot y = (a + b\varepsilon) * (c + d\varepsilon) = ac + (ad + bc)\varepsilon \quad \text{(since } \varepsilon^2 = 0 \text{)}
+   $$
+
+**Automatic Differentiation**
+
+Consider the Taylor series expansion of a function \\( f(x) \\) evaluated at the point \\( x+\varepsilon \\):
+
+$$
+f(x+\varepsilon) = f(x) + f'(x)\varepsilon + \frac{1}{2}f''(x)\varepsilon^2 + \cdots
+$$
+
+Due to the property of dual numbers where \\( \varepsilon^2 = 0 \\), therefore \\( \varepsilon_1^k = 0 \\) for all \\( k > 1 \\), all higher-order terms in the expansion vanish. Consequently, the Taylor series reduces to:
+
+$$
+f(x+\varepsilon) = f(x) + \varepsilon f'(x)
+$$
+
+This truncation occurs because the dual number property eliminates all polynomial terms of degree two and higher, leaving only the linear approximation. Therefore, if you evaluate a function \\( f(a + b\varepsilon) \\), you get:
+
+$$
+f(a + b\varepsilon) = f(a) + b f'(a)\varepsilon
+$$
+
+This means you can compute both \\( f(a) \\) and \\( f'(a) \\) in one pass, a powerful technique in machine learning and scientific computing.
+
 ## References
 
 1. [Derivative - Wikipedia](https://en.wikipedia.org/wiki/Derivative)
-2. [Differentiation Rules - MATH MINDS ACADEMY](https://www.mathmindsacademy.com/differentiation-rules.html)
+2. [Differentiation Rules](https://www.mathmindsacademy.com/differentiation-rules.html)
 3. [Numerical differentiation - Wikipedia](https://en.wikipedia.org/wiki/Numerical_differentiation)
 4. [Automatic differentiation - Wikipedia](https://en.wikipedia.org/wiki/Automatic_differentiation)
+5. [Dual Numbers for Arbitrary Order Automatic Differentiation](https://arxiv.org/html/2501.04159v1)
 
 ## Stay Tuned
 
