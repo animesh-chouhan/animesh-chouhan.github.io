@@ -25,7 +25,7 @@ tags = ["python", "maths"]
 3. [Symbolic Differentiation](#1-symbolic-differentiation)
 4. [Numerical Differentiation](#2-numerical-differentiation)
 5. [Automatic Differentiation](#3-automatic-differentiation)
-6. [Comparing the Methods](#wrapping-up)
+6. [Summary](#wrapping-up)
 7. [References](#references)
 
 ## How It Started?
@@ -183,7 +183,7 @@ f'(π)=-1 + 2*pi=5.28318530717959
 
 While symbolic differentiation provides the exact mathematical expression for a function's rate of change, this elegance often falls short in real-world applications. What if your function isn't a neat equation, but rather a stream of experimental data or a "black-box" algorithm?
 
-In these common scenarios, symbolic methods are simply unfeasible. This is precisely where numerical differentiation comes into picture. By approximating the derivative using discrete function values, it allows us to analyze the behavior of functions derived from empirical observations, complex simulations, or even cutting-edge machine learning models—areas where symbolic methods can't reach.
+In these common scenarios, symbolic methods are simply unfeasible. This is precisely where numerical differentiation comes into picture. By approximating the derivative using discrete function values, it allows us to analyze the behavior of functions derived from empirical observations, complex simulations, or even cutting-edge machine learning models, areas where symbolic methods can't reach.
 
 ### 2. Numerical Differentiation
 
@@ -741,7 +741,7 @@ In summary, forward-mode automatic differentiation leverages dual numbers to ele
 
 #### Reverse-mode Automatic Differentiation
 
-It's worth noting that another powerful technique exists: reverse-mode automatic differentiation, which is more efficient when computing gradients of functions with many inputs and a single output—like in deep learning. However, reverse mode requires building a computational graph and performing a backward pass, which adds complexity. We won’t cover reverse-mode here, as that would make this post significantly longer.
+It's worth noting that another powerful technique exists: reverse-mode automatic differentiation, which is more efficient when computing gradients of functions with many inputs and a single output like in deep learning. However, reverse mode requires building a computational graph and performing a backward pass, which adds complexity. We won’t cover reverse-mode here, as that would make this post significantly longer.
 
 <p align="center">
    <img src="/images/posts/differentiation/ReverseaccumulationAD.png" alt="Reverse Automatic Differentiation" style="max-width:90%"/>

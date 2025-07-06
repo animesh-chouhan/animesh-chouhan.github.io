@@ -157,7 +157,7 @@ Animesh Chouhan | How Differentiation Works in Computers?
   <span class="icon">
     <i class="fas fa-pencil-alt"></i>
   </span>
-  <span>4126 words</span>
+  <span>4124 words</span>
 </span>
 
             </div>
@@ -243,7 +243,7 @@ Animesh Chouhan | How Differentiation Works in Computers?
 <li><a href="https://animeshchouhan.com/posts/differentiation/#1-symbolic-differentiation">Symbolic Differentiation</a></li>
 <li><a href="https://animeshchouhan.com/posts/differentiation/#2-numerical-differentiation">Numerical Differentiation</a></li>
 <li><a href="https://animeshchouhan.com/posts/differentiation/#3-automatic-differentiation">Automatic Differentiation</a></li>
-<li><a href="https://animeshchouhan.com/posts/differentiation/#wrapping-up">Comparing the Methods</a></li>
+<li><a href="https://animeshchouhan.com/posts/differentiation/#wrapping-up">Summary</a></li>
 <li><a href="https://animeshchouhan.com/posts/differentiation/#references">References</a></li>
 </ol>
 <h2 id="how-it-started">How It Started?</h2>
@@ -363,7 +363,7 @@ $$</p>
 </span><span style="color:#abb2bf;">f&#39;(π)=-1 + 2*pi=5.28318530717959
 </span></code></pre>
 <p>While symbolic differentiation provides the exact mathematical expression for a function's rate of change, this elegance often falls short in real-world applications. What if your function isn't a neat equation, but rather a stream of experimental data or a &quot;black-box&quot; algorithm?</p>
-<p>In these common scenarios, symbolic methods are simply unfeasible. This is precisely where numerical differentiation comes into picture. By approximating the derivative using discrete function values, it allows us to analyze the behavior of functions derived from empirical observations, complex simulations, or even cutting-edge machine learning models—areas where symbolic methods can't reach.</p>
+<p>In these common scenarios, symbolic methods are simply unfeasible. This is precisely where numerical differentiation comes into picture. By approximating the derivative using discrete function values, it allows us to analyze the behavior of functions derived from empirical observations, complex simulations, or even cutting-edge machine learning models, areas where symbolic methods can't reach.</p>
 <h3 id="2-numerical-differentiation">2. Numerical Differentiation</h3>
 <p>Numerical differentiation is the process of approximating the derivative of a function using its values at discrete points, rather than deriving an exact symbolic expression. It's used when a function's formula is unknown, too complex, or only available as data.</p>
 <p>The simplest method used for numerical differentiation is finite difference approximations.</p>
@@ -776,7 +776,7 @@ $$</p>
 </br>
 <p>In summary, forward-mode automatic differentiation leverages dual numbers to elegantly propagate derivatives alongside values. By evaluating functions on dual inputs, we can compute exact derivatives with minimal changes to the original code, making this technique both efficient and easy to implement.</p>
 <h4 id="reverse-mode-automatic-differentiation">Reverse-mode Automatic Differentiation</h4>
-<p>It's worth noting that another powerful technique exists: reverse-mode automatic differentiation, which is more efficient when computing gradients of functions with many inputs and a single output—like in deep learning. However, reverse mode requires building a computational graph and performing a backward pass, which adds complexity. We won’t cover reverse-mode here, as that would make this post significantly longer.</p>
+<p>It's worth noting that another powerful technique exists: reverse-mode automatic differentiation, which is more efficient when computing gradients of functions with many inputs and a single output like in deep learning. However, reverse mode requires building a computational graph and performing a backward pass, which adds complexity. We won’t cover reverse-mode here, as that would make this post significantly longer.</p>
 <p align="center">
    <img src="/images/posts/differentiation/ReverseaccumulationAD.png" alt="Reverse Automatic Differentiation" style="max-width:90%"/>
 </p>
