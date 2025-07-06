@@ -9,7 +9,7 @@
   <meta content="#da532c" name="msapplication-TileColor" />
 
   
-<meta property="og:title" content="Animesh Chouhan | How Differentiation Works in Computers? 🧮" />
+<meta property="og:title" content="Animesh Chouhan | How Differentiation Works in Computers?" />
 <meta property="og:description" content="" />
 <meta property="og:image" content="https://animeshchouhan.com/images/posts/differentiation.jpeg" />
 <meta name="description" content="">
@@ -44,7 +44,7 @@
 
   <title>
     
-Animesh Chouhan | How Differentiation Works in Computers? 🧮
+Animesh Chouhan | How Differentiation Works in Computers?
 
   </title>
 
@@ -128,7 +128,7 @@ Animesh Chouhan | How Differentiation Works in Computers? 🧮
       <div class="column is-8 is-offset-2">
         <article class="box">
           <h1 class="title">
-            How Differentiation Works in Computers? 🧮
+            How Differentiation Works in Computers?
           </h1>
           <p class="subtitle"></p>
           <br>
@@ -153,11 +153,11 @@ Animesh Chouhan | How Differentiation Works in Computers? 🧮
   <span class="icon">
     <i class="far fa-clock"></i>
   </span>
-  <span>15 min,</span>
+  <span>21 min,</span>
   <span class="icon">
     <i class="fas fa-pencil-alt"></i>
   </span>
-  <span>2918 words</span>
+  <span>4126 words</span>
 </span>
 
             </div>
@@ -236,13 +236,23 @@ Animesh Chouhan | How Differentiation Works in Computers? 🧮
 <span id="continue-reading"></span><p align="center">
    <img src="/images/posts/differentiation/differentiation.jpeg" alt="differentiation" style="max-width:98%"/>
 </p>
-<h2 id="how-it-started">How it started?</h2>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ol>
+<li><a href="https://animeshchouhan.com/posts/differentiation/#how-it-started">Introduction</a></li>
+<li><a href="https://animeshchouhan.com/posts/differentiation/#differentiation">What is Differentiation?</a></li>
+<li><a href="https://animeshchouhan.com/posts/differentiation/#1-symbolic-differentiation">Symbolic Differentiation</a></li>
+<li><a href="https://animeshchouhan.com/posts/differentiation/#2-numerical-differentiation">Numerical Differentiation</a></li>
+<li><a href="https://animeshchouhan.com/posts/differentiation/#3-automatic-differentiation">Automatic Differentiation</a></li>
+<li><a href="https://animeshchouhan.com/posts/differentiation/#wrapping-up">Comparing the Methods</a></li>
+<li><a href="https://animeshchouhan.com/posts/differentiation/#references">References</a></li>
+</ol>
+<h2 id="how-it-started">How It Started?</h2>
 <p>It all started when I was watching the YouTube video on <a rel="noopener nofollow noreferrer" target="_blank" href="https://www.youtube.com/watch?v=QwFLA5TrviI&amp;ab_channel=Computerphile">Finding The Slope Algorithm (Forward Mode Automatic Differentiation)</a> by Computerphile:</p>
 <p align="center" >
 <iframe style="width: 90%;aspect-ratio: 16 / 9;" src="https://www.youtube.com/embed/QwFLA5TrviI?si=Stvftc2CmPGQJGSQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </p>
 <p>In this video, Mark Williams demonstrates Forward Mode Automatic Differentiation and explains how it addresses the limitations of traditional methods like <a rel="noopener nofollow noreferrer" target="_blank" href="https://en.wikipedia.org/wiki/Computer_algebra">Symbolic</a> and <a rel="noopener nofollow noreferrer" target="_blank" href="https://en.wikipedia.org/wiki/Numerical_differentiation">Numerical</a> Differentiation. The video also introduces the concept of <a rel="noopener nofollow noreferrer" target="_blank" href="https://en.wikipedia.org/wiki/Dual_number">Dual Numbers</a> and shows how they can be efficiently used to compute the gradient of a function at any point.</p>
-<p>Let's start with the basic concepts of differentiation!</p>
+<p>Before diving into how computers do it, let’s quickly revisit what differentiation actually means.</p>
 <h2 id="differentiation">Differentiation</h2>
 <p>In mathematics, the derivative is a fundamental tool that quantifies the sensitivity to change of a function's output with respect to its input. The derivative of a function of a single variable at a chosen input value, when it exists, is the slope of the tangent line to the graph of the function at that point. The process of finding a <a rel="noopener nofollow noreferrer" target="_blank" href="https://en.wikipedia.org/wiki/Derivative">derivative</a> is called differentiation.</p>
 <p align="center">
@@ -485,7 +495,7 @@ $$</p>
 <p>Usually, two distinct modes of automatic differentiation are presented:</p>
 <ul>
 <li>Forward accumulation (also called bottom-up, forward mode, or tangent mode)</li>
-<li>reverse accumulation (also called top-down, reverse mode, or adjoint mode)</li>
+<li>Reverse accumulation (also called top-down, reverse mode, or adjoint mode)</li>
 </ul>
 <p>Forward accumulation specifies that one traverses the chain rule from inside to outside (that is, first compute \( \partial w_{1}/\partial x \) and then \( \partial w_{2}/\partial w_{1} \) and lastly \( \partial y/\partial w*{2}\) ), while reverse accumulation traverses from outside to inside (first compute \( \partial y/\partial w_{2} \) and then \( \partial w_{2}/\partial w_{1} \) and lastly \( \partial w_{1}/\partial x\) ).</p>
 <h4 id="forward-mode-automatic-differentiation">Forward-mode Automatic Differentiation</h4>
@@ -551,7 +561,236 @@ $$</p>
 <p>$$
 f(a + b\varepsilon) = f(a) + b f'(a)\varepsilon
 $$</p>
-<p>This means you can compute both \( f(a) \) and \( f'(a) \) in one pass, a powerful technique in machine learning and scientific computing.</p>
+<p>This means you can compute both \( f(a) \) and \( f'(a) \) in one pass, a powerful technique in machine learning and scientific computing. Let's implement the dual numbers in Python:</p>
+<pre data-lang="python" style="background-color:#2b303b;color:#6c7079;" class="language-python "><code class="language-python" data-lang="python"><span style="color:#cd74e8;">import </span><span style="color:#abb2bf;">math
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">
+</span><span style="color:#cd74e8;">class </span><span style="color:#f0c678;">Dual</span><span style="color:#adb7c9;">:
+</span><span style="color:#abb2bf;">    </span><span style="color:#cd74e8;">def </span><span style="color:#5ebfcc;">__init__</span><span style="color:#abb2bf;">(</span><span style="color:#eb6772;">self</span><span style="color:#abb2bf;">, </span><span style="color:#eb6772;">real</span><span style="color:#abb2bf;">, </span><span style="color:#eb6772;">dual</span><span style="color:#abb2bf;">):
+</span><span style="color:#abb2bf;">        </span><span style="color:#eb6772;">self</span><span style="color:#abb2bf;">.real </span><span style="color:#adb7c9;">= </span><span style="color:#abb2bf;">real
+</span><span style="color:#abb2bf;">        </span><span style="color:#eb6772;">self</span><span style="color:#abb2bf;">.dual </span><span style="color:#adb7c9;">= </span><span style="color:#abb2bf;">dual
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">    </span><span style="color:#cd74e8;">def </span><span style="color:#5ebfcc;">__str__</span><span style="color:#abb2bf;">(</span><span style="color:#eb6772;">self</span><span style="color:#abb2bf;">):
+</span><span style="color:#abb2bf;">        </span><span style="color:#cd74e8;">return f</span><span style="color:#9acc76;">&quot;</span><span style="color:#abb2bf;">{</span><span style="color:#eb6772;">self</span><span style="color:#abb2bf;">.real}</span><span style="color:#9acc76;">+</span><span style="color:#abb2bf;">{</span><span style="color:#eb6772;">self</span><span style="color:#abb2bf;">.dual}</span><span style="color:#9acc76;">ε&quot;
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">    </span><span style="color:#cd74e8;">def </span><span style="color:#5ebfcc;">__add__</span><span style="color:#abb2bf;">(</span><span style="color:#eb6772;">self</span><span style="color:#abb2bf;">, </span><span style="color:#eb6772;">other</span><span style="color:#abb2bf;">):
+</span><span style="color:#abb2bf;">        </span><span style="color:#cd74e8;">if </span><span style="color:#5ebfcc;">isinstance</span><span style="color:#abb2bf;">(other, Dual):
+</span><span style="color:#abb2bf;">            real </span><span style="color:#adb7c9;">= </span><span style="color:#eb6772;">self</span><span style="color:#abb2bf;">.real </span><span style="color:#adb7c9;">+ </span><span style="color:#abb2bf;">other.real
+</span><span style="color:#abb2bf;">            dual </span><span style="color:#adb7c9;">= </span><span style="color:#eb6772;">self</span><span style="color:#abb2bf;">.dual </span><span style="color:#adb7c9;">+ </span><span style="color:#abb2bf;">other.dual
+</span><span style="color:#abb2bf;">            </span><span style="color:#cd74e8;">return </span><span style="color:#eb6772;">Dual</span><span style="color:#abb2bf;">(real, dual)
+</span><span style="color:#abb2bf;">        </span><span style="color:#cd74e8;">return </span><span style="color:#eb6772;">Dual</span><span style="color:#abb2bf;">(</span><span style="color:#eb6772;">self</span><span style="color:#abb2bf;">.real </span><span style="color:#adb7c9;">+ </span><span style="color:#abb2bf;">other, </span><span style="color:#eb6772;">self</span><span style="color:#abb2bf;">.dual)
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">    </span><span style="color:#5ebfcc;">__radd__ </span><span style="color:#adb7c9;">= </span><span style="color:#5ebfcc;">__add__
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">    </span><span style="color:#cd74e8;">def </span><span style="color:#5ebfcc;">__mul__</span><span style="color:#abb2bf;">(</span><span style="color:#eb6772;">self</span><span style="color:#abb2bf;">, </span><span style="color:#eb6772;">other</span><span style="color:#abb2bf;">):
+</span><span style="color:#abb2bf;">        </span><span style="color:#cd74e8;">if </span><span style="color:#5ebfcc;">isinstance</span><span style="color:#abb2bf;">(other, Dual):
+</span><span style="color:#abb2bf;">            real </span><span style="color:#adb7c9;">= </span><span style="color:#eb6772;">self</span><span style="color:#abb2bf;">.real </span><span style="color:#adb7c9;">* </span><span style="color:#abb2bf;">other.real
+</span><span style="color:#abb2bf;">            dual </span><span style="color:#adb7c9;">= </span><span style="color:#eb6772;">self</span><span style="color:#abb2bf;">.real </span><span style="color:#adb7c9;">* </span><span style="color:#abb2bf;">other.dual </span><span style="color:#adb7c9;">+ </span><span style="color:#eb6772;">self</span><span style="color:#abb2bf;">.dual </span><span style="color:#adb7c9;">* </span><span style="color:#abb2bf;">other.real
+</span><span style="color:#abb2bf;">            </span><span style="color:#cd74e8;">return </span><span style="color:#eb6772;">Dual</span><span style="color:#abb2bf;">(real, dual)
+</span><span style="color:#abb2bf;">        </span><span style="color:#cd74e8;">return </span><span style="color:#eb6772;">Dual</span><span style="color:#abb2bf;">(</span><span style="color:#eb6772;">self</span><span style="color:#abb2bf;">.real </span><span style="color:#adb7c9;">* </span><span style="color:#abb2bf;">other, </span><span style="color:#eb6772;">self</span><span style="color:#abb2bf;">.dual </span><span style="color:#adb7c9;">* </span><span style="color:#abb2bf;">other)
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">    </span><span style="color:#5ebfcc;">__rmul__ </span><span style="color:#adb7c9;">= </span><span style="color:#5ebfcc;">__mul__
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">d1 </span><span style="color:#adb7c9;">= </span><span style="color:#eb6772;">Dual</span><span style="color:#abb2bf;">(</span><span style="color:#db9d63;">3</span><span style="color:#abb2bf;">, </span><span style="color:#db9d63;">2</span><span style="color:#abb2bf;">)
+</span><span style="color:#abb2bf;">d2 </span><span style="color:#adb7c9;">= </span><span style="color:#eb6772;">Dual</span><span style="color:#abb2bf;">(</span><span style="color:#db9d63;">4</span><span style="color:#abb2bf;">, </span><span style="color:#db9d63;">5</span><span style="color:#abb2bf;">)
+</span><span style="color:#5ebfcc;">print</span><span style="color:#abb2bf;">(</span><span style="color:#cd74e8;">f</span><span style="color:#9acc76;">&quot;d1: </span><span style="color:#abb2bf;">{d1}</span><span style="color:#9acc76;">, d2: </span><span style="color:#abb2bf;">{d2}</span><span style="color:#9acc76;">&quot;</span><span style="color:#abb2bf;">)
+</span><span style="color:#5ebfcc;">print</span><span style="color:#abb2bf;">(</span><span style="color:#9acc76;">&quot;d1+d2 =&quot;</span><span style="color:#abb2bf;">, d1 </span><span style="color:#adb7c9;">+ </span><span style="color:#abb2bf;">d2)
+</span><span style="color:#5ebfcc;">print</span><span style="color:#abb2bf;">(</span><span style="color:#9acc76;">&quot;d1*d2 =&quot;</span><span style="color:#abb2bf;">, d1 </span><span style="color:#adb7c9;">* </span><span style="color:#abb2bf;">d2)
+</span></code></pre>
+<p><strong>Output</strong></p>
+<pre data-lang="txt" style="background-color:#2b303b;color:#6c7079;" class="language-txt "><code class="language-txt" data-lang="txt"><span style="color:#abb2bf;">d1: 3+2ε, d2: 4+5ε
+</span><span style="color:#abb2bf;">d1+d2 = 7+7ε
+</span><span style="color:#abb2bf;">d1*d2 = 12+23ε
+</span></code></pre>
+</br>
+<p>Before we move on to the implementation of differentiation using dual numbers, which is quite easy, we need to first implement another commonly used function: the power function.</p>
+<p>Let \( x=a+bε \), and suppose you want to compute \( x^y \), considering two cases:</p>
+<p><strong>Case 1:</strong> \( y \in \mathbb{R} \) (a real exponent)</p>
+<p>Let \( y = n \in \mathbb{R} \). Using the first-order Taylor expansion:</p>
+<p>$$
+x^n = (a + b\varepsilon)^n = a^n + n a^{n-1} b \varepsilon
+$$</p>
+<p>Thus, the result is:</p>
+<ul>
+<li>Real part: \( a^n \)</li>
+<li>Dual part: \( n a^{n-1} b \)</li>
+</ul>
+<p>Which gives:</p>
+<pre data-lang="python" style="background-color:#2b303b;color:#6c7079;" class="language-python "><code class="language-python" data-lang="python"><span style="color:#abb2bf;">real </span><span style="color:#adb7c9;">= </span><span style="color:#eb6772;">self</span><span style="color:#abb2bf;">.real</span><span style="color:#adb7c9;">**</span><span style="color:#abb2bf;">other
+</span><span style="color:#abb2bf;">dual </span><span style="color:#adb7c9;">= </span><span style="color:#abb2bf;">other </span><span style="color:#adb7c9;">* </span><span style="color:#eb6772;">self</span><span style="color:#abb2bf;">.real </span><span style="color:#adb7c9;">** </span><span style="color:#abb2bf;">(other </span><span style="color:#adb7c9;">- </span><span style="color:#db9d63;">1</span><span style="color:#abb2bf;">) </span><span style="color:#adb7c9;">* </span><span style="color:#eb6772;">self</span><span style="color:#abb2bf;">.dual
+</span></code></pre>
+<p><strong>Case 2:</strong> \( y = c + d\varepsilon \) (a dual exponent)</p>
+<p>We use the identity:</p>
+<p>$$
+x^y = e^{y \cdot \ln x}
+$$</p>
+<p>First compute:</p>
+<p>$$
+\ln x = \ln(a + b\varepsilon) = \ln a + \frac{b}{a} \varepsilon
+$$</p>
+<p>Then:</p>
+<p>$$
+y \cdot \ln x = (c + d\varepsilon)(\ln a + \frac{b}{a} \varepsilon)
+= c \ln a + \left( d \ln a + \frac{c b}{a} \right) \varepsilon
+$$</p>
+<p>Now exponentiate:</p>
+<p>$$
+e^{c \ln a + \left( d \ln a + \frac{c b}{a} \right) \varepsilon}
+= a^c + a^c \left( d \ln a + \frac{c b}{a} \right) \varepsilon
+$$</p>
+<p>So:</p>
+<ul>
+<li>Real part: \( a^c \)</li>
+<li>Dual part: \( a^c \left( \frac{c b}{a} + d \ln a \right) \)</li>
+</ul>
+<p>This gives:</p>
+<pre data-lang="python" style="background-color:#2b303b;color:#6c7079;" class="language-python "><code class="language-python" data-lang="python"><span style="color:#abb2bf;">real </span><span style="color:#adb7c9;">= </span><span style="color:#eb6772;">self</span><span style="color:#abb2bf;">.real </span><span style="color:#adb7c9;">** </span><span style="color:#abb2bf;">other.real
+</span><span style="color:#abb2bf;">dual </span><span style="color:#adb7c9;">= </span><span style="color:#abb2bf;">real </span><span style="color:#adb7c9;">* </span><span style="color:#abb2bf;">(
+</span><span style="color:#abb2bf;">(</span><span style="color:#eb6772;">self</span><span style="color:#abb2bf;">.dual </span><span style="color:#adb7c9;">* </span><span style="color:#abb2bf;">other.real </span><span style="color:#adb7c9;">/ </span><span style="color:#eb6772;">self</span><span style="color:#abb2bf;">.real) </span><span style="color:#adb7c9;">+ </span><span style="color:#abb2bf;">other.dual </span><span style="color:#adb7c9;">* </span><span style="color:#abb2bf;">math.</span><span style="color:#eb6772;">log</span><span style="color:#abb2bf;">(</span><span style="color:#eb6772;">self</span><span style="color:#abb2bf;">.real)
+</span><span style="color:#abb2bf;">)
+</span></code></pre>
+<p>Now to calculate the derivative of a function, evaluating a function \( f \) at the dual number \( x + \varepsilon \), we get:</p>
+<p>$$
+f(x + \varepsilon) = f(x) + f'(x)\varepsilon
+$$</p>
+<p>The real part is the value of the function, and the dual part gives the derivative. Hence, we can extract the derivative directly from the dual component. The derivative of \( f \) at a point \( x \) can be computed using:</p>
+<pre data-lang="python" style="background-color:#2b303b;color:#6c7079;" class="language-python "><code class="language-python" data-lang="python"><span style="color:#cd74e8;">def </span><span style="color:#5cb3fa;">diff</span><span style="color:#abb2bf;">(</span><span style="color:#eb6772;">f</span><span style="color:#abb2bf;">, </span><span style="color:#eb6772;">x</span><span style="color:#abb2bf;">):
+</span><span style="color:#abb2bf;">    </span><span style="color:#cd74e8;">return </span><span style="color:#eb6772;">f</span><span style="color:#abb2bf;">(</span><span style="color:#eb6772;">Dual</span><span style="color:#abb2bf;">(x, </span><span style="color:#db9d63;">1</span><span style="color:#abb2bf;">)).dual
+</span></code></pre>
+<p>Here, we construct the dual number \( x + 1 \cdot \varepsilon \). When \( f \) is evaluated on this dual number, it propagates the derivative information through all operations. The final <code>.dual</code> part gives us \( f'(x) \).</p>
+<p>Now putting everything together we have:</p>
+<pre data-lang="python" style="background-color:#2b303b;color:#6c7079;" class="language-python "><code class="language-python" data-lang="python"><span style="color:#cd74e8;">import </span><span style="color:#abb2bf;">math
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">
+</span><span style="color:#cd74e8;">class </span><span style="color:#f0c678;">Dual</span><span style="color:#adb7c9;">:
+</span><span style="color:#abb2bf;">    </span><span style="color:#cd74e8;">def </span><span style="color:#5ebfcc;">__init__</span><span style="color:#abb2bf;">(</span><span style="color:#eb6772;">self</span><span style="color:#abb2bf;">, </span><span style="color:#eb6772;">real</span><span style="color:#abb2bf;">, </span><span style="color:#eb6772;">dual</span><span style="color:#abb2bf;">):
+</span><span style="color:#abb2bf;">        </span><span style="color:#eb6772;">self</span><span style="color:#abb2bf;">.real </span><span style="color:#adb7c9;">= </span><span style="color:#abb2bf;">real
+</span><span style="color:#abb2bf;">        </span><span style="color:#eb6772;">self</span><span style="color:#abb2bf;">.dual </span><span style="color:#adb7c9;">= </span><span style="color:#abb2bf;">dual
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">    </span><span style="color:#cd74e8;">def </span><span style="color:#5ebfcc;">__str__</span><span style="color:#abb2bf;">(</span><span style="color:#eb6772;">self</span><span style="color:#abb2bf;">):
+</span><span style="color:#abb2bf;">        </span><span style="color:#cd74e8;">return f</span><span style="color:#9acc76;">&quot;</span><span style="color:#abb2bf;">{</span><span style="color:#eb6772;">self</span><span style="color:#abb2bf;">.real}</span><span style="color:#9acc76;">+</span><span style="color:#abb2bf;">{</span><span style="color:#eb6772;">self</span><span style="color:#abb2bf;">.dual}</span><span style="color:#9acc76;">ε&quot;
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">    </span><span style="color:#cd74e8;">def </span><span style="color:#5ebfcc;">__add__</span><span style="color:#abb2bf;">(</span><span style="color:#eb6772;">self</span><span style="color:#abb2bf;">, </span><span style="color:#eb6772;">other</span><span style="color:#abb2bf;">):
+</span><span style="color:#abb2bf;">        </span><span style="color:#cd74e8;">if </span><span style="color:#5ebfcc;">isinstance</span><span style="color:#abb2bf;">(other, Dual):
+</span><span style="color:#abb2bf;">            real </span><span style="color:#adb7c9;">= </span><span style="color:#eb6772;">self</span><span style="color:#abb2bf;">.real </span><span style="color:#adb7c9;">+ </span><span style="color:#abb2bf;">other.real
+</span><span style="color:#abb2bf;">            dual </span><span style="color:#adb7c9;">= </span><span style="color:#eb6772;">self</span><span style="color:#abb2bf;">.dual </span><span style="color:#adb7c9;">+ </span><span style="color:#abb2bf;">other.dual
+</span><span style="color:#abb2bf;">            </span><span style="color:#cd74e8;">return </span><span style="color:#eb6772;">Dual</span><span style="color:#abb2bf;">(real, dual)
+</span><span style="color:#abb2bf;">        </span><span style="color:#cd74e8;">return </span><span style="color:#eb6772;">Dual</span><span style="color:#abb2bf;">(</span><span style="color:#eb6772;">self</span><span style="color:#abb2bf;">.real </span><span style="color:#adb7c9;">+ </span><span style="color:#abb2bf;">other, </span><span style="color:#eb6772;">self</span><span style="color:#abb2bf;">.dual)
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">    </span><span style="color:#5ebfcc;">__radd__ </span><span style="color:#adb7c9;">= </span><span style="color:#5ebfcc;">__add__
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">    </span><span style="color:#cd74e8;">def </span><span style="color:#5ebfcc;">__mul__</span><span style="color:#abb2bf;">(</span><span style="color:#eb6772;">self</span><span style="color:#abb2bf;">, </span><span style="color:#eb6772;">other</span><span style="color:#abb2bf;">):
+</span><span style="color:#abb2bf;">        </span><span style="color:#cd74e8;">if </span><span style="color:#5ebfcc;">isinstance</span><span style="color:#abb2bf;">(other, Dual):
+</span><span style="color:#abb2bf;">            real </span><span style="color:#adb7c9;">= </span><span style="color:#eb6772;">self</span><span style="color:#abb2bf;">.real </span><span style="color:#adb7c9;">* </span><span style="color:#abb2bf;">other.real
+</span><span style="color:#abb2bf;">            dual </span><span style="color:#adb7c9;">= </span><span style="color:#eb6772;">self</span><span style="color:#abb2bf;">.real </span><span style="color:#adb7c9;">* </span><span style="color:#abb2bf;">other.dual </span><span style="color:#adb7c9;">+ </span><span style="color:#eb6772;">self</span><span style="color:#abb2bf;">.dual </span><span style="color:#adb7c9;">* </span><span style="color:#abb2bf;">other.real
+</span><span style="color:#abb2bf;">            </span><span style="color:#cd74e8;">return </span><span style="color:#eb6772;">Dual</span><span style="color:#abb2bf;">(real, dual)
+</span><span style="color:#abb2bf;">        </span><span style="color:#cd74e8;">return </span><span style="color:#eb6772;">Dual</span><span style="color:#abb2bf;">(</span><span style="color:#eb6772;">self</span><span style="color:#abb2bf;">.real </span><span style="color:#adb7c9;">* </span><span style="color:#abb2bf;">other, </span><span style="color:#eb6772;">self</span><span style="color:#abb2bf;">.dual </span><span style="color:#adb7c9;">* </span><span style="color:#abb2bf;">other)
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">    </span><span style="color:#5ebfcc;">__rmul__ </span><span style="color:#adb7c9;">= </span><span style="color:#5ebfcc;">__mul__
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">    </span><span style="color:#cd74e8;">def </span><span style="color:#5ebfcc;">__pow__</span><span style="color:#abb2bf;">(</span><span style="color:#eb6772;">self</span><span style="color:#abb2bf;">, </span><span style="color:#eb6772;">other</span><span style="color:#abb2bf;">):
+</span><span style="color:#abb2bf;">        </span><span style="color:#cd74e8;">if </span><span style="color:#5ebfcc;">isinstance</span><span style="color:#abb2bf;">(other, (int, float)):
+</span><span style="color:#abb2bf;">            real </span><span style="color:#adb7c9;">= </span><span style="color:#eb6772;">self</span><span style="color:#abb2bf;">.real</span><span style="color:#adb7c9;">**</span><span style="color:#abb2bf;">other
+</span><span style="color:#abb2bf;">            dual </span><span style="color:#adb7c9;">= </span><span style="color:#abb2bf;">other </span><span style="color:#adb7c9;">* </span><span style="color:#eb6772;">self</span><span style="color:#abb2bf;">.real </span><span style="color:#adb7c9;">** </span><span style="color:#abb2bf;">(other </span><span style="color:#adb7c9;">- </span><span style="color:#db9d63;">1</span><span style="color:#abb2bf;">) </span><span style="color:#adb7c9;">* </span><span style="color:#eb6772;">self</span><span style="color:#abb2bf;">.dual
+</span><span style="color:#abb2bf;">            </span><span style="color:#cd74e8;">return </span><span style="color:#eb6772;">Dual</span><span style="color:#abb2bf;">(real, dual)
+</span><span style="color:#abb2bf;">        </span><span style="color:#cd74e8;">elif </span><span style="color:#5ebfcc;">isinstance</span><span style="color:#abb2bf;">(other, Dual):
+</span><span style="color:#abb2bf;">            real </span><span style="color:#adb7c9;">= </span><span style="color:#eb6772;">self</span><span style="color:#abb2bf;">.real</span><span style="color:#adb7c9;">**</span><span style="color:#abb2bf;">other.real
+</span><span style="color:#abb2bf;">            dual </span><span style="color:#adb7c9;">= </span><span style="color:#abb2bf;">real </span><span style="color:#adb7c9;">* </span><span style="color:#abb2bf;">(
+</span><span style="color:#abb2bf;">                (</span><span style="color:#eb6772;">self</span><span style="color:#abb2bf;">.dual </span><span style="color:#adb7c9;">* </span><span style="color:#abb2bf;">other.real </span><span style="color:#adb7c9;">/ </span><span style="color:#eb6772;">self</span><span style="color:#abb2bf;">.real) </span><span style="color:#adb7c9;">+ </span><span style="color:#abb2bf;">other.dual </span><span style="color:#adb7c9;">* </span><span style="color:#abb2bf;">math.</span><span style="color:#eb6772;">log</span><span style="color:#abb2bf;">(</span><span style="color:#eb6772;">self</span><span style="color:#abb2bf;">.real)
+</span><span style="color:#abb2bf;">            )
+</span><span style="color:#abb2bf;">            </span><span style="color:#cd74e8;">return </span><span style="color:#eb6772;">Dual</span><span style="color:#abb2bf;">(real, dual)
+</span><span style="color:#abb2bf;">        </span><span style="color:#cd74e8;">else</span><span style="color:#abb2bf;">:
+</span><span style="color:#abb2bf;">            </span><span style="color:#cd74e8;">return </span><span style="color:#db9d63;">NotImplemented
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">
+</span><span style="color:#cd74e8;">def </span><span style="color:#5cb3fa;">diff</span><span style="color:#abb2bf;">(</span><span style="color:#eb6772;">f</span><span style="color:#abb2bf;">, </span><span style="color:#eb6772;">x</span><span style="color:#abb2bf;">):
+</span><span style="color:#abb2bf;">    </span><span style="color:#cd74e8;">return </span><span style="color:#eb6772;">f</span><span style="color:#abb2bf;">(</span><span style="color:#eb6772;">Dual</span><span style="color:#abb2bf;">(x, </span><span style="color:#db9d63;">1</span><span style="color:#abb2bf;">)).dual
+</span></code></pre>
+<p>Let's try to find the derivative of a polynomial function using our implementation.</p>
+<pre data-lang="python" style="background-color:#2b303b;color:#6c7079;" class="language-python "><code class="language-python" data-lang="python"><span style="color:#cd74e8;">def </span><span style="color:#5cb3fa;">f</span><span style="color:#abb2bf;">(</span><span style="color:#eb6772;">x</span><span style="color:#abb2bf;">):
+</span><span style="color:#abb2bf;">    </span><span style="color:#cd74e8;">return </span><span style="color:#abb2bf;">x</span><span style="color:#adb7c9;">**</span><span style="color:#db9d63;">2 </span><span style="color:#adb7c9;">+ </span><span style="color:#db9d63;">3 </span><span style="color:#adb7c9;">* </span><span style="color:#abb2bf;">x </span><span style="color:#adb7c9;">+ </span><span style="color:#db9d63;">2
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">x </span><span style="color:#adb7c9;">= </span><span style="color:#db9d63;">5
+</span><span style="color:#5ebfcc;">print</span><span style="color:#abb2bf;">(</span><span style="color:#9acc76;">&quot;f(x) = &quot;</span><span style="color:#abb2bf;">, </span><span style="color:#eb6772;">f</span><span style="color:#abb2bf;">(x))
+</span><span style="color:#5ebfcc;">print</span><span style="color:#abb2bf;">(</span><span style="color:#9acc76;">&quot;f&#39;(x) = &quot;</span><span style="color:#abb2bf;">, </span><span style="color:#eb6772;">diff</span><span style="color:#abb2bf;">(f, x))
+</span><span style="color:#5ebfcc;">print</span><span style="color:#abb2bf;">(</span><span style="color:#9acc76;">&quot;f&#39;(x) = &quot;</span><span style="color:#abb2bf;">, </span><span style="color:#db9d63;">2 </span><span style="color:#adb7c9;">* </span><span style="color:#abb2bf;">x </span><span style="color:#adb7c9;">+ </span><span style="color:#db9d63;">3</span><span style="color:#abb2bf;">)
+</span></code></pre>
+<p><strong>Output</strong></p>
+<pre data-lang="txt" style="background-color:#2b303b;color:#6c7079;" class="language-txt "><code class="language-txt" data-lang="txt"><span style="color:#abb2bf;">f(x) =  42
+</span><span style="color:#abb2bf;">f&#39;(x) =  13
+</span><span style="color:#abb2bf;">f&#39;(x) =  13
+</span></code></pre>
+</br>
+<p>We can use similar approach to calculate the propagation of derivatives for trigonometric function like \( \sin(x) \) and \( \cos(x) \), where \( x \in \mathbb{D} \) (dual numbers). We use Taylor expansion and the chain rule to propagate derivatives through the dual part.</p>
+<p><strong>Sine Function</strong></p>
+<p>$$
+\sin(x) = \sin(a + b\varepsilon)
+$$</p>
+<p>Using first-order Taylor expansion:</p>
+<p>$$
+\sin(a + b\varepsilon) = \sin(a) + b\varepsilon \cdot \cos(a)
+$$</p>
+<p>So, the result is:</p>
+<p>$$
+\text{real part: } \sin(a), \quad \text{dual part: } b \cos(a)
+$$</p>
+<p>In code:</p>
+<pre data-lang="python" style="background-color:#2b303b;color:#6c7079;" class="language-python "><code class="language-python" data-lang="python"><span style="color:#cd74e8;">def </span><span style="color:#5cb3fa;">sin</span><span style="color:#abb2bf;">(</span><span style="color:#eb6772;">x</span><span style="color:#abb2bf;">):
+</span><span style="color:#abb2bf;">    </span><span style="color:#cd74e8;">if </span><span style="color:#5ebfcc;">isinstance</span><span style="color:#abb2bf;">(x, Dual):
+</span><span style="color:#abb2bf;">        </span><span style="color:#cd74e8;">return </span><span style="color:#eb6772;">Dual</span><span style="color:#abb2bf;">(math.</span><span style="color:#eb6772;">sin</span><span style="color:#abb2bf;">(x.real), x.dual </span><span style="color:#adb7c9;">* </span><span style="color:#abb2bf;">math.</span><span style="color:#eb6772;">cos</span><span style="color:#abb2bf;">(x.real))
+</span><span style="color:#abb2bf;">    </span><span style="color:#cd74e8;">return </span><span style="color:#abb2bf;">math.</span><span style="color:#eb6772;">sin</span><span style="color:#abb2bf;">(x)
+</span></code></pre>
+<p><strong>Cosine Function</strong></p>
+<p>$$
+\cos(x) = \cos(a + b\varepsilon)
+$$</p>
+<p>Using Taylor expansion:</p>
+<p>$$
+\cos(a + b\varepsilon) = \cos(a) - b\varepsilon \cdot \sin(a)
+$$</p>
+<p>So, the result is:</p>
+<p>$$
+\text{real part: } \cos(a), \quad \text{dual part: } -b \sin(a)
+$$</p>
+<p>In code:</p>
+<pre data-lang="python" style="background-color:#2b303b;color:#6c7079;" class="language-python "><code class="language-python" data-lang="python"><span style="color:#cd74e8;">def </span><span style="color:#5cb3fa;">cos</span><span style="color:#abb2bf;">(</span><span style="color:#eb6772;">x</span><span style="color:#abb2bf;">):
+</span><span style="color:#abb2bf;">    </span><span style="color:#cd74e8;">if </span><span style="color:#5ebfcc;">isinstance</span><span style="color:#abb2bf;">(x, Dual):
+</span><span style="color:#abb2bf;">        </span><span style="color:#cd74e8;">return </span><span style="color:#eb6772;">Dual</span><span style="color:#abb2bf;">(math.</span><span style="color:#eb6772;">cos</span><span style="color:#abb2bf;">(x.real), </span><span style="color:#adb7c9;">-</span><span style="color:#abb2bf;">x.dual </span><span style="color:#adb7c9;">* </span><span style="color:#abb2bf;">math.</span><span style="color:#eb6772;">sin</span><span style="color:#abb2bf;">(x.real))
+</span><span style="color:#abb2bf;">    </span><span style="color:#cd74e8;">return </span><span style="color:#abb2bf;">math.</span><span style="color:#eb6772;">cos</span><span style="color:#abb2bf;">(x)
+</span></code></pre>
+<p>Let's test our implementation:</p>
+<pre data-lang="python" style="background-color:#2b303b;color:#6c7079;" class="language-python "><code class="language-python" data-lang="python"><span style="color:#cd74e8;">def </span><span style="color:#5cb3fa;">f</span><span style="color:#abb2bf;">(</span><span style="color:#eb6772;">x</span><span style="color:#abb2bf;">):
+</span><span style="color:#abb2bf;">    </span><span style="color:#cd74e8;">return </span><span style="color:#eb6772;">sin</span><span style="color:#abb2bf;">(x)
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">x </span><span style="color:#adb7c9;">= </span><span style="color:#abb2bf;">math.pi </span><span style="color:#adb7c9;">/ </span><span style="color:#db9d63;">3
+</span><span style="color:#5ebfcc;">print</span><span style="color:#abb2bf;">(</span><span style="color:#9acc76;">&quot;f(x) = &quot;</span><span style="color:#abb2bf;">, </span><span style="color:#eb6772;">f</span><span style="color:#abb2bf;">(x))
+</span><span style="color:#5ebfcc;">print</span><span style="color:#abb2bf;">(</span><span style="color:#9acc76;">&quot;f&#39;(x) = &quot;</span><span style="color:#abb2bf;">, </span><span style="color:#eb6772;">diff</span><span style="color:#abb2bf;">(f, x))
+</span><span style="color:#5ebfcc;">print</span><span style="color:#abb2bf;">(</span><span style="color:#9acc76;">&quot;f&#39;(x) = cos(x) = &quot;</span><span style="color:#abb2bf;">, </span><span style="color:#eb6772;">cos</span><span style="color:#abb2bf;">(x))
+</span></code></pre>
+<p><strong>Output</strong></p>
+<pre data-lang="txt" style="background-color:#2b303b;color:#6c7079;" class="language-txt "><code class="language-txt" data-lang="txt"><span style="color:#abb2bf;">f(x) =  0.8660254037844386
+</span><span style="color:#abb2bf;">f&#39;(x) =  0.5000000000000001
+</span><span style="color:#abb2bf;">f&#39;(x) = cos(x) =  0.5000000000000001
+</span></code></pre>
+</br>
+<p>In summary, forward-mode automatic differentiation leverages dual numbers to elegantly propagate derivatives alongside values. By evaluating functions on dual inputs, we can compute exact derivatives with minimal changes to the original code, making this technique both efficient and easy to implement.</p>
+<h4 id="reverse-mode-automatic-differentiation">Reverse-mode Automatic Differentiation</h4>
+<p>It's worth noting that another powerful technique exists: reverse-mode automatic differentiation, which is more efficient when computing gradients of functions with many inputs and a single output—like in deep learning. However, reverse mode requires building a computational graph and performing a backward pass, which adds complexity. We won’t cover reverse-mode here, as that would make this post significantly longer.</p>
+<p align="center">
+   <img src="/images/posts/differentiation/ReverseaccumulationAD.png" alt="Reverse Automatic Differentiation" style="max-width:90%"/>
+</p>
+<h2 id="wrapping-up">Wrapping Up</h2>
+<p>Differentiation is at the heart of optimization, and in today's machine learning and scientific computing workflows, automatic differentiation offers the best of both worlds: precision and efficiency.</p>
+<p>We’ve seen how to go from symbolic and numerical methods to a more scalable and elegant solution, one that can be embedded directly in code with minimal overhead. Forward-mode using dual numbers provides an elegant way to compute derivatives by augmenting the real number system and propagating derivatives alongside values.</p>
+<p>Different differentiation methods serve different needs depending on the context. Here’s a quick comparison of symbolic, numerical, and automatic differentiation to help you understand when to use which:</p>
+<table><thead><tr><th>Method</th><th>Pros</th><th>Cons</th><th>Best for</th></tr></thead><tbody>
+<tr><td>Symbolic</td><td>Exact derivatives</td><td>Slow for complex functions</td><td>Math-heavy functions</td></tr>
+<tr><td>Numerical</td><td>Simple to implement</td><td>Inaccurate, error-prone</td><td>Unknown/black-box functions</td></tr>
+<tr><td>Automatic</td><td>Accurate and efficient</td><td>Harder to implement manually</td><td>ML, optimization problems</td></tr>
+</tbody></table>
+<p>If you’ve come this far, thank you! I hope this post demystified how computers differentiate functions and how that knowledge translates into real-world applications.</p>
+<p>Until next time, keep exploring, and keep differentiating 🧮🚀</p>
 <h2 id="references">References</h2>
 <ol>
 <li><a rel="noopener nofollow noreferrer" target="_blank" href="https://en.wikipedia.org/wiki/Derivative">Derivative - Wikipedia</a></li>

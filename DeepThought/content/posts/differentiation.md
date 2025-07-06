@@ -1,5 +1,5 @@
 +++
-title="How Differentiation Works in Computers? 🧮"
+title="How Differentiation Works in Computers?"
 extra.featured="/images/posts/differentiation.jpeg"
 date=2025-06-01
 extra.status="Done"
@@ -18,7 +18,17 @@ tags = ["python", "maths"]
    <img src="/images/posts/differentiation/differentiation.jpeg" alt="differentiation" style="max-width:98%"/>
 </p>
 
-## How it started?
+## Table of Contents
+
+1. [Introduction](#how-it-started)
+2. [What is Differentiation?](#differentiation)
+3. [Symbolic Differentiation](#1-symbolic-differentiation)
+4. [Numerical Differentiation](#2-numerical-differentiation)
+5. [Automatic Differentiation](#3-automatic-differentiation)
+6. [Comparing the Methods](#wrapping-up)
+7. [References](#references)
+
+## How It Started?
 
 It all started when I was watching the YouTube video on [Finding The Slope Algorithm (Forward Mode Automatic Differentiation)](https://www.youtube.com/watch?v=QwFLA5TrviI&ab_channel=Computerphile) by Computerphile:
 
@@ -28,7 +38,7 @@ It all started when I was watching the YouTube video on [Finding The Slope Algor
 
 In this video, Mark Williams demonstrates Forward Mode Automatic Differentiation and explains how it addresses the limitations of traditional methods like [Symbolic](https://en.wikipedia.org/wiki/Computer_algebra) and [Numerical](https://en.wikipedia.org/wiki/Numerical_differentiation) Differentiation. The video also introduces the concept of [Dual Numbers](https://en.wikipedia.org/wiki/Dual_number) and shows how they can be efficiently used to compute the gradient of a function at any point.
 
-Let's start with the basic concepts of differentiation!
+Before diving into how computers do it, let’s quickly revisit what differentiation actually means.
 
 ## Differentiation
 
@@ -354,7 +364,7 @@ $$
 Usually, two distinct modes of automatic differentiation are presented:
 
 - Forward accumulation (also called bottom-up, forward mode, or tangent mode)
-- reverse accumulation (also called top-down, reverse mode, or adjoint mode)
+- Reverse accumulation (also called top-down, reverse mode, or adjoint mode)
 
 Forward accumulation specifies that one traverses the chain rule from inside to outside (that is, first compute \\( \partial w\_{1}/\partial x \\) and then \\( \partial w\_{2}/\partial w\_{1} \\) and lastly \\( \partial y/\partial w\*{2}\\) ), while reverse accumulation traverses from outside to inside (first compute \\( \partial y/\partial w\_{2} \\) and then \\( \partial w\_{2}/\partial w\_{1} \\) and lastly \\( \partial w\_{1}/\partial x\\) ).
 
@@ -445,7 +455,315 @@ $$
 f(a + b\varepsilon) = f(a) + b f'(a)\varepsilon
 $$
 
-This means you can compute both \\( f(a) \\) and \\( f'(a) \\) in one pass, a powerful technique in machine learning and scientific computing.
+This means you can compute both \\( f(a) \\) and \\( f'(a) \\) in one pass, a powerful technique in machine learning and scientific computing. Let's implement the dual numbers in Python:
+
+```python
+import math
+
+
+class Dual:
+    def __init__(self, real, dual):
+        self.real = real
+        self.dual = dual
+
+    def __str__(self):
+        return f"{self.real}+{self.dual}ε"
+
+    def __add__(self, other):
+        if isinstance(other, Dual):
+            real = self.real + other.real
+            dual = self.dual + other.dual
+            return Dual(real, dual)
+        return Dual(self.real + other, self.dual)
+
+    __radd__ = __add__
+
+    def __mul__(self, other):
+        if isinstance(other, Dual):
+            real = self.real * other.real
+            dual = self.real * other.dual + self.dual * other.real
+            return Dual(real, dual)
+        return Dual(self.real * other, self.dual * other)
+
+    __rmul__ = __mul__
+
+
+d1 = Dual(3, 2)
+d2 = Dual(4, 5)
+print(f"d1: {d1}, d2: {d2}")
+print("d1+d2 =", d1 + d2)
+print("d1*d2 =", d1 * d2)
+```
+
+**Output**
+
+```txt
+d1: 3+2ε, d2: 4+5ε
+d1+d2 = 7+7ε
+d1*d2 = 12+23ε
+```
+
+</br>
+
+Before we move on to the implementation of differentiation using dual numbers, which is quite easy, we need to first implement another commonly used function: the power function.
+
+Let \\( x=a+bε \\), and suppose you want to compute \\( x^y \\), considering two cases:
+
+**Case 1:** \\( y \in \mathbb{R} \\) (a real exponent)
+
+Let \\( y = n \in \mathbb{R} \\). Using the first-order Taylor expansion:
+
+$$
+x^n = (a + b\varepsilon)^n = a^n + n a^{n-1} b \varepsilon
+$$
+
+Thus, the result is:
+
+- Real part: \\( a^n \\)
+- Dual part: \\( n a^{n-1} b \\)
+
+Which gives:
+
+```python
+real = self.real**other
+dual = other * self.real ** (other - 1) * self.dual
+```
+
+**Case 2:** \\( y = c + d\varepsilon \\) (a dual exponent)
+
+We use the identity:
+
+$$
+x^y = e^{y \cdot \ln x}
+$$
+
+First compute:
+
+$$
+\ln x = \ln(a + b\varepsilon) = \ln a + \frac{b}{a} \varepsilon
+$$
+
+Then:
+
+$$
+y \cdot \ln x = (c + d\varepsilon)(\ln a + \frac{b}{a} \varepsilon)
+= c \ln a + \left( d \ln a + \frac{c b}{a} \right) \varepsilon
+$$
+
+Now exponentiate:
+
+$$
+e^{c \ln a + \left( d \ln a + \frac{c b}{a} \right) \varepsilon}
+= a^c + a^c \left( d \ln a + \frac{c b}{a} \right) \varepsilon
+$$
+
+So:
+
+- Real part: \\( a^c \\)
+- Dual part: \\( a^c \left( \frac{c b}{a} + d \ln a \right) \\)
+
+This gives:
+
+```python
+real = self.real ** other.real
+dual = real * (
+(self.dual * other.real / self.real) + other.dual * math.log(self.real)
+)
+```
+
+Now to calculate the derivative of a function, evaluating a function \\( f \\) at the dual number \\( x + \varepsilon \\), we get:
+
+$$
+f(x + \varepsilon) = f(x) + f'(x)\varepsilon
+$$
+
+The real part is the value of the function, and the dual part gives the derivative. Hence, we can extract the derivative directly from the dual component. The derivative of \\( f \\) at a point \\( x \\) can be computed using:
+
+```python
+def diff(f, x):
+    return f(Dual(x, 1)).dual
+```
+
+Here, we construct the dual number \\( x + 1 \cdot \varepsilon \\). When \\( f \\) is evaluated on this dual number, it propagates the derivative information through all operations. The final `.dual` part gives us \\( f'(x) \\).
+
+Now putting everything together we have:
+
+```python
+import math
+
+
+class Dual:
+    def __init__(self, real, dual):
+        self.real = real
+        self.dual = dual
+
+    def __str__(self):
+        return f"{self.real}+{self.dual}ε"
+
+    def __add__(self, other):
+        if isinstance(other, Dual):
+            real = self.real + other.real
+            dual = self.dual + other.dual
+            return Dual(real, dual)
+        return Dual(self.real + other, self.dual)
+
+    __radd__ = __add__
+
+    def __mul__(self, other):
+        if isinstance(other, Dual):
+            real = self.real * other.real
+            dual = self.real * other.dual + self.dual * other.real
+            return Dual(real, dual)
+        return Dual(self.real * other, self.dual * other)
+
+    __rmul__ = __mul__
+
+    def __pow__(self, other):
+        if isinstance(other, (int, float)):
+            real = self.real**other
+            dual = other * self.real ** (other - 1) * self.dual
+            return Dual(real, dual)
+        elif isinstance(other, Dual):
+            real = self.real**other.real
+            dual = real * (
+                (self.dual * other.real / self.real) + other.dual * math.log(self.real)
+            )
+            return Dual(real, dual)
+        else:
+            return NotImplemented
+
+
+def diff(f, x):
+    return f(Dual(x, 1)).dual
+```
+
+Let's try to find the derivative of a polynomial function using our implementation.
+
+```python
+def f(x):
+    return x**2 + 3 * x + 2
+
+x = 5
+print("f(x) = ", f(x))
+print("f'(x) = ", diff(f, x))
+print("f'(x) = ", 2 * x + 3)
+```
+
+**Output**
+
+```txt
+f(x) =  42
+f'(x) =  13
+f'(x) =  13
+```
+
+</br>
+
+We can use similar approach to calculate the propagation of derivatives for trigonometric function like \\( \sin(x) \\) and \\( \cos(x) \\), where \\( x \in \mathbb{D} \\) (dual numbers). We use Taylor expansion and the chain rule to propagate derivatives through the dual part.
+
+**Sine Function**
+
+$$
+\sin(x) = \sin(a + b\varepsilon)
+$$
+
+Using first-order Taylor expansion:
+
+$$
+\sin(a + b\varepsilon) = \sin(a) + b\varepsilon \cdot \cos(a)
+$$
+
+So, the result is:
+
+$$
+\text{real part: } \sin(a), \quad \text{dual part: } b \cos(a)
+$$
+
+In code:
+
+```python
+def sin(x):
+    if isinstance(x, Dual):
+        return Dual(math.sin(x.real), x.dual * math.cos(x.real))
+    return math.sin(x)
+```
+
+**Cosine Function**
+
+$$
+\cos(x) = \cos(a + b\varepsilon)
+$$
+
+Using Taylor expansion:
+
+$$
+\cos(a + b\varepsilon) = \cos(a) - b\varepsilon \cdot \sin(a)
+$$
+
+So, the result is:
+
+$$
+\text{real part: } \cos(a), \quad \text{dual part: } -b \sin(a)
+$$
+
+In code:
+
+```python
+def cos(x):
+    if isinstance(x, Dual):
+        return Dual(math.cos(x.real), -x.dual * math.sin(x.real))
+    return math.cos(x)
+```
+
+Let's test our implementation:
+
+```python
+def f(x):
+    return sin(x)
+
+x = math.pi / 3
+print("f(x) = ", f(x))
+print("f'(x) = ", diff(f, x))
+print("f'(x) = cos(x) = ", cos(x))
+```
+
+**Output**
+
+```txt
+f(x) =  0.8660254037844386
+f'(x) =  0.5000000000000001
+f'(x) = cos(x) =  0.5000000000000001
+```
+
+</br>
+
+In summary, forward-mode automatic differentiation leverages dual numbers to elegantly propagate derivatives alongside values. By evaluating functions on dual inputs, we can compute exact derivatives with minimal changes to the original code, making this technique both efficient and easy to implement.
+
+#### Reverse-mode Automatic Differentiation
+
+It's worth noting that another powerful technique exists: reverse-mode automatic differentiation, which is more efficient when computing gradients of functions with many inputs and a single output—like in deep learning. However, reverse mode requires building a computational graph and performing a backward pass, which adds complexity. We won’t cover reverse-mode here, as that would make this post significantly longer.
+
+<p align="center">
+   <img src="/images/posts/differentiation/ReverseaccumulationAD.png" alt="Reverse Automatic Differentiation" style="max-width:90%"/>
+</p>
+
+## Wrapping Up
+
+Differentiation is at the heart of optimization, and in today's machine learning and scientific computing workflows, automatic differentiation offers the best of both worlds: precision and efficiency.
+
+We’ve seen how to go from symbolic and numerical methods to a more scalable and elegant solution, one that can be embedded directly in code with minimal overhead. Forward-mode using dual numbers provides an elegant way to compute derivatives by augmenting the real number system and propagating derivatives alongside values.
+
+Different differentiation methods serve different needs depending on the context. Here’s a quick comparison of symbolic, numerical, and automatic differentiation to help you understand when to use which:
+
+| Method    | Pros                   | Cons                         | Best for                    |
+| --------- | ---------------------- | ---------------------------- | --------------------------- |
+| Symbolic  | Exact derivatives      | Slow for complex functions   | Math-heavy functions        |
+| Numerical | Simple to implement    | Inaccurate, error-prone      | Unknown/black-box functions |
+| Automatic | Accurate and efficient | Harder to implement manually | ML, optimization problems   |
+
+If you’ve come this far, thank you! I hope this post demystified how computers differentiate functions and how that knowledge translates into real-world applications.
+
+Until next time, keep exploring, and keep differentiating 🧮🚀
 
 ## References
 
