@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <meta content="#ffffff" name="theme-color" />
+  <meta content="#da532c" name="msapplication-TileColor" />
+
+  
+  <meta property="og:title" content="Animesh Chouhan" />
+  <meta property="og:description" content="Software Engineer" />
+  <meta property="og:image" content="https://animeshchouhan.com/images/fb-sharing.jpg?1" />
+  <meta name="description" content="Software Engineer">
+  
+
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1.9.1/css/academicons.min.css" integrity="sha384-FIue+PI4SsI9XfHCz8dBLg33b0c1fMJgNU3X//L26FYbGnlSEfWmNT7zgWc2N9b6" crossorigin="anonymous"> -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"
+    integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link href="/deep-thought.css" rel="stylesheet" />
+  
+  
+
+  
+  <link href='&#x2F;icons&#x2F;site.webmanifest' rel="manifest" />
+  
+  
+  <link color="#5bbad5" href='&#x2F;icons&#x2F;safari-pinned-tab.svg' rel="mask-icon" />
+  
+  
+  <link href='&#x2F;icons&#x2F;favicon-16x16.png' rel="icon" sizes="16x16" type="image/png" />
+  
+  
+  <link href='&#x2F;icons&#x2F;favicon-32x32.png' rel="icon" sizes="32x32" type="image/png" />
+  
+  
+  <link href='&#x2F;icons&#x2F;apple-icon.png' rel="apple-touch-icon" sizes="180x180" />
+  
+
+  
+
+  
+
+  <title>
+    
+    Animesh Chouhan
+    
+  </title>
+
+  
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NK695M7L1L"></script>
+  <script type="text/javascript">
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+    gtag("config", "G-NK695M7L1L");
+  </script>
+  
+  
+
+  
+  
+</head>
+
+<body class="has-background-white">
+  <nav aria-label="section navigation" class="navbar is-light" role="navigation">
+    <div class="container">
+      <div class="navbar-brand">
+        <a class="navbar-item is-size-5 has-text-weight-bold" href="/">Animesh Chouhan</a>
+        <a aria-expanded="false" aria-label="menu" class="navbar-burger burger" data-target="navMenu" role="button">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+      <div class="navbar-menu" id="navMenu">
+        <div class="navbar-end has-text-centered">
+          
+          
+          
+          <a class="navbar-item has-text-weight-semibold" href="&#x2F;">
+            Home
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href="&#x2F;projects">
+            Projects
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href="&#x2F;posts">
+            Posts
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href="&#x2F;vault">
+            Vault
+          </a>
+          
+          
+          
+          <a class="navbar-item has-text-weight-semibold" href="/files/resume-animesh-public.pdf" target="_blank">
+            Resume
+          </a>
+          <!-- <a class="navbar-item" id="nav-search" title="Search" data-target="#search-modal">
+            <span class="icon">
+              <i class="fas fa-search"></i>
+            </span>
+          </a> -->
+          <a class="navbar-item" id="dark-mode" title="Switch to dark theme">
+            <span class="icon">
+              <i class="fas fa-adjust"></i>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  
+  
+
+  
+<style>
+  .vault-section {
+    min-height: 100vh;
+    padding: 6rem 2rem;
+    background-color: #fafafa;
+    color: #2c2c2c;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+
+  .vault-container {
+    max-width: 700px;
+    /* Narrower container for better readability */
+    margin: 0 auto;
+    padding-bottom: 2rem;
+  }
+
+  .vault-section h2 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+
+  .vault-section p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+
+  .riddle {
+    font-size: 1.2rem;
+    color: #2c2c2c;
+    margin: 2rem 0;
+    font-style: italic;
+    text-align: center;
+    position: relative;
+    padding: 2rem 0;
+  }
+
+  .riddle::before,
+  .riddle::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 1px;
+    background-color: #2c2c2c;
+  }
+
+  .riddle::before {
+    top: 0;
+  }
+
+  .riddle::after {
+    bottom: 0;
+  }
+
+  .vault-input {
+    margin: 1.5rem 0;
+    text-align: center;
+  }
+
+  .vault-input input {
+    width: 100%;
+    max-width: 400px;
+    padding: 0.8rem;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    margin-bottom: 1rem;
+  }
+
+  .vault-input button {
+    background-color: #2c2c2c;
+    color: white;
+    border: none;
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+
+  .vault-input button:hover {
+    background-color: #444;
+  }
+
+  #error-message {
+    color: #dc3545;
+    font-size: 0.9rem;
+    margin-top: 1rem;
+    display: none;
+  }
+
+  #vault-content {
+    display: none;
+    margin-top: 2rem;
+  }
+
+  #vault-content h3 {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+  }
+
+  .book-list {
+    list-style: none;
+    padding: 0;
+  }
+
+
+
+  .book-list li strong {
+    font-weight: 500;
+  }
+
+  .book-list li em {
+    font-style: italic;
+  }
+
+  /* Add a quote style */
+  .quote {
+    font-style: italic;
+    color: #666;
+    border-left: 3px solid #ddd;
+    padding-left: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  @media (max-width: 768px) {
+    .vault-container {
+      padding: 1rem 1.5rem;
+    }
+
+    .vault-section {
+      padding: 4rem 1rem;
+    }
+  }
+</style>
+
+<section class="section">
+  <div class="container">
+    <div class="has-text-centered">
+      <h1 class="title is-2">Harkat</h1>
+
+      <div class="vault-container" style="text-align: left;">
+        <div class="quote">
+
+          “The pain of parting is nothing to the joy of meeting again.” — Charles Dickens
+
+        </div>
+        <p>A little treasure lies hidden here, waiting just for you 💫</p>
+        <p class="riddle"><strong>
+            Enter your full name in smallcase without spaces, followed by the year 2025. For eg:
+            <strong><i>animeshchouhan2025</i></strong></p>
+        </strong></p>
+
+
+        <div class="vault-input">
+          <input type="text" id="vault-answer" placeholder="Your answer here">
+          <button onclick="checkAnswer()">Submit</button>
+          <p id="error-message">Incorrect answer! Try again.</p>
+        </div>
+
+        <div id="vault-content">
+        </div>
+        <br>
+      </div>
+
+      <script src="https://cdn.jsdelivr.net/npm/md5@2.3.0/dist/md5.min.js"></script>
+      <script>
+
+        async function hashKey(password) {
+          const keyMaterial = await crypto.subtle.importKey(
+            "raw",
+            new TextEncoder().encode(password),
+            { name: "PBKDF2" },
+            false,
+            ["deriveBits"]
+          );
+          const keyBits = await crypto.subtle.deriveBits(
+            {
+              name: "PBKDF2",
+              salt: new Uint8Array([]), // No salt for deterministic hashing
+              iterations: 1,
+              hash: "SHA-256",
+            },
+            keyMaterial,
+            256
+          );
+          return keyBits;
+        }
+
+        async function encryptData(plaintext, password) {
+          const keyBits = await hashKey(password);
+          const aesKey = await crypto.subtle.importKey(
+            "raw",
+            keyBits,
+            "AES-GCM",
+            false,
+            ["encrypt"]
+          );
+          const iv = crypto.getRandomValues(new Uint8Array(12));
+          const encodedText = new TextEncoder().encode(plaintext);
+          const ciphertext = await crypto.subtle.encrypt(
+            { name: "AES-GCM", iv },
+            aesKey,
+            encodedText
+          );
+
+          return {
+            iv: buf2hex(iv),
+            ciphertext: buf2hex(ciphertext)
+          };
+        }
+
+        async function decryptData(ivHex, ciphertextHex, password) {
+          try {
+            const keyBits = await hashKey(password);
+            const aesKey = await crypto.subtle.importKey(
+              "raw",
+              keyBits,
+              "AES-GCM",
+              false,
+              ["decrypt"]
+            );
+            const iv = hex2buf(ivHex);
+            const ciphertext = hex2buf(ciphertextHex);
+            const decrypted = await crypto.subtle.decrypt(
+              { name: "AES-GCM", iv },
+              aesKey,
+              ciphertext
+            );
+            return new TextDecoder().decode(decrypted);
+          } catch (err) {
+            return "**Incorrect key or corrupted data**";
+          }
+        }
+
+        // Utility functions
+        function buf2hex(buffer) {
+          return [...new Uint8Array(buffer)]
+            .map(b => b.toString(16).padStart(2, "0"))
+            .join("");
+        }
+
+        function hex2buf(hex) {
+          const bytes = new Uint8Array(hex.length / 2);
+          for (let i = 0; i < hex.length; i += 2) {
+            bytes[i / 2] = parseInt(hex.substring(i, i + 2), 16);
+          }
+          return bytes;
+        }
+
+        function toBase64(str) {
+          let bytes = new TextEncoder().encode(str);
+          let bin = Array.from(bytes, b => String.fromCharCode(b)).join("");
+          return btoa(bin);
+        }
+
+        function fromBase64(str) {
+          let bin = atob(str);
+          let bytes = Uint8Array.from(bin, ch => ch.charCodeAt(0));
+          return new TextDecoder().decode(bytes);
+        }
+
+
+        // 🔐 DEMO
+        // (async () => {
+        //   const password = "answer";
+        //   const plaintext = "Secret launch codes: 1234";
+
+        //   const { iv, ciphertext } = await encryptData(plaintext, password);
+        //   console.log("Encrypted:");
+        //   console.log("IV:", iv);
+        //   console.log("Ciphertext:", ciphertext);
+
+        //   // Simulate user typing the password later:
+        //   const userInput = "answer"; // try changing this to a wrong password
+        //   const decrypted = await decryptData(iv, ciphertext, userInput);
+        //   console.log("Decrypted:", decrypted);
+        // })();
+
+
+        async function checkAnswer() {
+          const userAnswer = document.getElementById("vault-answer").value.toLowerCase().trim();
+          const vaultContent = document.getElementById("vault-content");
+          const errorMessage = document.getElementById("error-message");
+
+          // Nice try, hacker, but are you sure you’ve thought this through?
+          // Try reversing this md5 hash and encryption :)
+          const correctAnswerHash = "19dfe2fb7fa56c46eba7411018dadc55";
+          const iv = "674325da11645cd687f57eeb"
+          const cipherText = "538ca65b02c6017cd5a9c9dcd496fb1d0815193bbad41e2697314beb384435a4e8fba91091efd534e3151585a07f71a790e46a0a4187d7f24112d1aa3fd4866be4a3fa10281e08c7021d0cc63ba0f8f38091f71f8557e4619f6418ac4346e50dd8874676fcc534d96aa14228d08a03126d39147bb33d4832c358e38b83a8efb858ffd31cc7a5ac46609dae71a2ab33d5179c4db195b20f2ca1ee5b0471b6902b40fcc8007aed8c7ef339264ff94280d4d5e8273a3c112312b65d7952d22d97a562603ba23218b26052454db8511a0c9d56053728173176726c04d97d0e35d65a585794826dfa836731df851ce2d74c891890df6091a8be35d3d5718aa43552fef10f162c3695055b21b6e580b33af9f0c7d582119020bfdad775c1a068c6a0a846ebe79411111d28bcab559571f73705e2cd12a7a15aeb41445edf7ac021382a27358cef3afdc3f118947943e6ce1ca5aaee112fafb7688a9ed13445fa4b2140096ae15ba20d205258e4d31295ffcaf8f3ddf9ea4bf5eee3566416a90f480a3038872ca172c3c91dd7a60f7ef390ba09f0a24d90a0ffa702b249c6d176a7187607dd5941f71b726b6a025201b0eb7cc85e21bdf48f6af1b8ae266e445564aebb202b27294ce947ae65d707edab17f6b968776996c20eb8c054dda6d10e1eedfd6b41368e4b1abd7fa8a201430e4df3049d148aa783f4573b8c9d781535999a8aca82f9ddbbeb2f4a650f85153a5f9aa7737f5575d3b7423528b3f06071ed9d587b9b69e734b990831d94b0bde5320950a5481ca4d1c2d317029adbf9a7ddfc10593a6f835577424b66804b0eb07b2f95adb69c247660589a590a06fb198b8450fa6a65814912b0964b166ee3113d67a8322f02cc1d6b4ffe96734b7dbbfe9fbcb72edae24644057d97936752e44cddbcc566cd4f48362ed2c067cfbd23bccbf9342d58c11705cdb4810758fba88fe3936ed33fb01a3f2636142d0a25f5635e2d757f05d85e020ea40fb73bd7b1df9abf2911accdc78359ea2d7c9f8504348c9a50c35fd45fd618c2af4ba3b790478f36baf0526f9aad49fab7f350f564e4b4b5f953f728d4342138716a5f7ab8849f46ab84872a68689493069143e4719a639d9ece2d6cb39208cdd31068f55c9f59f82cde195569aa57bf67a3a71c3a4202b28ecd5b6e5606460f990c5399c5bfe4f834eabb23822ede66e4ad6f18f42ae36553d7f92676171520a599f545a6fcc389fc854cb23bde8139e456002bdbc8c732acf345bf8184bb311f79294c9f3b087999bb8ebe5b6634d4b1aab62edf33b152a7de193647967141bb542e951df0645a310c9d9dec9c285f9881ca55d5bd4c53fb4510669b186ed57baedef42985d801d53a36882f646fbf3eae736a1265bb412869270e78d90283e12ae13090c680f7348216b31d67dcd071157e87998759ca43f02a96efdd06596b0b6ae72c26bb9bfa8516fcc9bcab80798e55ac725df29fb7ccfc149a3216efbd8c1c4c1acf901139f44b483e38288bf4005d9ab2bb7974a9bc097683b01ad372065ce000f82dc14af7d7b253f23fffb1a48ed1f9713988b1edc9d57746143494d18219a67cd1db699184b275bdcbe32c1ae3fa3ca05be9594faa229d72f471499e14a9f9216d20f6f1750113e78b1e93f2723e3ccc281d75fbabef66a00110f6805eaede174def80a3c8f028cda9d7aaf7411ecee1a2f7cef59944347d0500a4576e8b671042c688b60e3f2f8e15f837b82aa2d0dca651adc772cd626bdea06c2a3325b912ee31c75a0c5c4814aa211c2de59a7718933b16b02608f0d7e116eed2f2b64eefc45c0b8d479f495eebbdbc11c8ec0e1a65c3c0b9db12953ad41f5258a2ffe0ea1524d49c3aa111a01b8e9201acaebb4ff1848b2bdbb412c733c06730b14e9bf7f04c66a076c5124e110df6a2e679b3cd8beb083b35a7bae11b0583cf5a9e47af93cb1a00300ab0dc93f5db44b0805d5b4a5d821e791a1ef6e46642907f568268252e8b4c69a4fd645fb961e87f0f4792a8c93e8d6c0e6eb7bbb9ab073dc2a64114f792d5a97f4b31f18d41b7ba0e08c498ca8e405d7c7d396536f063f982cde20d17cd33002d8f57f7eb43e01bb3471b1db4594d893fa42c95a07c07370c6f53b806bbde46bfefd7a9888f9e38a86caaec2ed815bc419caf2567663a48c5abde3be4ccffa4ae8f76f5018c4ddc2b984ba3afe88e843a9a5cf62088c9a7b9eb54a2b4f5d651f84e3a079d8cfa1aa6690c6ea01196945e01030c3f59263bef5d5e684d6825fed8aa261e5b957bb61437f40b11d0d75e46ff6f0a90120b3de0e0d8d5e4abec3d3fe3c2ed11c2d1f3d0abaaab68130dfaa8532bdcc806656b88fbaa317ccc20a45384a962ea41d3e3df96d64c9596002f5aeb1b32d4dd4a6cf5cf020d08800ef8f0d6eab83be68dda73bf10bb3ee65524f94ae9b0fe1e9847f191980ef10b9d569c3fdcc138289e8dec97d021cb3e95237160a2f88fd5f48bd31cd75659369e167c7966742b241a6b1f52a424e5078dec7da029b1ba35326a941eb73f7b7931e86b0be62b1ee186726e80e8884bcd3f01189da629ecadef0ba6d97fc973a42f095adf72c8f9361ff7a7ed5edc59c1135f38f58cb032275806591535dde0fa1be4405855e1fd5789ed4ead6347ec785953a42dfc5f60a363222e11c3314379a9ac29e300d3e65e0287019feee63af71cf6de34c2187734ad5ecb2cfc5b5d5a1ac9646c6ef16f40233dd506ad3e970f22814a3a215696b9143712f73c7925b8ecda5e0563c827ae246a6b9991e7903c6e627f5bffef2669a3ab75533e7310bde0db776bc9fc1719ef07942c33b19f68af6efbfacddfa7c28255dd174445c2d3a77b8e97abb4c1df32d8c6fdde295d"
+
+          if (correctAnswerHash === MD5(userAnswer)) {
+            const encodedData = await decryptData(iv, cipherText, userAnswer);
+            const decodedData = fromBase64(encodedData);
+            vaultContent.innerHTML = decodedData.replace("-", "—")
+            vaultContent.style.display = "block";
+            errorMessage.style.display = "none";
+          } else {
+            errorMessage.style.display = "block";
+            vaultContent.style.display = "none";
+          }
+        }
+
+
+      </script>
+      
+<p>
+  
+
+  
+  <a class="has-text-twitter" href="https://twitter.com/animeshsingh38" target="_blank">
+    <span class="icon is-large" title="Twitter">
+      <i class="fab fa-twitter fa-lg"></i>
+    </span>
+  </a>
+  
+
+  
+  <a class="has-text-linkedin" href="https://www.linkedin.com/in/animesh-chouhan" target="_blank">
+    <span class="icon is-large" title="LinkedIn">
+      <i class="fab fa-linkedin fa-lg"></i>
+    </span>
+  </a>
+  
+
+  
+  <a class="has-text-instagram" href="https://www.instagram.com/animeshxchouhan" target="_blank">
+    <span class="icon is-large" title="Instagram">
+      <i class="fab fa-instagram fa-lg"></i>
+    </span>
+  </a>
+  
+
+  
+  <a class="has-text-youtube" href="https://www.youtube.com/@animesh_chouhan" target="_blank">
+    <span class="icon is-large" title="YouTube">
+      <i class="fa-brands fa-youtube"></i>
+    </span>
+  </a>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+  
+
+  
+  <a class="has-text-github" href="https://github.com/animesh-chouhan" target="_blank">
+    <span class="icon is-large" title="GitHub">
+      <i class="fab fa-github fa-lg"></i>
+    </span>
+  </a>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <a class="has-text-black" href="mailto:me@animeshchouhan.com" target="_blank">
+    <span class="icon is-large" title="Email">
+      <i class="far fa-envelope fa-lg"></i>
+    </span>
+  </a>
+  
+
+  
+
+  
+</p>
+
+
+    </div>
+  </div>
+</section>
+
+
+  
+  <section class="modal" id="search-modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Search</p>
+      </header>
+      <section class="modal-card-body">
+        <div class="field mb-2">
+          <div class="control">
+            <input class="input" id="search" placeholder="Search this website." type="search" />
+          </div>
+        </div>
+        <div class="search-results">
+          <div class="search-results__items"></div>
+        </div>
+      </section>
+    </div>
+    <button aria-label="close" class="modal-close is-large"></button>
+  </section>
+  
+
+
+  
+  
+  
+
+  
+  
+
+  
+  <footer class="footer py-3">
+    <div class="content has-text-centered">
+      <p style="margin-bottom: 6px;">
+        Built with
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-code"></i>
+          </span>
+          <!-- <span>code</span> -->
+        </span>
+        and
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-heart"></i>
+          </span>
+          <!-- <span>love</span> -->
+        </span>
+      </p>
+      <!-- <p>
+        Powered by
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-power-off"></i>
+          </span>
+          <span>zola</span>
+        </span>
+      </p> -->
+      <p>
+        <span class="icon-text">
+          <span class="icon">
+            <i class="far fa-copyright"></i>
+          </span>
+          <span>2025</span>
+        </span>
+      </p>
+    </div>
+  </footer>
+  
+
+  <script src="/js/site.js"></script>
+  
+  
+  
+  
+  <!-- Search scripts -->
+  <!-- <script src="/elasticlunr.min.js"></script> -->
+  <!-- <script src="/search_index.en.js"></script> -->
+  
+
+  
+  
+</body>
+
+</html>
