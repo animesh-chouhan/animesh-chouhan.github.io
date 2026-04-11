@@ -67,6 +67,11 @@ Animesh Chouhan | Generate Random Points in a Circle
 </head>
 
 <body class="has-background-white">
+  <script>
+    if (localStorage.getItem("theme") !== "light") {
+      document.body.setAttribute("theme", "dark");
+    }
+  </script>
   <nav aria-label="section navigation" class="navbar is-light" role="navigation">
     <div class="container">
       <div class="navbar-brand">

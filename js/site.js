@@ -1,12 +1,28 @@
 "use strict";
 
-//  Fix to prevent flashing
-if (localStorage.getItem("theme") === "dark") {
-  document.body.setAttribute("theme", "dark");
-  document.querySelectorAll("img, picture, video, pre, iframe").forEach(img => img.setAttribute("theme", "dark"));
-  document.querySelectorAll(".vimeo, .youtube, .chart").forEach(video => video.setAttribute("theme", "dark"));
-  document.getElementById("dark-mode").setAttribute("title", "Switch to light theme");
+function getStoredTheme() {
+  return localStorage.getItem("theme") || "dark";
 }
+
+function applyTheme(theme) {
+  const isDark = theme === "dark";
+  const themedElements = document.querySelectorAll("img, picture, video, pre, iframe, blockquote, .vimeo, .youtube, .chart");
+
+  if (isDark) {
+    document.body.setAttribute("theme", "dark");
+    themedElements.forEach(el => el.setAttribute("theme", "dark"));
+  } else {
+    document.body.removeAttribute("theme");
+    themedElements.forEach(el => el.removeAttribute("theme"));
+  }
+
+  const darkModeToggle = document.getElementById("dark-mode");
+  if (darkModeToggle) {
+    darkModeToggle.setAttribute("title", isDark ? "Switch to light theme" : "Switch to dark theme");
+  }
+}
+
+applyTheme(getStoredTheme());
 
 function debounce(func, wait) {
   var timeout;
@@ -180,12 +196,7 @@ function search() {
 
 function documentReadyCallback() {
 
-  if (localStorage.getItem("theme") === "dark") {
-    document.body.setAttribute("theme", "dark");
-    document.querySelectorAll("img, picture, video, pre, theme, iframe").forEach(img => img.setAttribute("theme", "dark"));
-    document.querySelectorAll(".vimeo, .youtube, .chart").forEach(video => video.setAttribute("theme", "dark"));
-    document.getElementById("dark-mode").setAttribute("title", "Switch to light theme");
-  }
+  applyTheme(getStoredTheme());
 
   document.querySelector(".navbar-burger").addEventListener("click", () => {
     document.querySelector(".navbar-burger").classList.toggle("is-active");
@@ -223,26 +234,9 @@ function documentReadyCallback() {
   });
 
   document.getElementById("dark-mode").addEventListener("click", () => {
-    if (
-      localStorage.getItem("theme") == null ||
-      localStorage.getItem("theme") == "light"
-    ) {
-      localStorage.setItem("theme", "dark");
-      document.body.setAttribute("theme", "dark");
-      document.querySelectorAll("img, picture, video, pre, iframe, blockquote").forEach(img => img.setAttribute("theme", "dark"));
-      document.querySelectorAll(".vimeo, .youtube, .chart").forEach(video => video.setAttribute("theme", "dark"));
-
-      document.getElementById("dark-mode").setAttribute("title", "Switch to light theme");
-    } else {
-      localStorage.setItem("theme", "light");
-      document.body.removeAttribute("theme", "dark");
-      document.querySelectorAll("img, picture, video, pre, iframe, blockquote").forEach(img => img.removeAttribute("theme", "dark"))
-      document.querySelectorAll(".vimeo, .youtube, .chart").forEach(video => video.removeAttribute("theme", "dark"));
-
-      document.getElementById("dark-mode").setAttribute("title", "Switch to dark theme");
-    }
-    document.querySelector(".navbar-burger").classList.toggle("is-active")
-    document.querySelector(".navbar-menu").classList.toggle("is-active");
+    const nextTheme = getStoredTheme() === "dark" ? "light" : "dark";
+    localStorage.setItem("theme", nextTheme);
+    applyTheme(nextTheme);
   });
 
   if (typeof mermaid !== "undefined") {
@@ -338,4 +332,3 @@ if (document.readyState === 'loading') {  // Loading hasn't finished yet
 } else {  // `DOMContentLoaded` has already fired
   documentReadyCallback();
 }
-

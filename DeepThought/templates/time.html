@@ -1,0 +1,896 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ config.title }} | {{ section.title }}
+{% endblock title %}
+
+{% block content %}
+<style>
+    .time-lab {
+        --sync-bg: #f7f7f7;
+        --sync-panel: #ffffff;
+        --sync-panel-strong: #ececec;
+        --sync-text: #262626;
+        --sync-muted: #666666;
+        --sync-accent: #1b8a6b;
+        --sync-accent-fill: rgba(27, 138, 107, 0.16);
+        --sync-alert: #cf3f4f;
+        --sync-alert-fill: rgba(207, 63, 79, 0.14);
+        --sync-line: #d8d8d8;
+        min-height: calc(100vh - 140px);
+        background: var(--sync-bg);
+        color: var(--sync-text);
+        padding: 2rem 1rem 4rem;
+    }
+
+    .time-lab__inner {
+        max-width: 1120px;
+        margin: 0 auto;
+    }
+
+    .time-lab__header {
+        display: grid;
+        gap: 0.75rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .time-lab__eyebrow {
+        color: var(--sync-accent);
+        font-size: 0.82rem;
+        font-weight: 700;
+        letter-spacing: 0;
+        text-transform: uppercase;
+    }
+
+    .time-lab__title {
+        color: var(--sync-text);
+        font-size: 4rem;
+        font-weight: 800;
+        line-height: 1;
+    }
+
+    .time-lab__lede {
+        max-width: 760px;
+        color: var(--sync-muted);
+        font-size: 1.05rem;
+        line-height: 1.7;
+    }
+
+    .clock-stage {
+        display: grid;
+        gap: 1rem;
+        margin-top: 1.5rem;
+    }
+
+    .clock-controls {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        align-items: center;
+        justify-content: space-between;
+        border: 1px solid var(--sync-line);
+        background: var(--sync-panel);
+        padding: 0.9rem;
+    }
+
+    .clock-controls__group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.6rem;
+        align-items: center;
+    }
+
+    .clock-button {
+        border: 1px solid var(--sync-text);
+        border-radius: 6px;
+        background: var(--sync-text);
+        color: var(--sync-panel);
+        cursor: pointer;
+        font: inherit;
+        font-weight: 700;
+        padding: 0.65rem 0.9rem;
+    }
+
+    .clock-button.secondary {
+        background: transparent;
+        color: var(--sync-text);
+    }
+
+    .clock-button.is-active {
+        border-color: var(--sync-accent);
+        background: var(--sync-accent);
+        color: var(--sync-panel);
+    }
+
+    .clock-metric {
+        min-width: 150px;
+    }
+
+    .clock-metric__label {
+        color: var(--sync-muted);
+        display: block;
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+    }
+
+    .clock-metric__value {
+        color: var(--sync-text);
+        display: block;
+        font-size: 1.2rem;
+        font-weight: 800;
+    }
+
+    .clock-grid {
+        display: grid;
+        grid-template-columns: repeat(8, minmax(0, 1fr));
+        gap: 0.3rem;
+    }
+
+    .clock-tile {
+        --phase: 0;
+        --drift-color: var(--sync-accent);
+        --drift-fill: var(--sync-accent-fill);
+        aspect-ratio: 1 / 0.78;
+        border: 1px solid var(--sync-line);
+        border-radius: 6px;
+        background:
+            linear-gradient(90deg, var(--drift-fill) calc(var(--phase) * 100%), transparent 0),
+            var(--sync-panel);
+        color: var(--sync-text);
+        display: grid;
+        grid-template-rows: auto 1fr auto;
+        gap: 0.25rem;
+        min-height: 80px;
+        padding: 0.4rem;
+        position: relative;
+        transition: background-color 120ms ease, border-color 120ms ease, transform 120ms ease;
+    }
+
+    .clock-tile.is-blinking {
+        background:
+            linear-gradient(90deg, var(--drift-fill) calc(var(--phase) * 100%), transparent 0),
+            var(--sync-panel-strong);
+        border-color: var(--drift-color);
+        transform: translateY(-2px);
+    }
+
+    .clock-tile__top,
+    .clock-tile__bottom {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.6rem;
+    }
+
+    .clock-tile__name {
+        font-size: 0.72rem;
+        font-weight: 800;
+    }
+
+    .clock-tile__rate {
+        color: var(--sync-muted);
+        font-size: 0.64rem;
+        font-weight: 700;
+    }
+
+    .clock-tile__time {
+        align-self: center;
+        color: var(--sync-text);
+        font-size: 1.35rem;
+        font-variant-numeric: tabular-nums;
+        font-weight: 900;
+        line-height: 1;
+    }
+
+    .clock-tile__offset {
+        color: var(--sync-muted);
+        font-size: 0.64rem;
+        font-variant-numeric: tabular-nums;
+        font-weight: 700;
+    }
+
+    .clock-tile__dot {
+        width: 0.55rem;
+        height: 0.55rem;
+        border: 1px solid var(--drift-color);
+        border-radius: 50%;
+        background: transparent;
+    }
+
+    .clock-tile.is-blinking .clock-tile__dot {
+        background: var(--drift-color);
+    }
+
+    .time-notes {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1rem;
+        margin-top: 1.5rem;
+    }
+
+    .time-note {
+        border-top: 2px solid var(--sync-line);
+        padding-top: 0.8rem;
+    }
+
+    .time-note h2 {
+        color: var(--sync-text);
+        font-size: 1rem;
+        font-weight: 800;
+        margin-bottom: 0.35rem;
+    }
+
+    .time-note p {
+        color: var(--sync-muted);
+        line-height: 1.65;
+    }
+
+    .time-writeup {
+        border-top: 1px solid var(--sync-line);
+        margin-top: 2rem;
+        max-width: 860px;
+        padding-top: 1.5rem;
+    }
+
+    .time-writeup h2 {
+        color: var(--sync-text);
+        font-size: 1.35rem;
+        font-weight: 800;
+        margin-bottom: 0.75rem;
+    }
+
+    .time-writeup h3 {
+        color: var(--sync-text);
+        font-size: 1rem;
+        font-weight: 800;
+        margin: 1rem 0 0.25rem;
+    }
+
+    .time-writeup p {
+        color: var(--sync-muted);
+        line-height: 1.7;
+        margin-bottom: 0.75rem;
+    }
+
+    @media (max-width: 1024px) {
+        .time-lab {
+            padding: 1.5rem 0.75rem 4rem;
+        }
+
+        .time-lab__title {
+            font-size: 3.2rem;
+        }
+
+        .clock-grid {
+            grid-template-columns: repeat(6, minmax(0, 1fr));
+            gap: 0.25rem;
+        }
+    }
+
+    @media (max-width: 780px) {
+        .time-lab {
+            padding: 1rem 0.75rem 2rem;
+        }
+
+        .time-lab__title {
+            font-size: 2.8rem;
+        }
+
+        .time-lab__lede {
+            font-size: 1rem;
+        }
+
+        .clock-grid {
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 0.25rem;
+        }
+
+        .clock-tile {
+            min-height: 70px;
+            padding: 0.3rem;
+        }
+
+        .clock-tile__time {
+            font-size: 1.15rem;
+        }
+
+        .time-notes {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 0.75rem;
+        }
+
+        .time-note h2 {
+            font-size: 0.95rem;
+        }
+
+        .time-note p {
+            font-size: 0.9rem;
+        }
+    }
+
+    @media (max-width: 640px) {
+        .time-lab {
+            padding: 0.75rem 0.5rem 2rem;
+            min-height: calc(100vh - 100px);
+        }
+
+        .time-lab__title {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .time-lab__eyebrow {
+            font-size: 0.75rem;
+        }
+
+        .time-lab__lede {
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .clock-controls {
+            flex-direction: column;
+            align-items: stretch;
+            gap: 0.5rem;
+            padding: 0.75rem 0.6rem;
+        }
+
+        .clock-controls__group {
+            width: 100%;
+            justify-content: flex-start;
+        }
+
+        .clock-button {
+            flex: 1;
+            min-height: 42px;
+            padding: 0.55rem 0.65rem;
+            font-size: 0.84rem;
+        }
+
+        .clock-metric {
+            min-width: auto;
+            flex: 1;
+        }
+
+        .clock-grid {
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 0.12rem;
+        }
+
+        .clock-tile {
+            min-height: 52px;
+            padding: 0.22rem;
+        }
+
+        .clock-tile__name {
+            font-size: 0.62rem;
+        }
+
+        .clock-tile__time {
+            font-size: 0.92rem;
+        }
+
+        .clock-tile__rate,
+        .clock-tile__offset {
+            font-size: 0.55rem;
+        }
+
+        .time-notes {
+            grid-template-columns: 1fr;
+        }
+
+        .time-note {
+            padding-top: 0.6rem;
+            border-top: 1px solid var(--sync-line);
+        }
+
+        .time-note h2 {
+            font-size: 0.9rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .time-note p {
+            font-size: 0.85rem;
+            line-height: 1.6;
+        }
+
+        .time-writeup {
+            margin-top: 1.5rem;
+            padding-top: 1rem;
+        }
+
+        .time-writeup h2 {
+            font-size: 1.15rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .time-writeup h3 {
+            font-size: 0.95rem;
+            margin: 0.75rem 0 0.15rem;
+        }
+
+        .time-writeup p {
+            font-size: 0.9rem;
+            line-height: 1.65;
+            margin-bottom: 0.6rem;
+        }
+    }
+
+    @media (max-width: 400px) {
+        .time-lab__title {
+            font-size: 1.55rem;
+        }
+
+        .time-lab__eyebrow {
+            font-size: 0.7rem;
+        }
+
+        .clock-grid {
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 0.12rem;
+        }
+
+        .clock-tile {
+            min-height: 50px;
+            aspect-ratio: 1 / 0.85;
+            padding: 0.22rem;
+        }
+
+        .clock-tile__name {
+            font-size: 0.6rem;
+        }
+
+        .clock-tile__time {
+            font-size: 0.88rem;
+        }
+
+        .clock-tile__rate,
+        .clock-tile__offset {
+            font-size: 0.5rem;
+        }
+
+        .clock-button {
+            font-size: 0.82rem;
+            padding: 0.5rem 0.55rem;
+        }
+    }
+</style>
+
+<section class="time-lab" aria-labelledby="time-lab-title">
+    <div class="time-lab__inner">
+        <header class="time-lab__header">
+            <p class="time-lab__eyebrow">Clock Drift Lab</p>
+            <h1 class="time-lab__title" id="time-lab-title">When Clocks Drift Apart.</h1>
+            <p class="time-lab__lede">
+                Every clock starts together, then runs on its own slightly imperfect tick rate. Watch the synchronized
+                pulse turn into drift.
+            </p>
+        </header>
+
+        <div class="clock-stage" data-clock-lab>
+            <div class="clock-controls" aria-label="Clock controls">
+                <div class="clock-controls__group">
+                    <button class="clock-button" type="button" data-sync>Sync clocks</button>
+                    <button class="clock-button secondary" type="button" data-reset>Reset drift</button>
+                    <button class="clock-button secondary" type="button" data-jitter aria-pressed="false">Jitter:
+                        off</button>
+                    <button class="clock-button secondary" type="button" data-sound aria-pressed="false">Sound:
+                        off</button>
+                    <button class="clock-button secondary" type="button" data-pause>Pause</button>
+                </div>
+                <div class="clock-controls__group" aria-live="polite">
+                    <span class="clock-metric">
+                        <span class="clock-metric__label">Elapsed</span>
+                        <span class="clock-metric__value" data-elapsed>0.0s</span>
+                    </span>
+                    <span class="clock-metric">
+                        <span class="clock-metric__label">Max drift</span>
+                        <span class="clock-metric__value" data-max-drift>0ms</span>
+                    </span>
+                </div>
+            </div>
+
+            <div class="clock-grid" data-clock-grid aria-label="A matrix of independent drifting clocks"></div>
+        </div>
+
+        <div class="time-notes">
+            <section class="time-note">
+                <h2>Aligned at first</h2>
+                <p>The demo starts with every clock showing the same moment, so all the ticks are in step and the grid
+                    looks unified.</p>
+            </section>
+            <section class="time-note">
+                <h2>Drift appears</h2>
+                <p>Each clock has a slightly different rate, so the smallest timing errors build up and the
+                    once-coordinated
+                    pattern begins to spread apart.</p>
+            </section>
+            <section class="time-note">
+                <h2>Correction pulse</h2>
+                <p>When the clocks are resynchronized, their local time gets pulled back toward the reference and the
+                    pattern briefly snaps back together.</p>
+            </section>
+        </div>
+
+        <section class="time-writeup" aria-labelledby="clock-basics-title">
+            <h2 id="clock-basics-title">Clock Basics</h2>
+            <p>
+                A clock is any device or process that counts time by moving from one tick to the next. A wall clock, a
+                phone, a computer, and a satellite all do the same basic job: they keep a count and try to advance it at
+                the right pace.
+            </p>
+
+            <h3>Reference clock</h3>
+            <p>
+                A reference clock is the time we compare other clocks against. It might be an atomic clock, a phone
+                network, a server, or simply the timer in this page. The boxes here are independent clocks that try to
+                follow the reference, but each one has its own imperfections.
+            </p>
+
+            <h3>Clock rate</h3>
+            <p>
+                Clock rate is how quickly a clock advances. A perfect clock advances one second for every real second.
+                A fast clock advances a little more than that; a slow clock advances a little less. This is why two
+                watches can show slightly different times after a few days.
+            </p>
+
+            <h3>Drift</h3>
+            <p>
+                Drift is the long-term error caused by a clock running fast or slow. A tiny rate difference can look
+                harmless at first, but it accumulates. That is why clocks that start synchronized eventually spread
+                apart.
+            </p>
+
+            <h3>Skew</h3>
+            <p>
+                Skew is the difference between two clocks at a specific moment. If one clock is 120ms ahead of the
+                reference right now, its skew is 120ms. Drift is the tendency; skew is the current gap.
+            </p>
+
+            <h3>Jitter</h3>
+            <p>
+                Jitter is short-term timing noise. It can come from the clock itself, from hardware conditions, or from
+                the world around it: temperature changes, electrical noise, vibration, software delays, or network
+                delays. In the demo, jitter makes ticks wobble instead of drifting smoothly.
+            </p>
+
+            <h3>Synchronization</h3>
+            <p>
+                Synchronization corrects clocks against a reference. Your phone does this automatically with network
+                time. Computers often use protocols like NTP. The sync button here is a simplified correction pulse: it
+                pulls every clock back toward the reference, then the clocks begin drifting again.
+            </p>
+
+            <h3>Why it matters</h3>
+            <p>
+                Timekeeping matters anywhere coordination matters: train schedules, banking records, video calls,
+                scientific instruments, GPS, factory automation, and computers talking to each other. Timestamps are
+                useful, but they are not absolute truth unless the clocks behind them are kept close enough together.
+            </p>
+
+            <h3>How accurate are different clocks?</h3>
+            <p>
+                Mechanical watches are beautiful little machines, but they can drift by a few seconds per day, and
+                cheaper ones can drift more. Quartz watches are much steadier because a vibrating quartz crystal gives a
+                reliable rhythm; many are off by only a few seconds per month. Phones and computers usually keep better
+                time than their internal clocks alone would because they regularly synchronize with network time.
+            </p>
+            <p>
+                GPS-based clocks are much more precise because GPS satellites carry atomic clocks and broadcast timing
+                signals. A GPS-disciplined clock can stay extremely close to global time when it has a good signal.
+                Atomic clocks are the reference tier: instead of relying on gears or quartz, they count very stable
+                atomic transitions. The best atomic clocks can stay accurate to tiny fractions of a second over millions
+                or even billions of years.
+            </p>
+            <p>
+                The pattern is the same at every scale: better clocks drift less, but no practical clock is magic. If
+                you care about shared time, you still need a reference and a way to resynchronize.
+            </p>
+
+            <h3>What even is time?</h3>
+            <p>
+                In everyday language, time is how we describe change and order: before, after, duration, waiting,
+                rhythm. Measurement needs something more precise, so the SI defines the unit of time, the second, using
+                a stable property of caesium-133 atoms.
+            </p>
+            <p>
+                The SI second is defined by fixing the caesium-133 hyperfine transition frequency at exactly
+                9,192,631,770 hertz. Put another way, one second is the duration of 9,192,631,770 periods of that
+                radiation from an unperturbed caesium-133 atom.
+            </p>
+
+            <h3>The philosophy of time</h3>
+            <p>
+                Time is one of the deepest mysteries in physics and philosophy. We experience it as a flow, a river
+                carrying us from past to future, yet physics describes it as just another dimension: no more special
+                than
+                height or width. In relativity, time bends and stretches depending on speed and gravity. An observer
+                falling into a black hole experiences time differently than someone watching from far away.
+            </p>
+            <p>
+                The real puzzle is why time feels directional when the laws of physics are often reversible. Why do we
+                remember the past but not the future? Why does entropy increase? Why does time seem to flow at all? No
+                one fully knows. But perhaps the answer lies partly in clocks: time is not something we discover in
+                nature, but something we measure using stable references.
+            </p>
+            <p> We build clocks, we synchronize them, we agree on a rhythm. The universe may not care about seconds,
+                but we do. We care because we need to coordinate, to remember, to plan. Time, in that sense is less a
+                feature of the universe and more a tool we use to make sense of it. </p>
+
+            <h3>References</h3>
+            <ol style="margin-left: 1.4rem;">
+                <li>
+                    <a href="https://www.nist.gov/atomic-clocks/brief-history-atomic-time" target="_blank"
+                        rel="noopener noreferrer">
+                        A Brief History of Atomic Time | NIST
+                    </a>
+                </li>
+
+                <li>
+                    <a href="https://www.hautehorlogerie.org/zh/watches-and-culture/library/a-history-of-time-measurement"
+                        target="_blank" rel="noopener noreferrer">
+                        FHH | The Journey of Time Measurement
+                    </a>
+                </li>
+                <li>
+                    <a href="https://en.wikipedia.org/wiki/Atomic_clock" target="_blank" rel="noopener noreferrer">
+                        Atomic clock - Wikipedia
+                    </a>
+                </li>
+                <li>
+                    <a href="https://en.wikipedia.org/wiki/Quartz_clock" target="_blank" rel="noopener noreferrer">
+                        Quartz clock - Wikipedia
+                    </a>
+                </li>
+                <li>
+                    <a href="https://en.wikipedia.org/wiki/System_time" target="_blank" rel="noopener noreferrer">
+                        System time - Wikipedia
+                    </a>
+                </li>
+
+            </ol>
+        </section>
+
+        <iframe data-testid="embed-iframe"
+            style="display:block; margin:2rem auto 0; border-radius:12px; max-width:720px; width:80%;"
+            src="https://open.spotify.com/embed/track/6ZFbXIJkuI1dVNWvzJzown?utm_source=generator&theme=0" height="152"
+            frameBorder="0" allowfullscreen=""
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    </div>
+</section>
+
+<script>
+    (() => {
+        const lab = document.querySelector("[data-clock-lab]");
+        const grid = lab.querySelector("[data-clock-grid]");
+        const elapsedValue = lab.querySelector("[data-elapsed]");
+        const driftValue = lab.querySelector("[data-max-drift]");
+        const pauseButton = lab.querySelector("[data-pause]");
+        const jitterButton = lab.querySelector("[data-jitter]");
+        const soundButton = lab.querySelector("[data-sound]");
+        const mobileBreakpoint = 640;
+        const desktopClockCount = 48;
+        const mobileClockCount = 20;
+        const clockCount = window.matchMedia(`(max-width: ${mobileBreakpoint}px)`).matches ? mobileClockCount : desktopClockCount;
+        const gridColumns = window.matchMedia(`(max-width: ${mobileBreakpoint}px)`).matches ? 4 : 8;
+        const jitterAmount = 95;
+        const tickSoundUrl = "/audio/beep.mp3";
+        const rates = Array.from({ length: clockCount }, (_, index) => {
+            const spread = index - (clockCount - 1) / 2;
+            return 1 + spread * 0.0016;
+        });
+
+        let baseTime = performance.now();
+        let paused = false;
+        let jitterEnabled = false;
+        let soundEnabled = false;
+        let audioContext;
+        let masterGain;
+        let tickBuffer;
+        let pausedAt = 0;
+        let clocks = [];
+
+        function randomJitter() {
+            return (Math.random() * 2 - 1) * jitterAmount;
+        }
+
+        async function setupAudio() {
+            if (audioContext) {
+                return;
+            }
+
+            const AudioContext = window.AudioContext || window.webkitAudioContext;
+            if (!AudioContext) {
+                soundButton.textContent = "Sound unavailable";
+                soundButton.disabled = true;
+                return;
+            }
+
+            audioContext = new AudioContext();
+            masterGain = audioContext.createGain();
+            masterGain.gain.value = 0.4;
+            masterGain.connect(audioContext.destination);
+
+            try {
+                const response = await fetch(tickSoundUrl);
+                const audioData = await response.arrayBuffer();
+                tickBuffer = await audioContext.decodeAudioData(audioData);
+            } catch (error) {
+                soundButton.textContent = "Sound unavailable";
+                soundButton.disabled = true;
+                audioContext = null;
+            }
+        }
+
+        function playTick(index, drift) {
+            if (!soundEnabled || !audioContext || !tickBuffer || audioContext.state !== "running") {
+                return;
+            }
+
+            const now = audioContext.currentTime;
+            const source = audioContext.createBufferSource();
+            const gain = audioContext.createGain();
+            const pan = audioContext.createStereoPanner ? audioContext.createStereoPanner() : null;
+            const column = index % gridColumns;
+
+            source.buffer = tickBuffer;
+            gain.gain.setValueAtTime(drift >= 0 ? 0.08 : 0.065, now);
+            source.connect(gain);
+            if (pan) {
+                pan.pan.setValueAtTime((column - 3.5) / 4.5, now);
+                gain.connect(pan);
+                pan.connect(masterGain);
+            } else {
+                gain.connect(masterGain);
+            }
+            source.start(now);
+        }
+
+        function createClock(index, rate) {
+            const tile = document.createElement("article");
+            tile.className = "clock-tile";
+            tile.innerHTML = `
+        <div class="clock-tile__top">
+          <span class="clock-tile__name">Clock ${String(index + 1).padStart(2, "0")}</span>
+          <span class="clock-tile__rate">${rate > 1 ? "+" : ""}${((rate - 1) * 1000).toFixed(1)}ms/s</span>
+        </div>
+        <div class="clock-tile__time">00:00</div>
+        <div class="clock-tile__bottom">
+          <span class="clock-tile__offset">0ms drift</span>
+          <span class="clock-tile__dot" aria-hidden="true"></span>
+        </div>
+      `;
+            grid.appendChild(tile);
+            return {
+                index,
+                rate,
+                correction: 0,
+                jitterOffset: 0,
+                jitterTarget: 0,
+                nextJitterAt: 0,
+                tile,
+                time: tile.querySelector(".clock-tile__time"),
+                offset: tile.querySelector(".clock-tile__offset"),
+                lastSecond: -1
+            };
+        }
+
+        function resetClocks(now = performance.now()) {
+            baseTime = now;
+            clocks.forEach(clock => {
+                clock.correction = 0;
+                clock.jitterOffset = 0;
+                clock.jitterTarget = 0;
+                clock.nextJitterAt = 0;
+                clock.lastSecond = -1;
+                clock.tile.classList.add("is-blinking");
+            });
+        }
+
+        function syncClocks() {
+            const reference = performance.now() - baseTime;
+            clocks.forEach(clock => {
+                clock.correction = reference - reference * clock.rate;
+                clock.jitterOffset = 0;
+                clock.jitterTarget = 0;
+                clock.nextJitterAt = 0;
+                clock.lastSecond = -1;
+                clock.tile.classList.add("is-blinking");
+            });
+        }
+
+        function formatClockTime(ms) {
+            const totalSeconds = Math.floor(ms / 1000);
+            return `${String(Math.floor(totalSeconds / 60)).padStart(2, "0")}:${String(totalSeconds % 60).padStart(2, "0")}`;
+        }
+
+        function render(now) {
+            if (paused) {
+                requestAnimationFrame(render);
+                return;
+            }
+
+            const reference = now - baseTime;
+            let maxDrift = 0;
+
+            clocks.forEach(clock => {
+                if (jitterEnabled && now >= clock.nextJitterAt) {
+                    clock.jitterTarget = randomJitter();
+                    clock.nextJitterAt = now + 140 + Math.random() * 260;
+                }
+
+                clock.jitterOffset += ((jitterEnabled ? clock.jitterTarget : 0) - clock.jitterOffset) * 0.12;
+
+                const local = reference * clock.rate + clock.correction + clock.jitterOffset;
+                const drift = local - reference;
+                const absoluteDrift = Math.abs(drift);
+                const localSecond = Math.floor(local / 1000);
+                const phase = (local % 1000) / 1000;
+
+                maxDrift = Math.max(maxDrift, absoluteDrift);
+                clock.time.textContent = formatClockTime(local);
+                clock.offset.textContent = `${drift >= 0 ? "+" : ""}${Math.round(drift)}ms drift`;
+                clock.tile.style.setProperty("--phase", phase.toFixed(3));
+                clock.tile.style.setProperty("--drift-color", drift >= 0 ? "var(--sync-accent)" : "var(--sync-alert)");
+                clock.tile.style.setProperty("--drift-fill", drift >= 0 ? "var(--sync-accent-fill)" : "var(--sync-alert-fill)");
+
+                if (localSecond !== clock.lastSecond) {
+                    clock.lastSecond = localSecond;
+                    clock.tile.classList.add("is-blinking");
+                    playTick(clock.index, drift);
+                    window.setTimeout(() => clock.tile.classList.remove("is-blinking"), 130);
+                }
+            });
+
+            elapsedValue.textContent = `${(reference / 1000).toFixed(1)}s`;
+            driftValue.textContent = `${Math.round(maxDrift)}ms`;
+            requestAnimationFrame(render);
+        }
+
+        clocks = rates.map((rate, index) => createClock(index, rate));
+        resetClocks();
+
+        lab.querySelector("[data-sync]").addEventListener("click", syncClocks);
+        lab.querySelector("[data-reset]").addEventListener("click", () => resetClocks());
+        jitterButton.addEventListener("click", () => {
+            jitterEnabled = !jitterEnabled;
+            jitterButton.textContent = jitterEnabled ? "Jitter: on" : "Jitter: off";
+            jitterButton.setAttribute("aria-pressed", String(jitterEnabled));
+            jitterButton.classList.toggle("is-active", jitterEnabled);
+
+            if (jitterEnabled) {
+                clocks.forEach(clock => {
+                    clock.jitterTarget = randomJitter();
+                    clock.nextJitterAt = performance.now() + Math.random() * 240;
+                });
+            }
+        });
+        soundButton.addEventListener("click", async () => {
+            await setupAudio();
+            if (!audioContext) {
+                return;
+            }
+
+            if (audioContext.state === "suspended") {
+                await audioContext.resume();
+            }
+
+            soundEnabled = !soundEnabled;
+            soundButton.textContent = soundEnabled ? "Sound: on" : "Sound: off";
+            soundButton.setAttribute("aria-pressed", String(soundEnabled));
+            soundButton.classList.toggle("is-active", soundEnabled);
+        });
+        pauseButton.addEventListener("click", () => {
+            paused = !paused;
+            pauseButton.textContent = paused ? "Resume" : "Pause";
+            if (paused) {
+                pausedAt = performance.now();
+            } else {
+                baseTime += performance.now() - pausedAt;
+            }
+        });
+
+        requestAnimationFrame(render);
+    })();
+</script>{% endblock %}
