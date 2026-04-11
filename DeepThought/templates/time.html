@@ -1,8 +1,20 @@
 {% extends 'base.html' %}
 
-{% block title %}
-{{ config.title }} | {{ section.title }}
-{% endblock title %}
+{% block metaog %}
+<meta property="og:title" content="When Clocks Drift Apart" />
+<meta property="og:description"
+    content="Interactive visualization exploring the nature of time, clock drift, and synchronization through an animated clock drift lab." />
+<meta property="og:image" content="https://animeshchouhan.com/images/time.png" />
+<meta property="og:url" content="https://animeshchouhan.com/time/" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="When Clocks Drift Apart" />
+<meta name="twitter:description"
+    content="Interactive visualization exploring the nature of time, clock drift, and synchronization through an animated clock drift lab." />
+<meta name="twitter:image" content="https://animeshchouhan.com/images/time.png" />
+<meta name="description"
+    content="Interactive visualization exploring the nature of time, clock drift, and synchronization through an animated clock drift lab.">
+{% endblock %}
 
 {% block content %}
 <style>
