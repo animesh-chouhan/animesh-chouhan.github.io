@@ -253,6 +253,22 @@
         margin-bottom: 0.75rem;
     }
 
+    @keyframes soft-tint {
+
+        0%,
+        100% {
+            background-color: rgba(255, 192, 0, 0.8);
+        }
+
+        50% {
+            background-color: rgba(255, 192, 0, 0.3);
+        }
+    }
+
+    .clock-button.is-awaiting-click {
+        animation: soft-tint 2.5s ease-in-out infinite;
+    }
+
     @media (max-width: 1024px) {
         .time-lab {
             padding: 1.5rem 0.75rem 4rem;
@@ -475,8 +491,8 @@
                     <button class="clock-button secondary" type="button" data-reset>Reset drift</button>
                     <button class="clock-button secondary" type="button" data-jitter aria-pressed="false">Jitter:
                         off</button>
-                    <button class="clock-button secondary" type="button" data-sound aria-pressed="false">Sound:
-                        off</button>
+                    <button class="clock-button secondary" type="button" data-sound aria-pressed="false">Enable
+                        sound</button>
                     <button class="clock-button secondary" type="button" data-pause>Pause</button>
                 </div>
                 <div class="clock-controls__group" aria-live="polite">
@@ -877,9 +893,10 @@
             }
 
             soundEnabled = !soundEnabled;
-            soundButton.textContent = soundEnabled ? "Sound: on" : "Sound: off";
+            soundButton.textContent = soundEnabled ? "Disable sound" : "Enable sound";
             soundButton.setAttribute("aria-pressed", String(soundEnabled));
             soundButton.classList.toggle("is-active", soundEnabled);
+            soundButton.classList.toggle("is-awaiting-click", !soundEnabled);
         });
         pauseButton.addEventListener("click", () => {
             paused = !paused;
@@ -891,6 +908,7 @@
             }
         });
 
+        soundButton.classList.add("is-awaiting-click");
         requestAnimationFrame(render);
     })();
 </script>{% endblock %}
