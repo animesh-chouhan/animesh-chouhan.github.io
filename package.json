@@ -1,0 +1,19 @@
+{
+  "name": "animeshchouhan-com",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "predev": "node scripts/vendor-katex.mjs",
+    "dev": "astro dev",
+    "prebuild": "node scripts/vendor-katex.mjs",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check"
+  },
+  "dependencies": {
+    "@astrojs/markdown-remark": "^7.3.4",
+    "astro": "^7.4.2",
+    "rehype-katex": "^7.0.1",
+    "remark-math": "^6.0.0"
+  }
+}

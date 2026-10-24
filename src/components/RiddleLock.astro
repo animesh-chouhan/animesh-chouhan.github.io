@@ -1,0 +1,64 @@
+---
+// Encrypted content unlocked by a riddle answer, used by /vault/ and /harkat/.
+// The answer is the AES-GCM key (via PBKDF2), so a wrong answer simply fails to decrypt.
+interface Props {
+  iv: string;
+  cipher: string;
+  // Harkat's content is UTF-8; Vault's was written as plain base64 text.
+  utf8?: boolean;
+  centered?: boolean;
+}
+
+const { iv, cipher, utf8 = false, centered = false } = Astro.props;
+---
+
+<form class="riddle-form" data-iv={iv} data-cipher={cipher} data-utf8={utf8 ? "true" : undefined}>
+  <label for="riddle-answer" class="sr-only">Your answer</label>
+  <input id="riddle-answer" name="answer" type="text" placeholder="Your answer here" autocomplete="off" autocapitalize="none" spellcheck="false" required />
+  <button type="submit">Submit</button>
+  <p class="riddle-error" role="alert" hidden>Incorrect answer! Try again.</p>
+</form>
+<div class:list={["riddle-content", { centered }]} hidden></div>
+
+<script>
+  const hexToBytes = (hex: string) => Uint8Array.from(hex.match(/../g) ?? [], (b) => parseInt(b, 16));
+
+  async function decrypt(answer: string, ivHex: string, cipherHex: string) {
+    const material = await crypto.subtle.importKey("raw", new TextEncoder().encode(answer), "PBKDF2", false, ["deriveBits"]);
+    const bits = await crypto.subtle.deriveBits({ name: "PBKDF2", salt: new Uint8Array([]), iterations: 1, hash: "SHA-256" }, material, 256);
+    const key = await crypto.subtle.importKey("raw", bits, "AES-GCM", false, ["decrypt"]);
+    const plain = await crypto.subtle.decrypt({ name: "AES-GCM", iv: hexToBytes(ivHex) }, key, hexToBytes(cipherHex));
+    return new TextDecoder().decode(plain);
+  }
+
+  for (const form of document.querySelectorAll<HTMLFormElement>(".riddle-form")) {
+    const error = form.querySelector<HTMLElement>(".riddle-error")!;
+    const output = form.nextElementSibling as HTMLElement;
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      const answer = (form.elements.namedItem("answer") as HTMLInputElement).value.toLowerCase().trim();
+      try {
+        const binary = atob(await decrypt(answer, form.dataset.iv!, form.dataset.cipher!));
+        const html = form.dataset.utf8 ? new TextDecoder().decode(Uint8Array.from(binary, (c) => c.charCodeAt(0))) : binary;
+        output.innerHTML = html.replace("-", "—");
+        output.hidden = false;
+        error.hidden = true;
+      } catch {
+        error.hidden = false;
+        output.hidden = true;
+      }
+    });
+  }
+</script>
+
+<style is:global>
+  .riddle { font-style: italic; text-align: center; padding: 1rem 0; border-block: 1px solid var(--line); margin: 1.5rem 0; }
+  .riddle-form { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem; margin: 1.5rem 0; }
+  .riddle-form input { font: inherit; flex: 1 1 14rem; max-width: 22rem; padding: 0.45rem 0.6rem; border: 1px solid var(--line); border-radius: 4px; background: var(--bg); color: var(--text); }
+  .riddle-form button { font: inherit; padding: 0.45rem 1.1rem; border: 1px solid var(--text); border-radius: 4px; background: var(--text); color: var(--bg); cursor: pointer; }
+  .riddle-error { flex-basis: 100%; text-align: center; color: #d0364a; margin: 0; }
+  .riddle-content { margin-top: 2rem; }
+  .riddle-content.centered { text-align: center; }
+  .riddle-content .book-list { list-style: none; padding: 0; }
+  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+</style>

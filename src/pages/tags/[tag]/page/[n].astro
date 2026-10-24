@@ -1,0 +1,10 @@
+---
+import Redirect from "../../../../components/Redirect.astro";
+import { terms } from "../../../../lib/content";
+
+export async function getStaticPaths() {
+  return (await terms("tags")).map((term) => ({ params: { tag: term.slug, n: "1" }, props: { slug: term.slug } }));
+}
+---
+
+<Redirect to={`/tags/${Astro.props.slug}/`} />

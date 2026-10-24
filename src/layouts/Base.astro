@@ -1,0 +1,112 @@
+---
+import "../styles/global.css";
+import { SITE, NAV } from "../site";
+import { icons } from "../icons";
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  type?: "website" | "article";
+  math?: boolean;
+  wide?: boolean;
+  // Center the page content vertically between header and footer (home page).
+  centered?: boolean;
+  noindex?: boolean;
+}
+
+const { title, description = SITE.description, image = SITE.image, type = "website", math = false, wide = false, centered = false, noindex = false } = Astro.props;
+const fullTitle = title ? `${SITE.title} | ${title}` : SITE.title;
+const canonical = new URL(Astro.url.pathname, SITE.url).href;
+const imageUrl = new URL(image, SITE.url).href;
+const path = Astro.url.pathname;
+const isCurrent = (href: string) => (href === "/" ? path === "/" : path.startsWith(href));
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script is:inline>
+      // Apply a saved light/dark choice before the first paint; without one, the OS setting applies.
+      try {
+        const theme = localStorage.getItem("theme");
+        if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+      } catch {}
+    </script>
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    {noindex ? <meta name="robots" content="noindex" /> : <link rel="canonical" href={canonical} />}
+    <meta property="og:type" content={type} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={imageUrl} />
+    <meta property="og:url" content={canonical} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png" />
+    <link rel="apple-touch-icon" href="/icons/apple-icon.png" />
+    <link rel="manifest" href="/icons/site.webmanifest" />
+    <link rel="alternate" type="application/rss+xml" title={SITE.title} href="/rss.xml" />
+    {math && <link rel="stylesheet" href="/vendor/katex/katex.min.css" />}
+    <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${SITE.analytics}`}></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag("js", new Date());
+      gtag("config", "G-NK695M7L1L");
+    </script>
+  </head>
+  <body>
+    <header class="site-nav">
+      <div class="nav-inner">
+        <a class="nav-item brand" href="/">{SITE.title}</a>
+        <nav class="nav-menu" aria-label="Main">
+          {NAV.map((item) => <a class="nav-item" href={item.href} aria-current={isCurrent(item.href) ? "page" : undefined}>{item.label}</a>)}
+          <a class="nav-item" href={SITE.resume} target="_blank" rel="noopener">Resume</a>
+        </nav>
+        <span class="nav-item nav-theme">
+          <button type="button" class="theme-switch" role="switch" aria-checked="false" aria-label="Dark mode" title="Toggle dark mode">
+            <span class="track" aria-hidden="true">
+              <span class="knob">
+                {
+                  ["sun", "moon"].map((name) => (
+                    <svg class={name} viewBox={icons[name].viewBox} focusable="false">
+                      <path fill="currentColor" d={icons[name].d} />
+                    </svg>
+                  ))
+                }
+              </span>
+            </span>
+          </button>
+        </span>
+      </div>
+    </header>
+    <main class:list={[{ wrap: !wide, centered }]}>
+      <slot />
+    </main>
+    <footer class="site-footer wrap">
+      © {new Date().getFullYear()} {SITE.title} · <a href="/rss.xml">RSS</a>
+    </footer>
+    <script>
+      // The switch pins light or dark and remembers it; the colors themselves are all CSS.
+      const root = document.documentElement;
+      const toggle = document.querySelector<HTMLButtonElement>(".theme-switch")!;
+      const systemDark = matchMedia("(prefers-color-scheme: dark)");
+      const isDark = () => (root.dataset.theme ?? (systemDark.matches ? "dark" : "light")) === "dark";
+      const sync = () => toggle.setAttribute("aria-checked", String(isDark()));
+
+      toggle.addEventListener("click", () => {
+        const theme = isDark() ? "light" : "dark";
+        root.dataset.theme = theme;
+        try {
+          localStorage.setItem("theme", theme);
+        } catch {}
+        sync();
+      });
+      systemDark.addEventListener("change", sync);
+      sync();
+    </script>
+  </body>
+</html>

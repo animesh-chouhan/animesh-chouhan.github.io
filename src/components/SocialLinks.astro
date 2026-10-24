@@ -1,0 +1,22 @@
+---
+import { SOCIAL } from "../site";
+import { icons } from "../icons";
+---
+
+<ul class="social">
+  {
+    SOCIAL.map((s) => {
+      const icon = icons[s.icon];
+      const external = s.href.startsWith("http");
+      return (
+        <li>
+          <a href={s.href} aria-label={s.label} title={s.label} target={external ? "_blank" : undefined} rel={external ? "noopener noreferrer" : undefined}>
+            <svg viewBox={icon.viewBox} aria-hidden="true" focusable="false">
+              <path fill="currentColor" d={icon.d} />
+            </svg>
+          </a>
+        </li>
+      );
+    })
+  }
+</ul>

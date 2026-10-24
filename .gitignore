@@ -1,1 +1,7 @@
 .codex
+audit/
+node_modules/
+dist/
+.astro/
+# Copied from node_modules by scripts/vendor-katex.mjs before each build
+public/vendor/

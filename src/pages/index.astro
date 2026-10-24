@@ -1,0 +1,17 @@
+---
+import Base from "../layouts/Base.astro";
+import SocialLinks from "../components/SocialLinks.astro";
+import { Content as About } from "../content/home.md";
+import { SITE } from "../site";
+---
+
+<Base centered>
+  <section class="intro">
+    <img class="avatar" src={SITE.avatar} alt="Animesh Chouhan" width="128" height="128" />
+    <h1>{SITE.title}</h1>
+    <SocialLinks />
+  </section>
+  <div class="prose">
+    <About />
+  </div>
+</Base>

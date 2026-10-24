@@ -1,0 +1,28 @@
+---
+import Base from "../layouts/Base.astro";
+import { terms } from "../lib/content";
+
+interface Props {
+  taxonomy: "tags" | "categories";
+}
+
+const { taxonomy } = Astro.props;
+const all = await terms(taxonomy);
+const title = taxonomy === "tags" ? "Tags" : "Categories";
+---
+
+<Base title={title}>
+  <header class="page-head">
+    <h1>{title}</h1>
+    <p>{all.length} {taxonomy} in total</p>
+  </header>
+  <ul class="terms-list">
+    {
+      all.map((t) => (
+        <li>
+          <a href={`/${taxonomy}/${t.slug}/`}>{t.name}</a> <span class="muted">({t.entries.length})</span>
+        </li>
+      ))
+    }
+  </ul>
+</Base>

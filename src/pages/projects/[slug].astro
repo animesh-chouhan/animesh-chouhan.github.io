@@ -1,0 +1,11 @@
+---
+import EntryPage from "../../layouts/EntryPage.astro";
+import { hasOwnPage, sorted } from "../../lib/content";
+
+export async function getStaticPaths() {
+  const all = (await sorted("projects")).filter(hasOwnPage);
+  return all.map((entry, i) => ({ params: { slug: entry.id }, props: { entry, newer: all[i - 1], older: all[i + 1] } }));
+}
+---
+
+<EntryPage {...Astro.props} />

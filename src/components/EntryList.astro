@@ -1,0 +1,21 @@
+---
+import { entryUrl, excerpt, formatDate, isoDate, type Entry } from "../lib/content";
+
+interface Props {
+  entries: Entry[];
+}
+
+const { entries } = Astro.props;
+---
+
+<ul class="entries">
+  {
+    entries.map((e) => (
+      <li>
+        <time class="muted small" datetime={isoDate(e.data.date)}>{formatDate(e.data.date)}</time>
+        <h2><a href={entryUrl(e)}>{e.data.title}</a></h2>
+        <p class="muted">{e.data.description ?? excerpt(e.body)}</p>
+      </li>
+    ))
+  }
+</ul>

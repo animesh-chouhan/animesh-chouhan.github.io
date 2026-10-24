@@ -1,0 +1,10 @@
+---
+// Everything fits on one list page now; the old paginated URLs point back to it.
+import Redirect from "../../../components/Redirect.astro";
+
+export function getStaticPaths() {
+  return [{ params: { n: "1" } }, { params: { n: "2" } }];
+}
+---
+
+<Redirect to="/posts/" />

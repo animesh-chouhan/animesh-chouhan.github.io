@@ -1,0 +1,6 @@
+---
+import ListPage from "../../components/ListPage.astro";
+import { sorted } from "../../lib/content";
+---
+
+<ListPage title="Projects" subtitle="A showcase of projects in varying phases of completion." entries={await sorted("projects")} />

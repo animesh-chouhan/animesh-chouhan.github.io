@@ -1,0 +1,15 @@
+---
+import ListPage from "./ListPage.astro";
+import type { Entry } from "../lib/content";
+
+interface Props {
+  taxonomy: "tags" | "categories";
+  term: { name: string; entries: Entry[] };
+}
+
+const { taxonomy, term } = Astro.props;
+const n = term.entries.length;
+const subtitle = `${n} ${n === 1 ? "entry" : "entries"} ${taxonomy === "tags" ? "tagged" : "in"} “${term.name}”`;
+---
+
+<ListPage title={term.name} subtitle={subtitle} entries={term.entries} />

@@ -1,0 +1,61 @@
+---
+import { render } from "astro:content";
+import Base from "./Base.astro";
+import { entryUrl, excerpt, formatDate, isoDate, readingTime, termUrl, wordCount, type Entry } from "../lib/content";
+
+interface Props {
+  entry: Entry;
+  newer?: Entry;
+  older?: Entry;
+}
+
+const { entry, newer, older } = Astro.props;
+const { Content } = await render(entry);
+const { title, description, date, featured, categories, tags, math } = entry.data;
+const minutes = readingTime(wordCount(entry.body));
+---
+
+<Base title={title} description={description ?? excerpt(entry.body)} image={featured} type="article" math={math}>
+  <article>
+    <header class="entry-head">
+      <h1>{title}</h1>
+      {description && <p>{description}</p>}
+      <p class="muted small">
+        <time datetime={isoDate(date)}>{formatDate(date)}</time> · {minutes} min read
+      </p>
+    </header>
+    <div class="prose">
+      <Content />
+    </div>
+    <footer class="entry-foot muted small">
+      {
+        categories.length > 0 && (
+          <p>
+            Categories:{" "}
+            {categories.map((c, i) => <>{i > 0 && ", "}<a href={termUrl("categories", c)}>{c}</a></>)}
+          </p>
+        )
+      }
+      {
+        tags.length > 0 && (
+          <p>
+            Tags:{" "}
+            {tags.map((t, i) => <>{i > 0 && ", "}<a href={termUrl("tags", t)}>{t}</a></>)}
+          </p>
+        )
+      }
+    </footer>
+  </article>
+  {
+    (newer || older) && (
+      <nav class="entry-nav" aria-label="More">
+        {newer && <a href={entryUrl(newer)}>← {newer.data.title}</a>}
+        {older && (
+          <a class="next" href={entryUrl(older)}>
+            {older.data.title} →
+          </a>
+        )}
+      </nav>
+    )
+  }
+</Base>

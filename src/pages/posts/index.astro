@@ -1,0 +1,6 @@
+---
+import ListPage from "../../components/ListPage.astro";
+import { sorted } from "../../lib/content";
+---
+
+<ListPage title="Posts" subtitle="Blog posts accumulated over the time." entries={await sorted("posts")} />

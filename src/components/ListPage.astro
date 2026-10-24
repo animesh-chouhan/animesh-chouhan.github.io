@@ -1,0 +1,21 @@
+---
+import Base from "../layouts/Base.astro";
+import EntryList from "./EntryList.astro";
+import type { Entry } from "../lib/content";
+
+interface Props {
+  title: string;
+  subtitle: string;
+  entries: Entry[];
+}
+
+const { title, subtitle, entries } = Astro.props;
+---
+
+<Base title={title} description={subtitle}>
+  <header class="page-head">
+    <h1>{title}</h1>
+    <p>{subtitle}</p>
+  </header>
+  <EntryList entries={entries} />
+</Base>
